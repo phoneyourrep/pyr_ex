@@ -25,6 +25,16 @@ defmodule PYRExShapefile do
       end)
     end)
 
-    %Geo.Polygon{coordinates: polygon, srid: 4269}
+    %Geo.Polygon{coordinates: coordinates, srid: srid()}
   end
+
+  @doc """
+  The SRID projection used by the application. Returns the integer value `3857`.
+
+  ## Examples
+
+      iex> PYRExShapefile.srid()
+      3857
+  """
+  def srid, do: 3857
 end

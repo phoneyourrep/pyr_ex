@@ -110,7 +110,7 @@ defmodule PYREx.Districts do
   """
 
   def intersects_shapes(coordinates = {lat, lon}) when is_number(lat) and is_number(lon) do
-    %Geo.Point{coordinates: coordinates, srid: 4269}
+    %Geo.Point{coordinates: coordinates, srid: PYRExShapefile.srid()}
     |> intersects_shapes()
   end
 

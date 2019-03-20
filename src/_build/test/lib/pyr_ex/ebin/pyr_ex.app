@@ -1,6 +1,6 @@
 {application,pyr_ex,
              [{applications,[kernel,stdlib,elixir,logger,runtime_tools,jason,
-                             postgrex,ecto_sql,geo_postgis]},
+                             postgrex,ecto_sql,pyr_ex_shapefile,geo_postgis]},
               {description,"pyr_ex"},
               {modules,['Elixir.PYREx','Elixir.PYREx.Application',
                         'Elixir.PYREx.DataCase','Elixir.PYREx.Districts',

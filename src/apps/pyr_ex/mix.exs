@@ -39,7 +39,8 @@ defmodule PYREx.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:geo_postgis, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
-      {:jason, "~> 1.0"}
+      {:jason, "~> 1.0"},
+      {:pyr_ex_shapefile, in_umbrella: true}
     ]
   end
 
