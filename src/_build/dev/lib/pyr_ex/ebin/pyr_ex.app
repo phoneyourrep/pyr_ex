@@ -2,9 +2,10 @@
              [{applications,[kernel,stdlib,elixir,logger,runtime_tools,jason,
                              postgrex,ecto_sql,geo_postgis]},
               {description,"pyr_ex"},
-              {modules,['Elixir.MyApp.PostgresTypes','Elixir.PYREx',
-                        'Elixir.PYREx.Application','Elixir.PYREx.Districts',
-                        'Elixir.PYREx.Districts.Shape','Elixir.PYREx.Repo']},
+              {modules,['Elixir.PYREx','Elixir.PYREx.Application',
+                        'Elixir.PYREx.Districts',
+                        'Elixir.PYREx.Districts.Shape',
+                        'Elixir.PYREx.PostgresTypes','Elixir.PYREx.Repo']},
               {registered,[]},
               {vsn,"0.1.0"},
               {mod,{'Elixir.PYREx.Application',[]}}]}.

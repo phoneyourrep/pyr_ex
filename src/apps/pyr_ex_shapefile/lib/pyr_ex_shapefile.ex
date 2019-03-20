@@ -17,4 +17,14 @@ defmodule PYRExShapefile do
   def from_zip(shapefile) do
     Exshape.from_zip("#{@shp_dir}/#{shapefile}.zip")
   end
+
+  def exshape_to_geo(%Exshape.Shp.Polygon{points: [polygon]}) do
+    coordinates = Enum.map(polygon, fn points ->
+      Enum.map(points, fn %{x: lon, y: lat} ->
+        {lat, lon}
+      end)
+    end)
+
+    %Geo.Polygon{coordinates: polygon, srid: 4269}
+  end
 end

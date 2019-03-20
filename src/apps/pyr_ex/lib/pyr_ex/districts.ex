@@ -4,6 +4,7 @@ defmodule PYREx.Districts do
   """
 
   import Ecto.Query, warn: false
+  import Geo.PostGIS
   alias PYREx.Repo
 
   alias PYREx.Districts.Shape
@@ -100,5 +101,23 @@ defmodule PYREx.Districts do
   """
   def change_shape(%Shape{} = shape) do
     Shape.changeset(shape, %{})
+  end
+
+  @doc """
+  Returns a list of shapes that intersect the given geometry.
+
+  Input can be a tuple containing two floats (lat and lon) or a Geo struct.
+  """
+
+  def intersects_shapes(coordinates = {lat, lon}) when is_number(lat) and is_number(lon) do
+    %Geo.Point{coordinates: coordinates, srid: 4269}
+    |> intersects_shapes()
+  end
+
+  def intersects_shapes(geom) do
+    query = from shape in Shape,
+              where: st_intersects(shape.geom, ^geom)
+
+    Repo.all(query)
   end
 end

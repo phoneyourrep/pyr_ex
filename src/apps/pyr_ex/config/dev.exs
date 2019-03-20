@@ -13,4 +13,4 @@ config :pyr_ex, PYREx.Repo,
   pool_size: 10,
   extensions: [{Geo.PostGIS.Extension, library: Geo}],
   adapter: Ecto.Adapters.Postgres,
-  types: MyApp.PostgresTypes
+  types: PYREx.PostgresTypes

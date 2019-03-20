@@ -26,7 +26,8 @@ defmodule PYRExShapefile.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:exshape, "~> 2.1.2"}
+      {:exshape, "~> 2.1.2"},
+      {:geo, "~> 3.0"}
     ]
   end
 end
