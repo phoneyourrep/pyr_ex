@@ -6,8 +6,10 @@ defmodule PYREx.DistrictsTest do
   describe "shapes" do
     alias PYREx.Districts.Shape
 
-    @valid_attrs %{geom: "some geom", identifier: "some identifier"}
-    @update_attrs %{geom: "some updated geom", identifier: "some updated identifier"}
+    @geom1 %Geo.Point{coordinates: {1.0, 2.0}}
+    @geom2 %Geo.Point{coordinates: {2.0, 2.0}}
+    @valid_attrs %{geom: @geom1, identifier: "some identifier"}
+    @update_attrs %{geom: @geom2, identifier: "some updated identifier"}
     @invalid_attrs %{geom: nil, identifier: nil}
 
     def shape_fixture(attrs \\ %{}) do
@@ -31,7 +33,7 @@ defmodule PYREx.DistrictsTest do
 
     test "create_shape/1 with valid data creates a shape" do
       assert {:ok, %Shape{} = shape} = Districts.create_shape(@valid_attrs)
-      assert shape.geom == "some geom"
+      assert shape.geom == %Geo.Point{coordinates: {1.0, 2.0}}
       assert shape.identifier == "some identifier"
     end
 
@@ -42,7 +44,7 @@ defmodule PYREx.DistrictsTest do
     test "update_shape/2 with valid data updates the shape" do
       shape = shape_fixture()
       assert {:ok, %Shape{} = shape} = Districts.update_shape(shape, @update_attrs)
-      assert shape.geom == "some updated geom"
+      assert shape.geom == %Geo.Point{coordinates: {2.0, 2.0}}
       assert shape.identifier == "some updated identifier"
     end
 

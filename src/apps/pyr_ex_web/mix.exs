@@ -40,8 +40,6 @@ defmodule PYRExWeb.MixProject do
       {:phoenix, "~> 1.4.2"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
-      {:phoenix_html, "~> 2.11"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:pyr_ex, in_umbrella: true},
       {:jason, "~> 1.0"},

@@ -13,8 +13,8 @@ config :pyr_ex_web,
 # Configures the endpoint
 config :pyr_ex_web, PYRExWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "3On2tzJT/0tZrcqv1Cj6jAtL6DHReXh7h+9oSIZL1FaqxHDNqx4X1UfoL5hdjzYf",
-  render_errors: [view: PYRExWeb.ErrorView, accepts: ~w(html json)],
+  secret_key_base: "Z95ZgF6eoFaWgTlrsTapqLi5x5d8uPhd3hggd+U6uMYxwXDCB0H5iWsZTnPfd9Ae",
+  render_errors: [view: PYRExWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: PYRExWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Import environment specific config. This must remain at the bottom
