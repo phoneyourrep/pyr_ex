@@ -37,7 +37,6 @@ defmodule PYREx.MixProject do
   defp deps do
     [
       {:ecto_sql, "~> 3.0"},
-      {:exshape, "~> 2.1.2"},
       {:geo_postgis, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
       {:jason, "~> 1.0"}
