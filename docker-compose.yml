@@ -2,6 +2,8 @@
 version: '2'
 services:
   app:
+    environment:
+      - DOCKER_PYR_PG_HOST=db
     image: phoenix:1.4.0
     build: .
     ports:
