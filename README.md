@@ -16,7 +16,7 @@ docker-compose up
 
 Now navigate to [http://localhost:4000](http://localhost:4000).
 
-Other commands use the shell scripts `./mix` and `./run` for execution in the Docker container. They can be run in the following ways from the root project directory:
+Use the shell scripts `./mix` and `./run` to execute commands in the context of the Docker container. They can be run in the following ways from the root project directory:
 
 ### Mix tasks
 Run the script with `./mix` instead of the usual `mix` call.
@@ -25,7 +25,7 @@ Run the script with `./mix` instead of the usual `mix` call.
 ./mix test
 ```
 
-### General commands
+### Other commands
 Call other commands with the script `./run`.
 
 ```bash
@@ -47,9 +47,10 @@ Now run the tests and start the server
 docker-compose up
 ```
 
-You may not be able to perform all operations, such as creating database migration files, in the Docker container. Some things may require developing in your host environment, particularly when it comes to manipulating the file system. You may also prefer to work this way if configuration is not a problem in your environment. If you have Elixir installed and a PostGIS-enabled Postgres database then you may be good to go. To develop the application in your host environment just `cd src/` to enter the umbrella application directory, and work as normal:
+You may not be able to perform all operations, such as creating database migration files, in the Docker container. Some things may require developing in your host environment, particularly when it comes to manipulating the file system. There's also no requirement to use Docker if configuration is not a problem in your environment. If you have Elixir installed and a PostGIS-enabled Postgres database then you're probably good to go. To develop the application in your host environment just `cd src/` to enter the umbrella application directory, and work as normal:
 
 ```bash
+cd src/
 mix phx.server
 iex -S mix
 # etc...
