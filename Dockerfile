@@ -1,5 +1,5 @@
 FROM elixir:1.7.4
-MAINTAINER Nicolas Bettenburg <nicbet@gmail.com>
+# MAINTAINER Nicolas Bettenburg <nicbet@gmail.com>
 
 RUN mix local.hex --force \
  && mix archive.install --force hex phx_new 1.4.0 \
