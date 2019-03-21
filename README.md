@@ -37,7 +37,7 @@ With this repository cloned to your machine and Docker installed, start by creat
 ```bash
 ./mix ecto.create
 ./mix ecto.migrate
-./mix run priv/repo/seeds.exs
+./mix run apps/pyr_ex/priv/repo/seeds.exs
 ```
 
 Now run the tests and start the server
@@ -51,6 +51,9 @@ You may not be able to perform all operations, such as creating database migrati
 
 ```bash
 cd src/
+mix ecto.create
+mix ecto.migrate
+mix run apps/pyr_ex/priv/repo/seeds.exs
 mix phx.server
 iex -S mix
 # etc...
