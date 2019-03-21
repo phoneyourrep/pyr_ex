@@ -110,12 +110,13 @@ defmodule PYREx.Districts do
   """
   def intersecting_shapes(coordinates = {lat, lon}) when is_number(lat) and is_number(lon) do
     %Geo.Point{coordinates: coordinates, srid: PYRExShapefile.srid()}
-    |> intersects_shapes()
+    |> intersecting_shapes()
   end
 
   def intersecting_shapes(geom) do
-    query = from shape in Shape,
-              where: st_intersects(shape.geom, ^geom)
+    query =
+      from shape in Shape,
+        where: st_intersects(shape.geom, ^geom)
 
     Repo.all(query)
   end

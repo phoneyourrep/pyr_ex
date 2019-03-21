@@ -3,7 +3,7 @@ defmodule PYRExShapefile do
   Read shapefile data.
   """
 
-  @shp_dir "#{File.cwd!}/shp"
+  @shp_dir "#{File.cwd!()}/shp"
 
   def shp(shapefile) do
     File.stream!("#{@shp_dir}/#{shapefile}/#{shapefile}.shp", [], 2048)
@@ -34,6 +34,7 @@ defmodule PYRExShapefile do
   """
   def map_shapes(shapes) do
     [{_, dbf_header}] = Enum.take(shapes, 1)
+
     headers =
       dbf_header.columns
       |> Stream.map(fn column -> column.name end)
@@ -48,6 +49,7 @@ defmodule PYRExShapefile do
             key = attr |> String.downcase() |> String.to_atom()
             Map.put(map, key, Enum.at(dbf, index))
           end)
+
         {result, headers}
       end)
 
@@ -71,14 +73,14 @@ defmodule PYRExShapefile do
       ]]], srid: 3857}
   """
   def exshape_to_geo(%Exshape.Shp.Polygon{points: polygons}) do
-    coordinates = Enum.map(polygons, fn polygon ->
-      Enum.map(polygon, fn points ->
-        Enum.map(points, fn %{x: lon, y: lat} ->
-          {lat, lon}
+    coordinates =
+      Enum.map(polygons, fn polygon ->
+        Enum.map(polygon, fn points ->
+          Enum.map(points, fn %{x: lon, y: lat} ->
+            {lat, lon}
+          end)
         end)
       end)
-    end)
-
 
     %Geo.MultiPolygon{coordinates: coordinates, srid: srid()}
   end
