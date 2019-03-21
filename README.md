@@ -54,6 +54,7 @@ cd src/
 mix ecto.create
 mix ecto.migrate
 mix run apps/pyr_ex/priv/repo/seeds.exs
+mix test
 mix phx.server
 iex -S mix
 # etc...
