@@ -108,13 +108,12 @@ defmodule PYREx.Districts do
 
   Input can be a tuple containing two floats (lat and lon) or a Geo struct.
   """
-
-  def intersects_shapes(coordinates = {lat, lon}) when is_number(lat) and is_number(lon) do
+  def intersecting_shapes(coordinates = {lat, lon}) when is_number(lat) and is_number(lon) do
     %Geo.Point{coordinates: coordinates, srid: PYRExShapefile.srid()}
     |> intersects_shapes()
   end
 
-  def intersects_shapes(geom) do
+  def intersecting_shapes(geom) do
     query = from shape in Shape,
               where: st_intersects(shape.geom, ^geom)
 

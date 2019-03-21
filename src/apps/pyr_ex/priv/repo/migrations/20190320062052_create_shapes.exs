@@ -3,7 +3,12 @@ defmodule PYREx.Repo.Migrations.CreateShapes do
 
   def change do
     create table(:shapes) do
-      add :identifier, :string
+      add :statefp, :string
+      add :cd115fp, :string
+      add :affgeoid, :string
+      add :geoid, :string
+      add :lsad, :string
+      add :cdsessn, :string
       add :geom, :geometry
 
       timestamps()
