@@ -9,3 +9,14 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias PYRExShapefile, as: Shapefile
+alias PYREx.Districts.Shape
+alias PYREx.Repo
+
+Shapefile.from_zip("cb_2017_us_cd115_5m")
+|> Shapefile.map_shapes()
+|> Enum.each(fn shape ->
+  Shape.changeset(%Shape{}, shape)
+  |> Repo.insert!()
+end)
