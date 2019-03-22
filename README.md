@@ -59,3 +59,7 @@ mix phx.server
 iex -S mix
 # etc...
 ```
+
+## Data sources
+
+  * Geographic Shapefiles - [U.S. Census Bureau](https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html)
