@@ -63,5 +63,5 @@ iex -S mix
 ## Data sources
 
   * Geographic Shapefiles - [U.S. Census Bureau](https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html)
-  
-  * Geocoding = [U.S. Census Bureau](https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress)
+
+  * Geocoding - [U.S. Census Bureau](https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress)
