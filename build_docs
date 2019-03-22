@@ -1,0 +1,2 @@
+#!/bin/bash
+cd src/ && mix docs && cd .. && rm -rf docs/ && mv src/doc/ docs/
