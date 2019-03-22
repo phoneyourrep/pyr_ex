@@ -4,6 +4,8 @@ Elixir/Phoenix umbrella application providing backend services for Phone Your Re
 
 ## Development
 
+[View project documentation](https://phoneyourrep.github.io/pyr_ex/index.html)
+
 This project depends on Elixir and the Phoenix web framework, and therefore the Erlang runtime. It uses a geo-spatial database to identify the political districts of a given location, and therefore depends on a GIS enabled Postgres (PostGIS) database. The project can be mounted in Docker containers to ease development and deployment in different host environments. One container is used to run the application, and a second hosts the PostGIS database. If you're trying to contribute and have problems with configuration on your machine try running it in Docker instead. [nicbet/docker-phoenix](https://github.com/nicbet/docker-phoenix) was used to Dockerize this project.
 
 The Elixir/Phoenix umbrella project is located inside the `./src` directory.
