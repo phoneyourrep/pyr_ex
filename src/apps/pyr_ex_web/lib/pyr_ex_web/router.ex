@@ -7,5 +7,7 @@ defmodule PYRExWeb.Router do
 
   scope "/api", PYRExWeb do
     pipe_through :api
+
+    resources "/jurisdictions", JurisdictionController, except: [:new, :edit]
   end
 end
