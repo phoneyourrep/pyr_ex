@@ -120,4 +120,100 @@ defmodule PYREx.Geographies do
 
     Repo.all(query)
   end
+
+  alias PYREx.Geographies.Jurisdiction
+
+  @doc """
+  Returns the list of jurisdictions.
+
+  ## Examples
+
+      iex> list_jurisdictions()
+      [%Jurisdiction{}, ...]
+
+  """
+  def list_jurisdictions do
+    Repo.all(Jurisdiction)
+  end
+
+  @doc """
+  Gets a single jurisdiction.
+
+  Raises `Ecto.NoResultsError` if the Jurisdiction does not exist.
+
+  ## Examples
+
+      iex> get_jurisdiction!(123)
+      %Jurisdiction{}
+
+      iex> get_jurisdiction!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_jurisdiction!(id), do: Repo.get!(Jurisdiction, id)
+
+  @doc """
+  Creates a jurisdiction.
+
+  ## Examples
+
+      iex> create_jurisdiction(%{field: value})
+      {:ok, %Jurisdiction{}}
+
+      iex> create_jurisdiction(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_jurisdiction(attrs \\ %{}) do
+    %Jurisdiction{}
+    |> Jurisdiction.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a jurisdiction.
+
+  ## Examples
+
+      iex> update_jurisdiction(jurisdiction, %{field: new_value})
+      {:ok, %Jurisdiction{}}
+
+      iex> update_jurisdiction(jurisdiction, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_jurisdiction(%Jurisdiction{} = jurisdiction, attrs) do
+    jurisdiction
+    |> Jurisdiction.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Jurisdiction.
+
+  ## Examples
+
+      iex> delete_jurisdiction(jurisdiction)
+      {:ok, %Jurisdiction{}}
+
+      iex> delete_jurisdiction(jurisdiction)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_jurisdiction(%Jurisdiction{} = jurisdiction) do
+    Repo.delete(jurisdiction)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking jurisdiction changes.
+
+  ## Examples
+
+      iex> change_jurisdiction(jurisdiction)
+      %Ecto.Changeset{source: %Jurisdiction{}}
+
+  """
+  def change_jurisdiction(%Jurisdiction{} = jurisdiction) do
+    Jurisdiction.changeset(jurisdiction, %{})
+  end
 end

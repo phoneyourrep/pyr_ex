@@ -65,4 +65,71 @@ defmodule PYREx.GeographiesTest do
       assert %Ecto.Changeset{} = Geographies.change_shape(shape)
     end
   end
+
+  describe "jurisdictions" do
+    alias PYREx.Geographies.Jurisdiction
+
+    @valid_attrs %{fips: "some fips", geoid: "some geoid", name: "some name", statefp: "some statefp", type: "some type"}
+    @update_attrs %{fips: "some updated fips", geoid: "some updated geoid", name: "some updated name", statefp: "some updated statefp", type: "some updated type"}
+    @invalid_attrs %{fips: nil, geoid: nil, name: nil, statefp: nil, type: nil}
+
+    def jurisdiction_fixture(attrs \\ %{}) do
+      {:ok, jurisdiction} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Geographies.create_jurisdiction()
+
+      jurisdiction
+    end
+
+    test "list_jurisdictions/0 returns all jurisdictions" do
+      jurisdiction = jurisdiction_fixture()
+      assert Geographies.list_jurisdictions() == [jurisdiction]
+    end
+
+    test "get_jurisdiction!/1 returns the jurisdiction with given id" do
+      jurisdiction = jurisdiction_fixture()
+      assert Geographies.get_jurisdiction!(jurisdiction.id) == jurisdiction
+    end
+
+    test "create_jurisdiction/1 with valid data creates a jurisdiction" do
+      assert {:ok, %Jurisdiction{} = jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
+      assert jurisdiction.fips == "some fips"
+      assert jurisdiction.geoid == "some geoid"
+      assert jurisdiction.name == "some name"
+      assert jurisdiction.statefp == "some statefp"
+      assert jurisdiction.type == "some type"
+    end
+
+    test "create_jurisdiction/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Geographies.create_jurisdiction(@invalid_attrs)
+    end
+
+    test "update_jurisdiction/2 with valid data updates the jurisdiction" do
+      jurisdiction = jurisdiction_fixture()
+      assert {:ok, %Jurisdiction{} = jurisdiction} = Geographies.update_jurisdiction(jurisdiction, @update_attrs)
+      assert jurisdiction.fips == "some updated fips"
+      assert jurisdiction.geoid == "some updated geoid"
+      assert jurisdiction.name == "some updated name"
+      assert jurisdiction.statefp == "some updated statefp"
+      assert jurisdiction.type == "some updated type"
+    end
+
+    test "update_jurisdiction/2 with invalid data returns error changeset" do
+      jurisdiction = jurisdiction_fixture()
+      assert {:error, %Ecto.Changeset{}} = Geographies.update_jurisdiction(jurisdiction, @invalid_attrs)
+      assert jurisdiction == Geographies.get_jurisdiction!(jurisdiction.id)
+    end
+
+    test "delete_jurisdiction/1 deletes the jurisdiction" do
+      jurisdiction = jurisdiction_fixture()
+      assert {:ok, %Jurisdiction{}} = Geographies.delete_jurisdiction(jurisdiction)
+      assert_raise Ecto.NoResultsError, fn -> Geographies.get_jurisdiction!(jurisdiction.id) end
+    end
+
+    test "change_jurisdiction/1 returns a jurisdiction changeset" do
+      jurisdiction = jurisdiction_fixture()
+      assert %Ecto.Changeset{} = Geographies.change_jurisdiction(jurisdiction)
+    end
+  end
 end

@@ -11,21 +11,41 @@
 # and so on) as they will fail if something goes wrong.
 
 alias PYRExShapefile, as: Shapefile
-alias PYREx.Geographies.Shape
+alias PYREx.Geographies.{Shape, Jurisdiction}
 alias PYREx.Repo
 
+## Jurisdictions and Shapes
 shapefile_seed_data = YamlElixir.read_from_file!("apps/pyr_ex/priv/repo/shapefiles.yml")
 shapefiles = shapefile_seed_data["shapefiles"]
 url = shapefile_seed_data["base_url"]
 
-Enum.map(shapefiles, fn shapefile ->
+congress_task =
   Task.async(fn ->
-    shapefile
+    shapefiles["congress"]
     |> Shapefile.map_download(url, timeout: :infinity, recv_timeout: :infinity)
     |> Enum.each(fn shape ->
       Shape.changeset(%Shape{}, shape)
       |> Repo.insert!()
+
+      fips = shape.cd115fp
+      shape = shape |> Map.put(:fips, fips) |> Map.put(:name, fips)
+      Jurisdiction.changeset(%Jurisdiction{type: "us_cd"}, shape)
+      |> Repo.insert!()
     end)
   end)
-end)
-|> Enum.each(fn task -> Task.await(task, :infinity) end)
+
+states_task =
+  Task.async(fn ->
+    shapefiles["states"]
+    |> Shapefile.map_download(url, timeout: :infinity, recv_timeout: :infinity)
+    |> Enum.each(fn shape ->
+      Shape.changeset(%Shape{}, shape)
+      |> Repo.insert!()
+
+      shape = Map.put(shape, :fips, shape.statefp)
+      Jurisdiction.changeset(%Jurisdiction{type: "us_state"}, shape)
+      |> Repo.insert!()
+    end)
+  end)
+
+Enum.each([congress_task, states_task], fn task -> Task.await(task, :infinity) end)

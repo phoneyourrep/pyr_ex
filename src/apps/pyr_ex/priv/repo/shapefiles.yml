@@ -1,5 +1,4 @@
 base_url: http://www2.census.gov/geo/tiger/GENZ2017/shp
 shapefiles:
-  - cb_2017_us_state_5m
-  - cb_2017_us_cd115_5m
-  - cb_2017_05_place_500k
+  congress: cb_2017_us_cd115_5m
+  states: cb_2017_us_state_5m
