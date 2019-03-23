@@ -11,7 +11,7 @@
 # and so on) as they will fail if something goes wrong.
 
 alias PYRExShapefile, as: Shapefile
-alias PYREx.Districts.Shape
+alias PYREx.Geographies.Shape
 alias PYREx.Repo
 
 shapefile_seed_data = YamlElixir.read_from_file!("apps/pyr_ex/priv/repo/shapefiles.yml")

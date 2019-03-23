@@ -1,13 +1,13 @@
-defmodule PYREx.Districts do
+defmodule PYREx.Geographies do
   @moduledoc """
-  The Districts context.
+  The Geographies context.
   """
 
   import Ecto.Query, warn: false
   import Geo.PostGIS
   alias PYREx.Repo
 
-  alias PYREx.Districts.Shape
+  alias PYREx.Geographies.Shape
 
   @doc """
   Returns the list of shapes.
