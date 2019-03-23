@@ -14,9 +14,18 @@ alias PYRExShapefile, as: Shapefile
 alias PYREx.Districts.Shape
 alias PYREx.Repo
 
-Shapefile.from_zip("cb_2017_us_cd115_5m")
-|> Shapefile.map_shapes()
-|> Enum.each(fn shape ->
-  Shape.changeset(%Shape{}, shape)
-  |> Repo.insert!()
+shapefile_seed_data = YamlElixir.read_from_file!("apps/pyr_ex/priv/repo/shapefiles.yml")
+shapefiles = shapefile_seed_data["shapefiles"]
+url = shapefile_seed_data["base_url"]
+
+Enum.map(shapefiles, fn shapefile ->
+  Task.async(fn ->
+    shapefile
+    |> Shapefile.map_download(url, timeout: :infinity, recv_timeout: :infinity)
+    |> Enum.each(fn shape ->
+      Shape.changeset(%Shape{}, shape)
+      |> Repo.insert!()
+    end)
+  end)
 end)
+|> Enum.each(fn task -> Task.await(task, :infinity) end)

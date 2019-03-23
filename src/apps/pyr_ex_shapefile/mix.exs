@@ -27,7 +27,8 @@ defmodule PYRExShapefile.MixProject do
   defp deps do
     [
       {:exshape, "~> 2.1.2"},
-      {:geo, "~> 3.0"}
+      {:geo, "~> 3.0"},
+      {:httpoison, "~> 1.5"}
     ]
   end
 end

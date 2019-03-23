@@ -16,16 +16,30 @@ defmodule PYRExShapefile do
   end
 
   @doc """
-  Decodes data from a Zip archived shapefile.
+  Downloads the given shapefile from the U.S. Census Bureau and maps the data
+  for database insertion. The file is not saved to the file system.
+  """
+  def map_download(shapefile, base_url, opts \\ []) do
+    filename = "#{shapefile}.zip"
+    url = "#{base_url}/#{filename}"
+    opts = Keyword.merge([follow_redirect: true, max_redirects: 1], opts)
+    File.write!(filename, HTTPoison.get!(url, [], opts).body)
 
-  ## Example
+    shapes =
+      shapefile
+      |> from_zip()
+      |> map_shapes()
 
-      [{"cb_2017_us_cd115_5m", proj, shapes}] = PYRExShapefile.from_zip("cb_2017_us_cd115_5m")
-      shapes |> Enum.take(1)
-      #=> [{%Exshape.Shp.Header{...}, %Exshape.Dbf.Header{...}}]
+    File.rm!(filename)
+
+    shapes
+  end
+
+  @doc """
+  Decodes data from a Zip archived shapefile in the current working directory.
   """
   def from_zip(shapefile) do
-    [{_, _, shapes}] = Exshape.from_zip("#{@shp_dir}/#{shapefile}.zip")
+    [{_, _, shapes}] = Exshape.from_zip("#{File.cwd!()}/#{shapefile}.zip")
     shapes
   end
 
