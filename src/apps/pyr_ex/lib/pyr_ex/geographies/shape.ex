@@ -22,6 +22,7 @@ defmodule PYREx.Geographies.Shape do
     |> validate_required([:id])
   end
 
+  @doc false
   def generate_id(changeset = %Ecto.Changeset{}) do
     geoid = Map.get(changeset.changes, :geoid, changeset.data.geoid)
     id = "pyr-jurisdiction/country:us/geoid:#{geoid}"
