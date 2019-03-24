@@ -1,4 +1,8 @@
+# VSCode Elixir LS files
 /src/.elixir_ls/
+
+# VSCode workplace settings
+/.vscode
 
 # The directory Mix will write compiled artifacts to.
 /src/_build/

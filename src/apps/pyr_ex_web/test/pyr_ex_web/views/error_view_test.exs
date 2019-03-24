@@ -12,4 +12,12 @@ defmodule PYRExWeb.ErrorViewTest do
     assert render(PYRExWeb.ErrorView, "500.json", []) ==
              %{errors: %{detail: "Internal Server Error"}}
   end
+
+  test "renders 404.html" do
+    assert render(PYRExWeb.ErrorView, "404.html", []) == "Not Found"
+  end
+
+  test "renders 500.html" do
+    assert render(PYRExWeb.ErrorView, "500.html", []) == "Internal Server Error"
+  end
 end

@@ -1,0 +1,35 @@
+<section class="phx-hero">
+  <h1>Phone Your Rep</h1>
+  <p>A full featured data API<br/>for information on elected representatives.</p>
+</section>
+
+<section class="row">
+  <article class="column">
+    <h2>Resources</h2>
+    <ul>
+      <li>
+        <a href="https://phoneyourrep.github.io/pyr_ex/api-reference.html">Guides &amp; Docs</a>
+      </li>
+      <li>
+        <a href="https://github.com/phoneyourrep/pyr_ex">Source</a>
+      </li>
+      <li>
+        <a href="https://airtable.com/shraBEItZa0sYiMB0">Join The Team</a>
+      </li>
+    </ul>
+  </article>
+  <article class="column">
+    <h2>Help</h2>
+    <ul>
+      <li>
+        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
+      </li>
+      <li>
+        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
+      </li>
+      <li>
+        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
+      </li>
+    </ul>
+  </article>
+</section>
