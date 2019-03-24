@@ -28,10 +28,14 @@ congress_tasks =
         Shape.changeset(%Shape{}, shape)
         |> Repo.insert!()
 
-        fips = shape.cd116fp
-        shape = shape |> Map.put(:fips, fips) |> Map.put(:name, fips)
+        jurisdiction =
+          shape
+          |> Map.drop([:geom])
+          |> Map.put(:fips, shape.cd116fp)
+          |> Map.put(:name, shape.namelsad)
+          |> Map.put(:type, "us_cd")
 
-        Jurisdiction.changeset(%Jurisdiction{}, Map.put(shape, :type, "us_cd"))
+        Jurisdiction.changeset(%Jurisdiction{}, jurisdiction)
         |> Repo.insert!()
       end)
     end)
@@ -46,9 +50,13 @@ states_tasks =
         Shape.changeset(%Shape{}, shape)
         |> Repo.insert!()
 
-        shape = Map.put(shape, :fips, shape.statefp)
+        jurisdiction =
+          shape
+          |> Map.drop([:geom])
+          |> Map.put(:fips, shape.statefp)
+          |> Map.put(:type, "us_state")
 
-        Jurisdiction.changeset(%Jurisdiction{}, Map.put(shape, :type, "us_state"))
+        Jurisdiction.changeset(%Jurisdiction{}, jurisdiction)
         |> Repo.insert!()
       end)
     end)
