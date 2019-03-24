@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.3">
+    <title>PYREx.Geographies —  vdev</title>
+    <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
+    <script src="dist/sidebar_items-3a28f996cb.js"></script>
+    <script async src="dist/html-399e30b9b028e3059575.js"></script>
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        vdev
+      </h2>
+    </div>
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs"> vdev</small>
+PYREx.Geographies              </h1>
+
+
+        <section id="moduledoc">
+<p>The Geographies context.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#change_jurisdiction/1">change_jurisdiction(jurisdiction)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking jurisdiction changes</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#change_shape/1">change_shape(shape)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking shape changes</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_jurisdiction/1">create_jurisdiction(attrs \\ %{})</a>
+  </div>
+    <div class="summary-synopsis"><p>Creates a jurisdiction</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_shape/1">create_shape(attrs \\ %{})</a>
+  </div>
+    <div class="summary-synopsis"><p>Creates a shape</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_jurisdiction/1">delete_jurisdiction(jurisdiction)</a>
+  </div>
+    <div class="summary-synopsis"><p>Deletes a Jurisdiction</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_shape/1">delete_shape(shape)</a>
+  </div>
+    <div class="summary-synopsis"><p>Deletes a Shape</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_jurisdiction!/1">get_jurisdiction!(id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Gets a single jurisdiction</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_shape!/1">get_shape!(id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Gets a single shape</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#intersecting_jurisdictions/1">intersecting_jurisdictions(address)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns a list of Jursidictions whose shapes intersect the given geometry</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#intersecting_shapes/1">intersecting_shapes(address)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns a list of shapes that intersect the given geometry</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_jurisdictions/0">list_jurisdictions()</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the list of jurisdictions</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#list_shapes/0">list_shapes()</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the list of shapes</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_jurisdiction/2">update_jurisdiction(jurisdiction, attrs)</a>
+  </div>
+    <div class="summary-synopsis"><p>Updates a jurisdiction</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_shape/2">update_shape(shape, attrs)</a>
+  </div>
+    <div class="summary-synopsis"><p>Updates a shape</p>
+</div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="change_jurisdiction/1">
+    <div class="detail-header">
+    <a href="#change_jurisdiction/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">change_jurisdiction(jurisdiction)</span>
+          </div>
+  <section class="docstring">
+<p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking jurisdiction changes.</p>
+<h2 id="change_jurisdiction/1-examples" class="section-heading">
+  <a href="#change_jurisdiction/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">change_jurisdiction</span><span class="p" data-group-id="3279898406-1">(</span><span class="n">jurisdiction</span><span class="p" data-group-id="3279898406-1">)</span><span class="w">
+</span><span class="p" data-group-id="3279898406-2">%</span><span class="nc" data-group-id="3279898406-2">Ecto.Changeset</span><span class="p" data-group-id="3279898406-2">{</span><span class="ss">source</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3279898406-3">%</span><span class="nc" data-group-id="3279898406-3">Jurisdiction</span><span class="p" data-group-id="3279898406-3">{</span><span class="p" data-group-id="3279898406-3">}</span><span class="p" data-group-id="3279898406-2">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="change_shape/1">
+    <div class="detail-header">
+    <a href="#change_shape/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">change_shape(shape)</span>
+          </div>
+  <section class="docstring">
+<p>Returns an <code class="inline">%Ecto.Changeset{}</code> for tracking shape changes.</p>
+<h2 id="change_shape/1-examples" class="section-heading">
+  <a href="#change_shape/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">change_shape</span><span class="p" data-group-id="8082436176-1">(</span><span class="n">shape</span><span class="p" data-group-id="8082436176-1">)</span><span class="w">
+</span><span class="p" data-group-id="8082436176-2">%</span><span class="nc" data-group-id="8082436176-2">Ecto.Changeset</span><span class="p" data-group-id="8082436176-2">{</span><span class="ss">source</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8082436176-3">%</span><span class="nc" data-group-id="8082436176-3">Shape</span><span class="p" data-group-id="8082436176-3">{</span><span class="p" data-group-id="8082436176-3">}</span><span class="p" data-group-id="8082436176-2">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="create_jurisdiction/1">
+  
+    <span id="create_jurisdiction/0"></span>
+  <div class="detail-header">
+    <a href="#create_jurisdiction/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_jurisdiction(attrs \\ %{})</span>
+          </div>
+  <section class="docstring">
+<p>Creates a jurisdiction.</p>
+<h2 id="create_jurisdiction/1-examples" class="section-heading">
+  <a href="#create_jurisdiction/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">create_jurisdiction</span><span class="p" data-group-id="0425880647-1">(</span><span class="p" data-group-id="0425880647-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="0425880647-2">}</span><span class="p" data-group-id="0425880647-1">)</span><span class="w">
+</span><span class="p" data-group-id="0425880647-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0425880647-4">%</span><span class="nc" data-group-id="0425880647-4">Jurisdiction</span><span class="p" data-group-id="0425880647-4">{</span><span class="p" data-group-id="0425880647-4">}</span><span class="p" data-group-id="0425880647-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">create_jurisdiction</span><span class="p" data-group-id="0425880647-5">(</span><span class="p" data-group-id="0425880647-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="0425880647-6">}</span><span class="p" data-group-id="0425880647-5">)</span><span class="w">
+</span><span class="p" data-group-id="0425880647-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0425880647-8">%</span><span class="nc" data-group-id="0425880647-8">Ecto.Changeset</span><span class="p" data-group-id="0425880647-8">{</span><span class="p" data-group-id="0425880647-8">}</span><span class="p" data-group-id="0425880647-7">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="create_shape/1">
+  
+    <span id="create_shape/0"></span>
+  <div class="detail-header">
+    <a href="#create_shape/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_shape(attrs \\ %{})</span>
+          </div>
+  <section class="docstring">
+<p>Creates a shape.</p>
+<h2 id="create_shape/1-examples" class="section-heading">
+  <a href="#create_shape/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">create_shape</span><span class="p" data-group-id="0015644011-1">(</span><span class="p" data-group-id="0015644011-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="0015644011-2">}</span><span class="p" data-group-id="0015644011-1">)</span><span class="w">
+</span><span class="p" data-group-id="0015644011-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0015644011-4">%</span><span class="nc" data-group-id="0015644011-4">Shape</span><span class="p" data-group-id="0015644011-4">{</span><span class="p" data-group-id="0015644011-4">}</span><span class="p" data-group-id="0015644011-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">create_shape</span><span class="p" data-group-id="0015644011-5">(</span><span class="p" data-group-id="0015644011-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="0015644011-6">}</span><span class="p" data-group-id="0015644011-5">)</span><span class="w">
+</span><span class="p" data-group-id="0015644011-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0015644011-8">%</span><span class="nc" data-group-id="0015644011-8">Ecto.Changeset</span><span class="p" data-group-id="0015644011-8">{</span><span class="p" data-group-id="0015644011-8">}</span><span class="p" data-group-id="0015644011-7">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="delete_jurisdiction/1">
+    <div class="detail-header">
+    <a href="#delete_jurisdiction/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_jurisdiction(jurisdiction)</span>
+          </div>
+  <section class="docstring">
+<p>Deletes a Jurisdiction.</p>
+<h2 id="delete_jurisdiction/1-examples" class="section-heading">
+  <a href="#delete_jurisdiction/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">delete_jurisdiction</span><span class="p" data-group-id="4016806184-1">(</span><span class="n">jurisdiction</span><span class="p" data-group-id="4016806184-1">)</span><span class="w">
+</span><span class="p" data-group-id="4016806184-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4016806184-3">%</span><span class="nc" data-group-id="4016806184-3">Jurisdiction</span><span class="p" data-group-id="4016806184-3">{</span><span class="p" data-group-id="4016806184-3">}</span><span class="p" data-group-id="4016806184-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">delete_jurisdiction</span><span class="p" data-group-id="4016806184-4">(</span><span class="n">jurisdiction</span><span class="p" data-group-id="4016806184-4">)</span><span class="w">
+</span><span class="p" data-group-id="4016806184-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4016806184-6">%</span><span class="nc" data-group-id="4016806184-6">Ecto.Changeset</span><span class="p" data-group-id="4016806184-6">{</span><span class="p" data-group-id="4016806184-6">}</span><span class="p" data-group-id="4016806184-5">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="delete_shape/1">
+    <div class="detail-header">
+    <a href="#delete_shape/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_shape(shape)</span>
+          </div>
+  <section class="docstring">
+<p>Deletes a Shape.</p>
+<h2 id="delete_shape/1-examples" class="section-heading">
+  <a href="#delete_shape/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">delete_shape</span><span class="p" data-group-id="6313979131-1">(</span><span class="n">shape</span><span class="p" data-group-id="6313979131-1">)</span><span class="w">
+</span><span class="p" data-group-id="6313979131-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6313979131-3">%</span><span class="nc" data-group-id="6313979131-3">Shape</span><span class="p" data-group-id="6313979131-3">{</span><span class="p" data-group-id="6313979131-3">}</span><span class="p" data-group-id="6313979131-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">delete_shape</span><span class="p" data-group-id="6313979131-4">(</span><span class="n">shape</span><span class="p" data-group-id="6313979131-4">)</span><span class="w">
+</span><span class="p" data-group-id="6313979131-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6313979131-6">%</span><span class="nc" data-group-id="6313979131-6">Ecto.Changeset</span><span class="p" data-group-id="6313979131-6">{</span><span class="p" data-group-id="6313979131-6">}</span><span class="p" data-group-id="6313979131-5">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_jurisdiction!/1">
+    <div class="detail-header">
+    <a href="#get_jurisdiction!/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_jurisdiction!(id)</span>
+          </div>
+  <section class="docstring">
+<p>Gets a single jurisdiction.</p>
+<p>Raises <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if the Jurisdiction does not exist.</p>
+<h2 id="get_jurisdiction!/1-examples" class="section-heading">
+  <a href="#get_jurisdiction!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_jurisdiction!</span><span class="p" data-group-id="0897621161-1">(</span><span class="mi">123</span><span class="p" data-group-id="0897621161-1">)</span><span class="w">
+</span><span class="p" data-group-id="0897621161-2">%</span><span class="nc" data-group-id="0897621161-2">Jurisdiction</span><span class="p" data-group-id="0897621161-2">{</span><span class="p" data-group-id="0897621161-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_jurisdiction!</span><span class="p" data-group-id="0897621161-3">(</span><span class="mi">456</span><span class="p" data-group-id="0897621161-3">)</span><span class="w">
+</span><span class="gt">** (Ecto.NoResultsError)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_shape!/1">
+    <div class="detail-header">
+    <a href="#get_shape!/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_shape!(id)</span>
+          </div>
+  <section class="docstring">
+<p>Gets a single shape.</p>
+<p>Raises <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if the Shape does not exist.</p>
+<h2 id="get_shape!/1-examples" class="section-heading">
+  <a href="#get_shape!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_shape!</span><span class="p" data-group-id="8156677944-1">(</span><span class="mi">123</span><span class="p" data-group-id="8156677944-1">)</span><span class="w">
+</span><span class="p" data-group-id="8156677944-2">%</span><span class="nc" data-group-id="8156677944-2">Shape</span><span class="p" data-group-id="8156677944-2">{</span><span class="p" data-group-id="8156677944-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_shape!</span><span class="p" data-group-id="8156677944-3">(</span><span class="mi">456</span><span class="p" data-group-id="8156677944-3">)</span><span class="w">
+</span><span class="gt">** (Ecto.NoResultsError)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="intersecting_jurisdictions/1">
+    <div class="detail-header">
+    <a href="#intersecting_jurisdictions/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">intersecting_jurisdictions(address)</span>
+          </div>
+  <section class="docstring">
+<p>Returns a list of Jursidictions whose shapes intersect the given geometry.</p>
+<p>Input can be a tuple containing two strings or floats (lat and lon), a binary
+street address, or a Geo struct.</p>
+<h2 id="intersecting_jurisdictions/1-examples" class="section-heading">
+  <a href="#intersecting_jurisdictions/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="n">intersecting_jurisdictions</span><span class="p" data-group-id="9554250810-1">(</span><span class="p" data-group-id="9554250810-2">{</span><span class="mf">33.184123</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">88.317135</span><span class="p" data-group-id="9554250810-2">}</span><span class="p" data-group-id="9554250810-1">)</span><span class="w">
+</span><span class="c1">#=&gt; [%PYREx.Geographies.Jurisdiction{</span><span class="w">
+      </span><span class="ss">__meta__</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9554250810-3">#</span><span class="nc" data-group-id="9554250810-3">Ecto.Schema.Metadata</span><span class="p" data-group-id="9554250810-3">&lt;</span><span class="ss">:loaded</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;jurisdictions&quot;</span><span class="p" data-group-id="9554250810-3">&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">fips</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;01&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">geoid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;01&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pyr-jurisdiction/type:us_state/country:us/geoid:01/state:01/fips:01&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">inserted_at</span><span class="p">:</span><span class="w"> </span><span class="ld">~N[2019-03-24 00:23:52]</span><span class="p">,</span><span class="w">
+      </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alabama&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">shape</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9554250810-4">#</span><span class="nc" data-group-id="9554250810-4">Ecto.Association.NotLoaded</span><span class="p" data-group-id="9554250810-4">&lt;</span><span class="n">association</span><span class="w"> </span><span class="ss">:shape</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">loaded</span><span class="p" data-group-id="9554250810-4">&gt;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">statefp</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;01&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;us_state&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">updated_at</span><span class="p">:</span><span class="w"> </span><span class="ld">~N[2019-03-24 00:23:52]</span><span class="w">
+    </span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9554250810-5">%</span><span class="nc" data-group-id="9554250810-5">PYREx.Geographies.Jurisdiction</span><span class="p" data-group-id="9554250810-5">{</span><span class="n">...</span><span class="p" data-group-id="9554250810-5">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="intersecting_shapes/1">
+    <div class="detail-header">
+    <a href="#intersecting_shapes/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">intersecting_shapes(address)</span>
+          </div>
+  <section class="docstring">
+<p>Returns a list of shapes that intersect the given geometry.</p>
+<p>Input can be a tuple containing two strings or floats (lat and lon), a binary
+street address, or a Geo struct.</p>
+  </section>
+</section>
+<section class="detail" id="list_jurisdictions/0">
+    <div class="detail-header">
+    <a href="#list_jurisdictions/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_jurisdictions()</span>
+          </div>
+  <section class="docstring">
+<p>Returns the list of jurisdictions.</p>
+<h2 id="list_jurisdictions/0-examples" class="section-heading">
+  <a href="#list_jurisdictions/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_jurisdictions</span><span class="p" data-group-id="8288480046-1">(</span><span class="p" data-group-id="8288480046-1">)</span><span class="w">
+</span><span class="p" data-group-id="8288480046-2">[</span><span class="p" data-group-id="8288480046-3">%</span><span class="nc" data-group-id="8288480046-3">Jurisdiction</span><span class="p" data-group-id="8288480046-3">{</span><span class="p" data-group-id="8288480046-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="8288480046-2">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="list_shapes/0">
+    <div class="detail-header">
+    <a href="#list_shapes/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">list_shapes()</span>
+          </div>
+  <section class="docstring">
+<p>Returns the list of shapes.</p>
+<h2 id="list_shapes/0-examples" class="section-heading">
+  <a href="#list_shapes/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">list_shapes</span><span class="p" data-group-id="4627887534-1">(</span><span class="p" data-group-id="4627887534-1">)</span><span class="w">
+</span><span class="p" data-group-id="4627887534-2">[</span><span class="p" data-group-id="4627887534-3">%</span><span class="nc" data-group-id="4627887534-3">Shape</span><span class="p" data-group-id="4627887534-3">{</span><span class="p" data-group-id="4627887534-3">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="4627887534-2">]</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="update_jurisdiction/2">
+    <div class="detail-header">
+    <a href="#update_jurisdiction/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_jurisdiction(jurisdiction, attrs)</span>
+          </div>
+  <section class="docstring">
+<p>Updates a jurisdiction.</p>
+<h2 id="update_jurisdiction/2-examples" class="section-heading">
+  <a href="#update_jurisdiction/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">update_jurisdiction</span><span class="p" data-group-id="3163854679-1">(</span><span class="n">jurisdiction</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3163854679-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">new_value</span><span class="p" data-group-id="3163854679-2">}</span><span class="p" data-group-id="3163854679-1">)</span><span class="w">
+</span><span class="p" data-group-id="3163854679-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3163854679-4">%</span><span class="nc" data-group-id="3163854679-4">Jurisdiction</span><span class="p" data-group-id="3163854679-4">{</span><span class="p" data-group-id="3163854679-4">}</span><span class="p" data-group-id="3163854679-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">update_jurisdiction</span><span class="p" data-group-id="3163854679-5">(</span><span class="n">jurisdiction</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3163854679-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="3163854679-6">}</span><span class="p" data-group-id="3163854679-5">)</span><span class="w">
+</span><span class="p" data-group-id="3163854679-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3163854679-8">%</span><span class="nc" data-group-id="3163854679-8">Ecto.Changeset</span><span class="p" data-group-id="3163854679-8">{</span><span class="p" data-group-id="3163854679-8">}</span><span class="p" data-group-id="3163854679-7">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="update_shape/2">
+    <div class="detail-header">
+    <a href="#update_shape/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_shape(shape, attrs)</span>
+          </div>
+  <section class="docstring">
+<p>Updates a shape.</p>
+<h2 id="update_shape/2-examples" class="section-heading">
+  <a href="#update_shape/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">update_shape</span><span class="p" data-group-id="8416657321-1">(</span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8416657321-2">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">new_value</span><span class="p" data-group-id="8416657321-2">}</span><span class="p" data-group-id="8416657321-1">)</span><span class="w">
+</span><span class="p" data-group-id="8416657321-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8416657321-4">%</span><span class="nc" data-group-id="8416657321-4">Shape</span><span class="p" data-group-id="8416657321-4">{</span><span class="p" data-group-id="8416657321-4">}</span><span class="p" data-group-id="8416657321-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">update_shape</span><span class="p" data-group-id="8416657321-5">(</span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8416657321-6">%{</span><span class="ss">field</span><span class="p">:</span><span class="w"> </span><span class="n">bad_value</span><span class="p" data-group-id="8416657321-6">}</span><span class="p" data-group-id="8416657321-5">)</span><span class="w">
+</span><span class="p" data-group-id="8416657321-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8416657321-8">%</span><span class="nc" data-group-id="8416657321-8">Ecto.Changeset</span><span class="p" data-group-id="8416657321-8">{</span><span class="p" data-group-id="8416657321-8">}</span><span class="p" data-group-id="8416657321-7">}</span></code></pre>
+  </section>
+</section>
+          </div>
+        </section>
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.3),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  
+  </body>
+</html>
+

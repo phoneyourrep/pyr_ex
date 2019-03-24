@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.3">
     <title>PYRExShapefile —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
-    <script src="dist/sidebar_items-f75f7c505d.js"></script>
+    <script src="dist/sidebar_items-3a28f996cb.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
     
   </head>
@@ -94,7 +94,15 @@ PYRExShapefile              </h1>
   <div class="summary-signature">
     <a href="#from_zip/1">from_zip(shapefile)</a>
   </div>
-    <div class="summary-synopsis"><p>Decodes data from a Zip archived shapefile</p>
+    <div class="summary-synopsis"><p>Decodes data from a Zip archived shapefile in the current working directory</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#map_download/3">map_download(shapefile, base_url, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>Downloads the given shapefile from the U.S. Census Bureau and maps the data
+for database insertion. The file is not saved to the file system</p>
 </div>
 </div>
 <div class="summary-row">
@@ -153,16 +161,16 @@ Functions          </h1>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">PYRExShapefile</span><span class="o">.</span><span class="n">exshape_to_geo</span><span class="p" data-group-id="9215907426-1">(</span><span class="p" data-group-id="9215907426-2">%</span><span class="nc" data-group-id="9215907426-2">Exshape.Shp.Polygon</span><span class="p" data-group-id="9215907426-2">{</span><span class="ss">points</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9215907426-3">[</span><span class="p" data-group-id="9215907426-4">[</span><span class="p" data-group-id="9215907426-5">[</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="9215907426-6">%</span><span class="nc" data-group-id="9215907426-6">Exshape.Shp.Point</span><span class="p" data-group-id="9215907426-6">{</span><span class="ss">x</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mf">96.639704</span><span class="p">,</span><span class="w"> </span><span class="ss">y</span><span class="p">:</span><span class="w"> </span><span class="mf">42.737071</span><span class="p" data-group-id="9215907426-6">}</span><span class="p">,</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="9215907426-7">%</span><span class="nc" data-group-id="9215907426-7">Exshape.Shp.Point</span><span class="p" data-group-id="9215907426-7">{</span><span class="ss">x</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mf">96.635886</span><span class="p">,</span><span class="w"> </span><span class="ss">y</span><span class="p">:</span><span class="w"> </span><span class="mf">42.741002</span><span class="p" data-group-id="9215907426-7">}</span><span class="p">,</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="9215907426-8">%</span><span class="nc" data-group-id="9215907426-8">Exshape.Shp.Point</span><span class="p" data-group-id="9215907426-8">{</span><span class="ss">x</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mf">96.632314</span><span class="p">,</span><span class="w"> </span><span class="ss">y</span><span class="p">:</span><span class="w"> </span><span class="mf">42.745641</span><span class="p" data-group-id="9215907426-8">}</span><span class="w">
-</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="9215907426-5">]</span><span class="p" data-group-id="9215907426-4">]</span><span class="p" data-group-id="9215907426-3">]</span><span class="p" data-group-id="9215907426-2">}</span><span class="p" data-group-id="9215907426-1">)</span><span class="w">
-</span><span class="p" data-group-id="9215907426-9">%</span><span class="nc" data-group-id="9215907426-9">Geo.MultiPolygon</span><span class="p" data-group-id="9215907426-9">{</span><span class="ss">coordinates</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9215907426-10">[</span><span class="p" data-group-id="9215907426-11">[</span><span class="p" data-group-id="9215907426-12">[</span><span class="w">
-  </span><span class="p" data-group-id="9215907426-13">{</span><span class="mf">42.737071</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">96.639704</span><span class="p" data-group-id="9215907426-13">}</span><span class="p">,</span><span class="w">
-  </span><span class="p" data-group-id="9215907426-14">{</span><span class="mf">42.741002</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">96.635886</span><span class="p" data-group-id="9215907426-14">}</span><span class="p">,</span><span class="w">
-  </span><span class="p" data-group-id="9215907426-15">{</span><span class="mf">42.745641</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">96.632314</span><span class="p" data-group-id="9215907426-15">}</span><span class="w">
-</span><span class="p" data-group-id="9215907426-12">]</span><span class="p" data-group-id="9215907426-11">]</span><span class="p" data-group-id="9215907426-10">]</span><span class="p">,</span><span class="w"> </span><span class="ss">srid</span><span class="p">:</span><span class="w"> </span><span class="mi">3857</span><span class="p" data-group-id="9215907426-9">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">PYRExShapefile</span><span class="o">.</span><span class="n">exshape_to_geo</span><span class="p" data-group-id="2287191895-1">(</span><span class="p" data-group-id="2287191895-2">%</span><span class="nc" data-group-id="2287191895-2">Exshape.Shp.Polygon</span><span class="p" data-group-id="2287191895-2">{</span><span class="ss">points</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2287191895-3">[</span><span class="p" data-group-id="2287191895-4">[</span><span class="p" data-group-id="2287191895-5">[</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="2287191895-6">%</span><span class="nc" data-group-id="2287191895-6">Exshape.Shp.Point</span><span class="p" data-group-id="2287191895-6">{</span><span class="ss">x</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mf">96.639704</span><span class="p">,</span><span class="w"> </span><span class="ss">y</span><span class="p">:</span><span class="w"> </span><span class="mf">42.737071</span><span class="p" data-group-id="2287191895-6">}</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="2287191895-7">%</span><span class="nc" data-group-id="2287191895-7">Exshape.Shp.Point</span><span class="p" data-group-id="2287191895-7">{</span><span class="ss">x</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mf">96.635886</span><span class="p">,</span><span class="w"> </span><span class="ss">y</span><span class="p">:</span><span class="w"> </span><span class="mf">42.741002</span><span class="p" data-group-id="2287191895-7">}</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="2287191895-8">%</span><span class="nc" data-group-id="2287191895-8">Exshape.Shp.Point</span><span class="p" data-group-id="2287191895-8">{</span><span class="ss">x</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mf">96.632314</span><span class="p">,</span><span class="w"> </span><span class="ss">y</span><span class="p">:</span><span class="w"> </span><span class="mf">42.745641</span><span class="p" data-group-id="2287191895-8">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="2287191895-5">]</span><span class="p" data-group-id="2287191895-4">]</span><span class="p" data-group-id="2287191895-3">]</span><span class="p" data-group-id="2287191895-2">}</span><span class="p" data-group-id="2287191895-1">)</span><span class="w">
+</span><span class="p" data-group-id="2287191895-9">%</span><span class="nc" data-group-id="2287191895-9">Geo.MultiPolygon</span><span class="p" data-group-id="2287191895-9">{</span><span class="ss">coordinates</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2287191895-10">[</span><span class="p" data-group-id="2287191895-11">[</span><span class="p" data-group-id="2287191895-12">[</span><span class="w">
+  </span><span class="p" data-group-id="2287191895-13">{</span><span class="mf">42.737071</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">96.639704</span><span class="p" data-group-id="2287191895-13">}</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="2287191895-14">{</span><span class="mf">42.741002</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">96.635886</span><span class="p" data-group-id="2287191895-14">}</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="2287191895-15">{</span><span class="mf">42.745641</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">96.632314</span><span class="p" data-group-id="2287191895-15">}</span><span class="w">
+</span><span class="p" data-group-id="2287191895-12">]</span><span class="p" data-group-id="2287191895-11">]</span><span class="p" data-group-id="2287191895-10">]</span><span class="p">,</span><span class="w"> </span><span class="ss">srid</span><span class="p">:</span><span class="w"> </span><span class="mi">3857</span><span class="p" data-group-id="2287191895-9">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="from_zip/1">
@@ -174,15 +182,22 @@ Functions          </h1>
     <h1 class="signature">from_zip(shapefile)</span>
           </div>
   <section class="docstring">
-<p>Decodes data from a Zip archived shapefile.</p>
-<h2 id="from_zip/1-example" class="section-heading">
-  <a href="#from_zip/1-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Example
-</h2>
-
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1227143377-1">[</span><span class="p" data-group-id="1227143377-2">{</span><span class="s">&quot;cb_2017_us_cd115_5m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">proj</span><span class="p">,</span><span class="w"> </span><span class="n">shapes</span><span class="p" data-group-id="1227143377-2">}</span><span class="p" data-group-id="1227143377-1">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">PYRExShapefile</span><span class="o">.</span><span class="n">from_zip</span><span class="p" data-group-id="1227143377-3">(</span><span class="s">&quot;cb_2017_us_cd115_5m&quot;</span><span class="p" data-group-id="1227143377-3">)</span><span class="w">
-</span><span class="n">shapes</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">take</span><span class="p" data-group-id="1227143377-4">(</span><span class="mi">1</span><span class="p" data-group-id="1227143377-4">)</span><span class="w">
-</span><span class="c1">#=&gt; [{%Exshape.Shp.Header{...}, %Exshape.Dbf.Header{...}}]</span></code></pre>
+<p>Decodes data from a Zip archived shapefile in the current working directory.</p>
+  </section>
+</section>
+<section class="detail" id="map_download/3">
+  
+    <span id="map_download/2"></span>
+  <div class="detail-header">
+    <a href="#map_download/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">map_download(shapefile, base_url, opts \\ [])</span>
+          </div>
+  <section class="docstring">
+<p>Downloads the given shapefile from the U.S. Census Bureau and maps the data
+for database insertion. The file is not saved to the file system.</p>
   </section>
 </section>
 <section class="detail" id="map_shapes/1">
@@ -223,7 +238,7 @@ Functions          </h1>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">PYRExShapefile</span><span class="o">.</span><span class="n">srid</span><span class="p" data-group-id="6432297355-1">(</span><span class="p" data-group-id="6432297355-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">PYRExShapefile</span><span class="o">.</span><span class="n">srid</span><span class="p" data-group-id="3087888186-1">(</span><span class="p" data-group-id="3087888186-1">)</span><span class="w">
 </span><span class="mi">3857</span></code></pre>
   </section>
 </section>

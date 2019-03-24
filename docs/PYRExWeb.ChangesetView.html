@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.19.3">
-    <title>PYRExWeb —  vdev</title>
+    <title>PYRExWeb.ChangesetView —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
     <script src="dist/sidebar_items-3a28f996cb.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
@@ -59,22 +59,9 @@
 
       <h1>
         <small class="visible-xs"> vdev</small>
-PYRExWeb              </h1>
+PYRExWeb.ChangesetView              </h1>
 
 
-        <section id="moduledoc">
-<p>The entrypoint for defining your web interface, such
-as controllers, views, channels and so on.</p>
-<p>This can be used in your application as:</p>
-<pre><code class="nohighlight makeup elixir"><span class="kn">use</span><span class="w"> </span><span class="nc">PYRExWeb</span><span class="p">,</span><span class="w"> </span><span class="ss">:controller</span><span class="w">
-</span><span class="kn">use</span><span class="w"> </span><span class="nc">PYRExWeb</span><span class="p">,</span><span class="w"> </span><span class="ss">:view</span></code></pre>
-<p>The definitions below will be executed for every view,
-controller, etc, so keep them short and clean, focused
-on imports, uses and aliases.</p>
-<p>Do NOT define functions inside the quoted expressions
-below. Instead, define any helper function in modules
-and import those modules here.</p>
-        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -90,30 +77,47 @@ and import those modules here.</p>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#__using__/1">__using__(which)</a>
+    <a href="#__phoenix_recompile__?/0">__phoenix_recompile__?()</a>
   </div>
-    <div class="summary-synopsis"><p>When used, dispatch to the appropriate controller/view/etc</p>
+    <div class="summary-synopsis"><p>Returns true whenever the list of templates changes in the filesystem</p>
 </div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#channel/0">channel()</a>
+    <a href="#__resource__/0">__resource__()</a>
   </div>
+    <div class="summary-synopsis"><p>The resource name, as an atom, for this view</p>
+</div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#controller/0">controller()</a>
+    <a href="#__templates__/0">__templates__()</a>
   </div>
+    <div class="summary-synopsis"><p>Returns the template root alongside all templates</p>
+</div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#router/0">router()</a>
+    <a href="#render/2">render(template, assigns \\ %{})</a>
   </div>
+    <div class="summary-synopsis"><p>Renders the given template locally</p>
+</div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#view/0">view()</a>
+    <a href="#template_not_found/2">template_not_found(template, assigns)</a>
   </div>
+    <div class="summary-synopsis"><p>Callback invoked when no template is found.
+By default it raises but can be customized
+to render a particular template</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#translate_errors/1">translate_errors(changeset)</a>
+  </div>
+    <div class="summary-synopsis"><p>Traverses and translates changeset errors</p>
+</div>
 </div>
   </div>
         </section>
@@ -126,62 +130,86 @@ and import those modules here.</p>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="__using__/1">
+<section class="detail" id="__phoenix_recompile__?/0">
     <div class="detail-header">
-    <a href="#__using__/1" class="detail-link" title="Link to this macro">
+    <a href="#__phoenix_recompile__?/0" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this macro</span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">__using__(which)</span>
-    
-      <span class="note">(macro)</span>
+    <h1 class="signature">__phoenix_recompile__?()</span>
+          </div>
+  <section class="docstring">
+<p>Returns true whenever the list of templates changes in the filesystem.</p>
+  </section>
+</section>
+<section class="detail" id="__resource__/0">
+    <div class="detail-header">
+    <a href="#__resource__/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">__resource__()</span>
+          </div>
+  <section class="docstring">
+<p>The resource name, as an atom, for this view</p>
+  </section>
+</section>
+<section class="detail" id="__templates__/0">
+    <div class="detail-header">
+    <a href="#__templates__/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">__templates__()</span>
+          </div>
+  <section class="docstring">
+<p>Returns the template root alongside all templates.</p>
+  </section>
+</section>
+<section class="detail" id="render/2">
+  
+    <span id="render/1"></span>
+  <div class="detail-header">
+    <a href="#render/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">render(template, assigns \\ %{})</span>
+          </div>
+  <section class="docstring">
+<p>Renders the given template locally.</p>
+  </section>
+</section>
+<section class="detail" id="template_not_found/2">
+    <div class="detail-header">
+    <a href="#template_not_found/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">template_not_found(template, assigns)</span>
+        
+      <div class="specs">
+          <pre>template_not_found(<a href="https://hexdocs.pm/phoenix/1.4.2/Phoenix.Template.html#t:name/0">Phoenix.Template.name</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
       </div>
+  </div>
   <section class="docstring">
-<p>When used, dispatch to the appropriate controller/view/etc.</p>
+<p>Callback invoked when no template is found.
+By default it raises but can be customized
+to render a particular template.</p>
   </section>
 </section>
-<section class="detail" id="channel/0">
+<section class="detail" id="translate_errors/1">
     <div class="detail-header">
-    <a href="#channel/0" class="detail-link" title="Link to this function">
+    <a href="#translate_errors/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">channel()</span>
+    <h1 class="signature">translate_errors(changeset)</span>
           </div>
   <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="controller/0">
-    <div class="detail-header">
-    <a href="#controller/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">controller()</span>
-          </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="router/0">
-    <div class="detail-header">
-    <a href="#router/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">router()</span>
-          </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="view/0">
-    <div class="detail-header">
-    <a href="#view/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">view()</span>
-          </div>
-  <section class="docstring">
+<p>Traverses and translates changeset errors.</p>
+<p>See <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Changeset.html#traverse_errors/2"><code class="inline">Ecto.Changeset.traverse_errors/2</code></a> and
+<a href="PYRExWeb.ErrorHelpers.html#translate_error/1"><code class="inline">PYRExWeb.ErrorHelpers.translate_error/1</code></a> for more details.</p>
   </section>
 </section>
           </div>
