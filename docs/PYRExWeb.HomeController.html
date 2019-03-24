@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.19.3">
-    <title>PYRExWeb.UserSocket —  vdev</title>
+    <title>PYRExWeb.HomeController —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
     <script src="dist/sidebar_items-98e19e018d.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
@@ -59,7 +59,7 @@
 
       <h1>
         <small class="visible-xs"> vdev</small>
-PYRExWeb.UserSocket              </h1>
+PYRExWeb.HomeController              </h1>
 
 
 
@@ -77,17 +77,8 @@ PYRExWeb.UserSocket              </h1>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#connect/3">connect(params, socket, connect_info)</a>
+    <a href="#index/2">index(conn, params)</a>
   </div>
-    <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.4.2/Phoenix.Socket.html#c:connect/3"><code class="inline">Phoenix.Socket.connect/3</code></a></p>
-</div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#id/1">id(socket)</a>
-  </div>
-    <div class="summary-synopsis"><p>Identifies the socket connection</p>
-</div>
 </div>
   </div>
         </section>
@@ -100,35 +91,15 @@ PYRExWeb.UserSocket              </h1>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="connect/3">
+<section class="detail" id="index/2">
     <div class="detail-header">
-    <a href="#connect/3" class="detail-link" title="Link to this function">
+    <a href="#index/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">connect(params, socket, connect_info)</span>
+    <h1 class="signature">index(conn, params)</span>
           </div>
   <section class="docstring">
-<p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.4.2/Phoenix.Socket.html#c:connect/3"><code class="inline">Phoenix.Socket.connect/3</code></a>.</p>
-  </section>
-</section>
-<section class="detail" id="id/1">
-    <div class="detail-header">
-    <a href="#id/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">id(socket)</span>
-          </div>
-  <section class="docstring">
-<p>Identifies the socket connection.</p>
-<p>Socket IDs are topics that allow you to identify all sockets for a given user:</p>
-<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">id</span><span class="p" data-group-id="7108076873-1">(</span><span class="n">socket</span><span class="p" data-group-id="7108076873-1">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;users_socket:</span><span class="si" data-group-id="7108076873-2">#{</span><span class="n">socket</span><span class="o">.</span><span class="n">assigns</span><span class="o">.</span><span class="n">user_id</span><span class="si" data-group-id="7108076873-2">}</span><span class="s">&quot;</span></code></pre>
-<p>Would allow you to broadcast a <code class="inline">&quot;disconnect&quot;</code> event and terminate
-all active sockets and channels for a given user:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">MyApp.Endpoint</span><span class="o">.</span><span class="n">broadcast</span><span class="p" data-group-id="7982914302-1">(</span><span class="s">&quot;users_socket:&quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;disconnect&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7982914302-2">%{</span><span class="p" data-group-id="7982914302-2">}</span><span class="p" data-group-id="7982914302-1">)</span></code></pre>
-<p>Returning <code class="inline">nil</code> makes this socket anonymous.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.4.2/Phoenix.Socket.html#c:id/1"><code class="inline">Phoenix.Socket.id/1</code></a>.</p>
   </section>
 </section>
           </div>
