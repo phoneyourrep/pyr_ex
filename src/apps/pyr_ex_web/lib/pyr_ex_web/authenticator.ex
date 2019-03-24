@@ -17,8 +17,10 @@ defmodule PYRExWeb.Authenticator do
       iex> is_binary(key)
       true
   """
-  def generate_key(user = %User{}) do
-    Phoenix.Token.sign(Endpoint, @salt, user.id)
+  def generate_key(user = %User{}), do: generate_key(user.id)
+
+  def generate_key(id) when is_integer(id) do
+    Phoenix.Token.sign(Endpoint, @salt, id)
   end
 
   @doc """

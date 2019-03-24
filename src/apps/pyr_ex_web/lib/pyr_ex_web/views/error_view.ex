@@ -21,4 +21,12 @@ defmodule PYRExWeb.ErrorView do
   def template_not_found(template, _assings) do
     Phoenix.Controller.status_message_from_template(template)
   end
+
+  def render("invalid_key.json", %{key: key}) do
+    %{errors: %{detail: "Invalid API key: #{key}"}}
+  end
+
+  def render("no_key.json", _assigns) do
+    %{errors: %{detail: "API key required"}}
+  end
 end
