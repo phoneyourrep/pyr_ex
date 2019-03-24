@@ -39,14 +39,10 @@ defmodule PYRExWeb.Accounts.UserControllerTest do
   end
 
   describe "create user" do
-    test "redirects to show when data is valid", %{conn: conn} do
+    test "redirects to home when data is valid", %{conn: conn} do
       conn = post(conn, Routes.accounts_user_path(conn, :create), user: @create_attrs)
-
-      assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == Routes.accounts_user_path(conn, :show, id)
-
-      conn = get(conn, Routes.accounts_user_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show User"
+      assert %{"info" => "Check your email some email for API key"} = get_flash(conn)
+      assert redirected_to(conn) == "/"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do

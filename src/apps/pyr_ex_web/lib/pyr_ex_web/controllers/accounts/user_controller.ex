@@ -3,6 +3,7 @@ defmodule PYRExWeb.Accounts.UserController do
 
   alias PYREx.Accounts
   alias PYREx.Accounts.User
+  alias PYRExWeb.Authenticator
 
   def index(conn, _params) do
     users = Accounts.list_users()
@@ -17,11 +18,12 @@ defmodule PYRExWeb.Accounts.UserController do
   def create(conn, %{"user" => user_params}) do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
-        key = Phoenix.Token.sign(PYRExWeb.Endpoint, "user auth", user.id)
+        # TODO: Add email service to mail key to user's email.
+        _key = Authenticator.generate_key(user)
 
         conn
-        |> put_flash(:info, "Registered Successfully")
-        |> render("show.html", user: user, key: key)
+        |> put_flash(:info, "Check your email #{user.email} for API key")
+        |> redirect(to: "/")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
