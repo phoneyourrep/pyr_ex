@@ -10,16 +10,16 @@ defmodule PYREx.Geographies.Jurisdiction do
     field :type, :string
 
     belongs_to :state,
-      Jurisdiction,
-      references: :fips,
-      foreign_key: :statefp,
-      where: [type: "us_state"]
+               Jurisdiction,
+               references: :fips,
+               foreign_key: :statefp,
+               where: [type: "us_state"]
 
     has_many :divisions,
-      Jurisdiction,
-      references: :fips,
-      foreign_key: :statefp,
-      where: [type: {:in, ["us_cd"]}]
+             Jurisdiction,
+             references: :fips,
+             foreign_key: :statefp,
+             where: [type: {:in, ["us_cd"]}]
 
     has_one :shape,
             Shape,

@@ -34,6 +34,7 @@ defmodule PYRExGeocoder do
   """
   def coordinates(address) do
     {:ok, %{body: body}} = get("", [], params: [address: address])
+
     coordinates =
       body
       |> Jason.decode!()
