@@ -1,9 +1,6 @@
 defmodule PYREx.Geographies.Jurisdiction do
-  use Ecto.Schema
+  use PYREx.Schema
   import Ecto.Changeset
-
-  @primary_key {:id, :string, autogenerate: false}
-  @derive {Phoenix.Param, key: :id}
 
   schema "jurisdictions" do
     field :fips, :string
@@ -11,6 +8,10 @@ defmodule PYREx.Geographies.Jurisdiction do
     field :name, :string
     field :statefp, :string
     field :type, :string
+    has_one :shape,
+      PYREx.Geographies.Shape,
+      references: :geoid,
+      foreign_key: :geoid
 
     timestamps()
   end
@@ -25,10 +26,11 @@ defmodule PYREx.Geographies.Jurisdiction do
   end
 
   def generate_id(changeset = %Ecto.Changeset{}) do
-    state = changeset.changes.statefp
-    type = changeset.changes.type
-    fips = changeset.changes.fips
-    id = "pyr-jurisdiction/type:#{type}/country:us/state:#{state}/fips:#{fips}"
+    state = Map.get(changeset.changes, :statefp, changeset.data.statefp)
+    type = Map.get(changeset.changes, :type, changeset.data.type)
+    fips = Map.get(changeset.changes, :fips, changeset.data.fips)
+    geoid = Map.get(changeset.changes, :geoid, changeset.data.geoid)
+    id = "pyr-jurisdiction/type:#{type}/country:us/geoid:#{geoid}/state:#{state}/fips:#{fips}"
     change(changeset, id: id)
   end
 end

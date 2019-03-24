@@ -1,4 +1,8 @@
-base_url: http://www2.census.gov/geo/tiger/GENZ2017/shp
-shapefiles:
-  congress: cb_2017_us_cd115_5m
-  states: cb_2017_us_state_5m
+congress:
+  base_url: http://www2.census.gov/geo/tiger/TIGER2018/CD
+  filenames:
+    - tl_2018_us_cd116
+states:
+  base_url: http://www2.census.gov/geo/tiger/TIGER2018/STATE
+  filenames:
+    - tl_2018_us_state

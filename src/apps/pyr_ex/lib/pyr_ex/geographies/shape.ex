@@ -1,13 +1,14 @@
 defmodule PYREx.Geographies.Shape do
-  use Ecto.Schema
+  use PYREx.Schema
   import Ecto.Changeset
-
-  @primary_key {:id, :string, autogenerate: false}
-  @derive {Phoenix.Param, key: :id}
 
   schema "shapes" do
     field :geom, Geo.PostGIS.Geometry
-    field :geoid, :string
+    belongs_to :jurisdiction,
+      PYREx.Geographies.Jurisdiction,
+      references: :geoid,
+      foreign_key: :geoid
+
     timestamps()
   end
 
@@ -21,7 +22,7 @@ defmodule PYREx.Geographies.Shape do
   end
 
   def generate_id(changeset = %Ecto.Changeset{}) do
-    geoid = changeset.changes.geoid
+    geoid = Map.get(changeset.changes, :geoid, changeset.data.geoid)
     id = "pyr-jurisdiction/country:us/geoid:#{geoid}"
     change(changeset, id: id)
   end

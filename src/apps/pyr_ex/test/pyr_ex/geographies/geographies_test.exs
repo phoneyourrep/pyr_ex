@@ -6,8 +6,8 @@ defmodule PYREx.GeographiesTest do
   describe "shapes" do
     alias PYREx.Geographies.Shape
 
-    @geom1 %Geo.Point{coordinates: {1.0, 2.0}}
-    @geom2 %Geo.Point{coordinates: {2.0, 2.0}}
+    @geom1 %Geo.Point{coordinates: {1.0, 2.0}, srid: PYRExShapefile.srid()}
+    @geom2 %Geo.Point{coordinates: {2.0, 2.0}, srid: PYRExShapefile.srid()}
     @valid_attrs %{geom: @geom1, geoid: "some geoid"}
     @update_attrs %{geom: @geom2, geoid: "updated geoid"}
     @invalid_attrs %{geom: nil, geoid: nil}
@@ -33,7 +33,7 @@ defmodule PYREx.GeographiesTest do
 
     test "create_shape/1 with valid data creates a shape" do
       assert {:ok, %Shape{} = shape} = Geographies.create_shape(@valid_attrs)
-      assert shape.geom == %Geo.Point{coordinates: {1.0, 2.0}}
+      assert shape.geom == @geom1
       assert shape.geoid == "some geoid"
     end
 
@@ -44,7 +44,7 @@ defmodule PYREx.GeographiesTest do
     test "update_shape/2 with valid data updates the shape" do
       shape = shape_fixture()
       assert {:ok, %Shape{} = shape} = Geographies.update_shape(shape, @update_attrs)
-      assert shape.geom == %Geo.Point{coordinates: {2.0, 2.0}}
+      assert shape.geom == @geom2
       assert shape.geoid == "updated geoid"
     end
 
@@ -63,6 +63,34 @@ defmodule PYREx.GeographiesTest do
     test "change_shape/1 returns a shape changeset" do
       shape = shape_fixture()
       assert %Ecto.Changeset{} = Geographies.change_shape(shape)
+    end
+
+    test "intersecting_shapes/1 returns the correct shapes with Geo struct" do
+      assert {:ok, %Shape{} = shape} = Geographies.create_shape(@valid_attrs)
+      assert [shape] == Geographies.intersecting_shapes(@geom1)
+      assert [] == Geographies.intersecting_shapes(@geom2)
+    end
+
+    test "intersecting_shapes/1 returns the correct shapes with tuple of floats" do
+      assert {:ok, %Shape{} = shape} = Geographies.create_shape(@valid_attrs)
+      assert [shape] == Geographies.intersecting_shapes({1.0, 2.0})
+      assert [] == Geographies.intersecting_shapes({2.0, 2.0})
+    end
+
+    test "intersecting_shapes/1 returns the correct shapes with tuple of strings" do
+      assert {:ok, %Shape{} = shape} = Geographies.create_shape(@valid_attrs)
+      assert [shape] == Geographies.intersecting_shapes({"1.0", "2.0"})
+      assert [] == Geographies.intersecting_shapes({"2.0", "2.0"})
+    end
+
+    test "belongs to a jurisdiction with :geoid foreign key" do
+      {:ok, shape} = Geographies.create_shape(@valid_attrs)
+      {:ok, jurisdiction} = Geographies.create_jurisdiction(%{
+        fips: "1", geoid: "some geoid", name: "1", statefp: "1", type: "1"
+      })
+
+      shape = Shape |> Repo.get(shape.id) |> Repo.preload(:jurisdiction)
+      assert shape.jurisdiction == jurisdiction
     end
   end
 
@@ -130,6 +158,51 @@ defmodule PYREx.GeographiesTest do
     test "change_jurisdiction/1 returns a jurisdiction changeset" do
       jurisdiction = jurisdiction_fixture()
       assert %Ecto.Changeset{} = Geographies.change_jurisdiction(jurisdiction)
+    end
+
+    test "intersecting_jurisdictions/1 returns the correct jurisdiction with Geo struct" do
+      {:ok, _} = Geographies.create_shape(%{
+        geom: @geom1,
+        geoid: "some geoid"
+      })
+
+      {:ok, jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
+      assert [jurisdiction] == Geographies.intersecting_jurisdictions(@geom1)
+      assert [] == Geographies.intersecting_jurisdictions(@geom2)
+    end
+
+    test "intersecting_jurisdictions/1 returns the correct jurisdiction with tuple of floats" do
+      {:ok, _} = Geographies.create_shape(%{
+        geom: @geom1,
+        geoid: "some geoid"
+      })
+
+      {:ok, jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
+      assert [jurisdiction] == Geographies.intersecting_jurisdictions({1.0, 2.0})
+      assert [] == Geographies.intersecting_jurisdictions({2.0, 2.0})
+    end
+
+    test "intersecting_jurisdictions/1 returns the correct jurisdiction with tuple of strings" do
+      {:ok, _} = Geographies.create_shape(%{
+        geom: @geom1,
+        geoid: "some geoid"
+      })
+
+      {:ok, jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
+      assert [jurisdiction] == Geographies.intersecting_jurisdictions({"1.0", "2.0"})
+      assert [] == Geographies.intersecting_jurisdictions({"2.0", "2.0"})
+    end
+
+    test "has one shape with :geoid foreign key" do
+      {:ok, shape} = Geographies.create_shape(%{
+        geom: @geom1,
+        geoid: "some geoid"
+      })
+
+      {:ok, jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
+
+      jurisdiction = Jurisdiction |> Repo.get(jurisdiction.id) |> Repo.preload(:shape)
+      assert jurisdiction.shape == shape
     end
   end
 end

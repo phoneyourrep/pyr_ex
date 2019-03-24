@@ -106,8 +106,18 @@ defmodule PYREx.Geographies do
   @doc """
   Returns a list of shapes that intersect the given geometry.
 
-  Input can be a tuple containing two floats (lat and lon) or a Geo struct.
+  Input can be a tuple containing two strings or floats (lat and lon), a binary
+  street address, or a Geo struct.
   """
+  def intersecting_shapes(address) when is_binary(address) do
+    %{"x" => x, "y" => y} = PYRExGeocoder.coordinates(address)
+    intersecting_shapes({y, x})
+  end
+
+  def intersecting_shapes({lat, lon}) when is_binary(lat) and is_binary(lon) do
+    intersecting_shapes({String.to_float(lat), String.to_float(lon)})
+  end
+
   def intersecting_shapes(coordinates = {lat, lon}) when is_number(lat) and is_number(lon) do
     %Geo.Point{coordinates: coordinates, srid: PYRExShapefile.srid()}
     |> intersecting_shapes()
@@ -215,5 +225,50 @@ defmodule PYREx.Geographies do
   """
   def change_jurisdiction(%Jurisdiction{} = jurisdiction) do
     Jurisdiction.changeset(jurisdiction, %{})
+  end
+
+  @doc """
+  Returns a list of Jursidictions whose shapes intersect the given geometry.
+
+  Input can be a tuple containing two strings or floats (lat and lon), a binary
+  street address, or a Geo struct.
+
+  ## Examples
+
+      intersecting_jurisdictions({33.184123, -88.317135})
+      #=> [%PYREx.Geographies.Jurisdiction{
+            __meta__: #Ecto.Schema.Metadata<:loaded, "jurisdictions">,
+            fips: "01",
+            geoid: "01",
+            id: "pyr-jurisdiction/type:us_state/country:us/geoid:01/state:01/fips:01",
+            inserted_at: ~N[2019-03-24 00:23:52],
+            name: "Alabama",
+            shape: #Ecto.Association.NotLoaded<association :shape is not loaded>,
+            statefp: "01",
+            type: "us_state",
+            updated_at: ~N[2019-03-24 00:23:52]
+          }, %PYREx.Geographies.Jurisdiction{...}, ...]
+  """
+  def intersecting_jurisdictions(address) when is_binary(address) do
+    %{"x" => x, "y" => y} = PYRExGeocoder.coordinates(address)
+    intersecting_jurisdictions({y, x})
+  end
+
+  def intersecting_jurisdictions({lat, lon}) when is_binary(lat) and is_binary(lon) do
+    intersecting_jurisdictions({String.to_float(lat), String.to_float(lon)})
+  end
+
+  def intersecting_jurisdictions(coordinates = {lat, lon}) when is_number(lat) and is_number(lon) do
+    %Geo.Point{coordinates: coordinates, srid: PYRExShapefile.srid()}
+    |> intersecting_jurisdictions()
+  end
+
+  def intersecting_jurisdictions(geom) do
+    query =
+      from j in Jurisdiction,
+        join: s in assoc(j, :shape),
+        where: st_intersects(s.geom, ^geom)
+
+    Repo.all(query)
   end
 end
