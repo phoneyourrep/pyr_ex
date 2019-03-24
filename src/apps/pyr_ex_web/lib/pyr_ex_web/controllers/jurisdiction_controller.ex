@@ -26,7 +26,8 @@ defmodule PYRExWeb.JurisdictionController do
   end
 
   def create(conn, %{"jurisdiction" => jurisdiction_params}) do
-    with {:ok, %Jurisdiction{} = jurisdiction} <- Geographies.create_jurisdiction(jurisdiction_params) do
+    with {:ok, %Jurisdiction{} = jurisdiction} <-
+           Geographies.create_jurisdiction(jurisdiction_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.jurisdiction_path(conn, :show, jurisdiction))
@@ -42,7 +43,8 @@ defmodule PYRExWeb.JurisdictionController do
   def update(conn, %{"id" => id, "jurisdiction" => jurisdiction_params}) do
     jurisdiction = Geographies.get_jurisdiction!(id)
 
-    with {:ok, %Jurisdiction{} = jurisdiction} <- Geographies.update_jurisdiction(jurisdiction, jurisdiction_params) do
+    with {:ok, %Jurisdiction{} = jurisdiction} <-
+           Geographies.update_jurisdiction(jurisdiction, jurisdiction_params) do
       render(conn, "show.json", jurisdiction: jurisdiction)
     end
   end

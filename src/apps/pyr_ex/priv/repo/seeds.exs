@@ -30,12 +30,12 @@ congress_tasks =
 
         fips = shape.cd116fp
         shape = shape |> Map.put(:fips, fips) |> Map.put(:name, fips)
+
         Jurisdiction.changeset(%Jurisdiction{}, Map.put(shape, :type, "us_cd"))
         |> Repo.insert!()
       end)
     end)
   end)
-
 
 states_tasks =
   Enum.map(states["filenames"], fn filename ->
@@ -47,6 +47,7 @@ states_tasks =
         |> Repo.insert!()
 
         shape = Map.put(shape, :fips, shape.statefp)
+
         Jurisdiction.changeset(%Jurisdiction{}, Map.put(shape, :type, "us_state"))
         |> Repo.insert!()
       end)

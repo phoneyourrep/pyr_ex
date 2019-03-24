@@ -85,9 +85,15 @@ defmodule PYREx.GeographiesTest do
 
     test "belongs to a jurisdiction with :geoid foreign key" do
       {:ok, shape} = Geographies.create_shape(@valid_attrs)
-      {:ok, jurisdiction} = Geographies.create_jurisdiction(%{
-        fips: "1", geoid: "some geoid", name: "1", statefp: "1", type: "1"
-      })
+
+      {:ok, jurisdiction} =
+        Geographies.create_jurisdiction(%{
+          fips: "1",
+          geoid: "some geoid",
+          name: "1",
+          statefp: "1",
+          type: "1"
+        })
 
       shape = Shape |> Repo.get(shape.id) |> Repo.preload(:jurisdiction)
       assert shape.jurisdiction == jurisdiction
@@ -97,8 +103,20 @@ defmodule PYREx.GeographiesTest do
   describe "jurisdictions" do
     alias PYREx.Geographies.Jurisdiction
 
-    @valid_attrs %{fips: "some fips", geoid: "some geoid", name: "some name", statefp: "some statefp", type: "some type"}
-    @update_attrs %{fips: "some updated fips", geoid: "some updated geoid", name: "some updated name", statefp: "some updated statefp", type: "some updated type"}
+    @valid_attrs %{
+      fips: "some fips",
+      geoid: "some geoid",
+      name: "some name",
+      statefp: "some statefp",
+      type: "some type"
+    }
+    @update_attrs %{
+      fips: "some updated fips",
+      geoid: "some updated geoid",
+      name: "some updated name",
+      statefp: "some updated statefp",
+      type: "some updated type"
+    }
     @invalid_attrs %{fips: nil, geoid: nil, name: nil, statefp: nil, type: nil}
 
     def jurisdiction_fixture(attrs \\ %{}) do
@@ -135,7 +153,10 @@ defmodule PYREx.GeographiesTest do
 
     test "update_jurisdiction/2 with valid data updates the jurisdiction" do
       jurisdiction = jurisdiction_fixture()
-      assert {:ok, %Jurisdiction{} = jurisdiction} = Geographies.update_jurisdiction(jurisdiction, @update_attrs)
+
+      assert {:ok, %Jurisdiction{} = jurisdiction} =
+               Geographies.update_jurisdiction(jurisdiction, @update_attrs)
+
       assert jurisdiction.fips == "some updated fips"
       assert jurisdiction.geoid == "some updated geoid"
       assert jurisdiction.name == "some updated name"
@@ -145,7 +166,10 @@ defmodule PYREx.GeographiesTest do
 
     test "update_jurisdiction/2 with invalid data returns error changeset" do
       jurisdiction = jurisdiction_fixture()
-      assert {:error, %Ecto.Changeset{}} = Geographies.update_jurisdiction(jurisdiction, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Geographies.update_jurisdiction(jurisdiction, @invalid_attrs)
+
       assert jurisdiction == Geographies.get_jurisdiction!(jurisdiction.id)
     end
 
@@ -161,10 +185,11 @@ defmodule PYREx.GeographiesTest do
     end
 
     test "intersecting_jurisdictions/1 returns the correct jurisdiction with Geo struct" do
-      {:ok, _} = Geographies.create_shape(%{
-        geom: @geom1,
-        geoid: "some geoid"
-      })
+      {:ok, _} =
+        Geographies.create_shape(%{
+          geom: @geom1,
+          geoid: "some geoid"
+        })
 
       {:ok, jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
       assert [jurisdiction] == Geographies.intersecting_jurisdictions(@geom1)
@@ -172,10 +197,11 @@ defmodule PYREx.GeographiesTest do
     end
 
     test "intersecting_jurisdictions/1 returns the correct jurisdiction with tuple of floats" do
-      {:ok, _} = Geographies.create_shape(%{
-        geom: @geom1,
-        geoid: "some geoid"
-      })
+      {:ok, _} =
+        Geographies.create_shape(%{
+          geom: @geom1,
+          geoid: "some geoid"
+        })
 
       {:ok, jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
       assert [jurisdiction] == Geographies.intersecting_jurisdictions({1.0, 2.0})
@@ -183,10 +209,11 @@ defmodule PYREx.GeographiesTest do
     end
 
     test "intersecting_jurisdictions/1 returns the correct jurisdiction with tuple of strings" do
-      {:ok, _} = Geographies.create_shape(%{
-        geom: @geom1,
-        geoid: "some geoid"
-      })
+      {:ok, _} =
+        Geographies.create_shape(%{
+          geom: @geom1,
+          geoid: "some geoid"
+        })
 
       {:ok, jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
       assert [jurisdiction] == Geographies.intersecting_jurisdictions({"1.0", "2.0"})
@@ -194,10 +221,11 @@ defmodule PYREx.GeographiesTest do
     end
 
     test "has one shape with :geoid foreign key" do
-      {:ok, shape} = Geographies.create_shape(%{
-        geom: @geom1,
-        geoid: "some geoid"
-      })
+      {:ok, shape} =
+        Geographies.create_shape(%{
+          geom: @geom1,
+          geoid: "some geoid"
+        })
 
       {:ok, jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
 

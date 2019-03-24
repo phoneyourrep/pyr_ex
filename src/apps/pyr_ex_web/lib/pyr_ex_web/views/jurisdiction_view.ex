@@ -11,11 +11,13 @@ defmodule PYRExWeb.JurisdictionView do
   end
 
   def render("jurisdiction.json", %{jurisdiction: jurisdiction}) do
-    %{id: jurisdiction.id,
+    %{
+      id: jurisdiction.id,
       type: jurisdiction.type,
       name: jurisdiction.name,
       geoid: jurisdiction.geoid,
       statefp: jurisdiction.statefp,
-      fips: jurisdiction.fips}
+      fips: jurisdiction.fips
+    }
   end
 end

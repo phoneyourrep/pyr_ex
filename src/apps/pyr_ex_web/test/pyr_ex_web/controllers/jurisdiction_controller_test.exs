@@ -46,14 +46,17 @@ defmodule PYRExWeb.JurisdictionControllerTest do
 
       fixture(:jurisdiction)
       conn = get(conn, Routes.jurisdiction_path(conn, :index))
-      assert [%{
-        "id" => id,
-        "fips" => "some fips",
-        "geoid" => "some geoid",
-        "name" => "some name",
-        "statefp" => "some statefp",
-        "type" => "some type"
-      }] = json_response(conn, 200)["data"]
+
+      assert [
+               %{
+                 "id" => id,
+                 "fips" => "some fips",
+                 "geoid" => "some geoid",
+                 "name" => "some name",
+                 "statefp" => "some statefp",
+                 "type" => "some type"
+               }
+             ] = json_response(conn, 200)["data"]
     end
 
     test "lists jurisdictions for lat and lon", %{conn: conn} do
@@ -61,14 +64,17 @@ defmodule PYRExWeb.JurisdictionControllerTest do
       fixture(:shape)
 
       conn = get(conn, Routes.jurisdiction_path(conn, :index, lat: "1.0", lon: "2.0"))
-      assert [%{
-        "id" => id,
-        "fips" => "some fips",
-        "geoid" => "some geoid",
-        "name" => "some name",
-        "statefp" => "some statefp",
-        "type" => "some type"
-      }] = json_response(conn, 200)["data"]
+
+      assert [
+               %{
+                 "id" => id,
+                 "fips" => "some fips",
+                 "geoid" => "some geoid",
+                 "name" => "some name",
+                 "statefp" => "some statefp",
+                 "type" => "some type"
+               }
+             ] = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.jurisdiction_path(conn, :index, lat: "2.0", lon: "2.0"))
       assert json_response(conn, 200)["data"] == []
@@ -101,8 +107,15 @@ defmodule PYRExWeb.JurisdictionControllerTest do
   describe "update jurisdiction" do
     setup [:create_jurisdiction]
 
-    test "renders jurisdiction when data is valid", %{conn: conn, jurisdiction: %Jurisdiction{} = jurisdiction} do
-      conn = put(conn, Routes.jurisdiction_path(conn, :update, jurisdiction), jurisdiction: @update_attrs)
+    test "renders jurisdiction when data is valid", %{
+      conn: conn,
+      jurisdiction: %Jurisdiction{} = jurisdiction
+    } do
+      conn =
+        put(conn, Routes.jurisdiction_path(conn, :update, jurisdiction),
+          jurisdiction: @update_attrs
+        )
+
       assert %{"id" => id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.jurisdiction_path(conn, :show, id))
@@ -118,7 +131,11 @@ defmodule PYRExWeb.JurisdictionControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn, jurisdiction: jurisdiction} do
-      conn = put(conn, Routes.jurisdiction_path(conn, :update, jurisdiction), jurisdiction: @invalid_attrs)
+      conn =
+        put(conn, Routes.jurisdiction_path(conn, :update, jurisdiction),
+          jurisdiction: @invalid_attrs
+        )
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end

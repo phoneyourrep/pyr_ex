@@ -258,7 +258,8 @@ defmodule PYREx.Geographies do
     intersecting_jurisdictions({String.to_float(lat), String.to_float(lon)})
   end
 
-  def intersecting_jurisdictions(coordinates = {lat, lon}) when is_number(lat) and is_number(lon) do
+  def intersecting_jurisdictions(coordinates = {lat, lon})
+      when is_number(lat) and is_number(lon) do
     %Geo.Point{coordinates: coordinates, srid: PYRExShapefile.srid()}
     |> intersecting_jurisdictions()
   end

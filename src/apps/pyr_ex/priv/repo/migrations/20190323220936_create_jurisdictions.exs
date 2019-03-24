@@ -12,6 +12,5 @@ defmodule PYREx.Repo.Migrations.CreateJurisdictions do
 
       timestamps()
     end
-
   end
 end

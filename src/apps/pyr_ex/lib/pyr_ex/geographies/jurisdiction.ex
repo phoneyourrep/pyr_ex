@@ -8,10 +8,11 @@ defmodule PYREx.Geographies.Jurisdiction do
     field :name, :string
     field :statefp, :string
     field :type, :string
+
     has_one :shape,
-      PYREx.Geographies.Shape,
-      references: :geoid,
-      foreign_key: :geoid
+            PYREx.Geographies.Shape,
+            references: :geoid,
+            foreign_key: :geoid
 
     timestamps()
   end

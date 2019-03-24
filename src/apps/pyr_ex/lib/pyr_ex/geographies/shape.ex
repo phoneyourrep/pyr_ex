@@ -4,10 +4,11 @@ defmodule PYREx.Geographies.Shape do
 
   schema "shapes" do
     field :geom, Geo.PostGIS.Geometry
+
     belongs_to :jurisdiction,
-      PYREx.Geographies.Jurisdiction,
-      references: :geoid,
-      foreign_key: :geoid
+               PYREx.Geographies.Jurisdiction,
+               references: :geoid,
+               foreign_key: :geoid
 
     timestamps()
   end
