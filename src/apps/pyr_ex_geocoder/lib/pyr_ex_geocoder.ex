@@ -30,7 +30,7 @@ defmodule PYRExGeocoder do
   ## Examples
 
       iex> PYRExGeocoder.coordinates("1600 Pennsylvania Ave NW, Washington, D.C., 20500")
-      %{"x" => -77.03535, "y" => 38.898754}
+      {:ok, %{x: -77.03535, y: 38.898754}}
   """
   def coordinates(address) do
     {:ok, %{body: body}} = get("", [], params: [address: address])
