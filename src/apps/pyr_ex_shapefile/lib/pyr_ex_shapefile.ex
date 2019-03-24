@@ -60,8 +60,18 @@ defmodule PYRExShapefile do
       |> Enum.map_reduce(headers, fn {shp, dbf}, headers ->
         result =
           Enum.reduce(headers, %{geom: exshape_to_geo(shp)}, fn {attr, index}, map ->
-            key = attr |> String.downcase() |> String.to_atom()
-            Map.put(map, key, Enum.at(dbf, index))
+            key =
+              attr
+              |> String.downcase()
+              |> String.to_atom()
+
+            val =
+              case is_binary(x = Enum.at(dbf, index)) do
+                true -> String.trim(x)
+                false -> x
+              end
+
+            Map.put(map, key, val)
           end)
 
         {result, headers}
