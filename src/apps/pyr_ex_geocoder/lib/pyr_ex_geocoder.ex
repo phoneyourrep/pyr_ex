@@ -3,9 +3,26 @@ defmodule PYRExGeocoder do
   Documentation for PYRExGeocoder.
   """
 
+  use HTTPoison.Base
+
   @base_url "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress"
   @headers [{"Accept", "application/json"}]
   @params [benchmark: "Public_AR_Current"]
+
+  @doc false
+  def process_request_url(url) do
+    @base_url <> url
+  end
+
+  @doc false
+  def process_request_headers(headers) do
+    @headers ++ headers
+  end
+
+  @doc false
+  def process_request_options(options) do
+    update_in(options, [:params], fn x -> Keyword.merge(x, @params) end)
+  end
 
   @doc """
   Geocodes an address into x/y coordinates.
@@ -16,12 +33,15 @@ defmodule PYRExGeocoder do
       %{"x" => -77.03535, "y" => 38.898754}
   """
   def coordinates(address) do
-    params = Keyword.merge(@params, address: address)
-
-    with {:ok, %{body: body}} <- HTTPoison.get(@base_url, @headers, params: params) do
+    {:ok, %{body: body}} = get("", [], params: [address: address])
+    coordinates =
       body
       |> Jason.decode!()
       |> get_in(["result", "addressMatches", Access.at(0), "coordinates"])
+
+    case coordinates do
+      %{"x" => x, "y" => y} -> {:ok, %{x: x, y: y}}
+      _ -> :error
     end
   end
 end
