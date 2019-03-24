@@ -27,6 +27,13 @@
     <%= @user.intended_usage %>
   </li>
 
+  <%= if @key do %>
+    <li>
+      <strong>API key:</strong>
+      <%= @key %>
+    </li>
+  <% end %>
+
 </ul>
 
 <span><%= link "Edit", to: Routes.accounts_user_path(@conn, :edit, @user) %></span>

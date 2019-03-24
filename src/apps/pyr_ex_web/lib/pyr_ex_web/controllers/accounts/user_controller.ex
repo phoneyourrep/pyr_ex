@@ -17,9 +17,11 @@ defmodule PYRExWeb.Accounts.UserController do
   def create(conn, %{"user" => user_params}) do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
+        key = Phoenix.Token.sign(PYRExWeb.Endpoint, "user auth", user.id)
+
         conn
-        |> put_flash(:info, "User created successfully.")
-        |> redirect(to: Routes.accounts_user_path(conn, :show, user))
+        |> put_flash(:info, "Registered Successfully")
+        |> render("show.html", user: user, key: key)
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -28,7 +30,7 @@ defmodule PYRExWeb.Accounts.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
-    render(conn, "show.html", user: user)
+    render(conn, "show.html", user: user, key: nil)
   end
 
   def edit(conn, %{"id" => id}) do
