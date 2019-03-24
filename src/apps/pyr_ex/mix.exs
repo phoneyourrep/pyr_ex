@@ -40,6 +40,7 @@ defmodule PYREx.MixProject do
       {:geo_postgis, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
       {:jason, "~> 1.0"},
+      {:pyr_ex_geocoder, in_umbrella: true},
       {:pyr_ex_shapefile, in_umbrella: true},
       {:yaml_elixir, "~> 2.1"}
     ]

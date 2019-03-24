@@ -12,10 +12,10 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="https://github.com/phoneyourrep">Github</a></li>
+            <li><%= link "Register an API Key", to: Routes.accounts_user_path(@conn, :new) %></li>
           </ul>
         </nav>
-        <a href="http://phoenixframework.org/" class="pyr-logo">
+        <a href="/" class="pyr-logo">
           <img src="<%= Routes.static_path(@conn, "/images/capitol.png") %>" alt="Phoenix Framework Logo"/>
         </a>
       </section>

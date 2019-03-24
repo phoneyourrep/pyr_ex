@@ -19,6 +19,12 @@ defmodule PYRExWeb.Router do
     get "/", HomeController, :index
   end
 
+  scope "/accounts", PYRExWeb.Accounts, as: :accounts do
+    pipe_through :browser
+
+    resources "/users", UserController
+  end
+
   scope "/api", PYRExWeb do
     pipe_through :api
 
