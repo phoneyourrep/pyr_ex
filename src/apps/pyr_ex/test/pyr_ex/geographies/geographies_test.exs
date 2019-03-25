@@ -8,9 +8,24 @@ defmodule PYREx.GeographiesTest do
 
     @geom1 %Geo.Point{coordinates: {1.0, 2.0}, srid: PYRExShapefile.srid()}
     @geom2 %Geo.Point{coordinates: {2.0, 2.0}, srid: PYRExShapefile.srid()}
-    @valid_attrs %{geom: @geom1, geoid: "some geoid"}
-    @update_attrs %{geom: @geom2, geoid: "updated geoid"}
-    @invalid_attrs %{geom: nil, geoid: nil}
+
+    @valid_attrs %{
+      geom: @geom1,
+      geoid: "some geoid",
+      mtfcc: "some mtfcc"
+    }
+
+    @update_attrs %{
+      geom: @geom2,
+      geoid: "updated geoid",
+      mtfcc: "updated mtfcc"
+    }
+
+    @invalid_attrs %{
+      geom: nil,
+      geoid: nil,
+      mtfcc: nil
+    }
 
     def shape_fixture(attrs \\ %{}) do
       {:ok, shape} =
@@ -35,6 +50,7 @@ defmodule PYREx.GeographiesTest do
       assert {:ok, %Shape{} = shape} = Geographies.create_shape(@valid_attrs)
       assert shape.geom == @geom1
       assert shape.geoid == "some geoid"
+      assert shape.mtfcc == "some mtfcc"
     end
 
     test "create_shape/1 with invalid data returns error changeset" do
@@ -46,6 +62,7 @@ defmodule PYREx.GeographiesTest do
       assert {:ok, %Shape{} = shape} = Geographies.update_shape(shape, @update_attrs)
       assert shape.geom == @geom2
       assert shape.geoid == "updated geoid"
+      assert shape.mtfcc == "updated mtfcc"
     end
 
     test "update_shape/2 with invalid data returns error changeset" do
@@ -88,11 +105,11 @@ defmodule PYREx.GeographiesTest do
 
       {:ok, jurisdiction} =
         Geographies.create_jurisdiction(%{
-          fips: "1",
           geoid: "some geoid",
           name: "1",
           statefp: "1",
-          type: "1"
+          type: "1",
+          mtfcc: "some mtfcc"
         })
 
       shape = Shape |> Repo.get(shape.id) |> Repo.preload(:jurisdiction)
@@ -104,20 +121,20 @@ defmodule PYREx.GeographiesTest do
     alias PYREx.Geographies.Jurisdiction
 
     @valid_attrs %{
-      fips: "some fips",
       geoid: "some geoid",
       name: "some name",
       statefp: "some statefp",
-      type: "some type"
+      type: "some type",
+      mtfcc: "some mtfcc"
     }
     @update_attrs %{
-      fips: "some updated fips",
       geoid: "some updated geoid",
       name: "some updated name",
       statefp: "some updated statefp",
-      type: "some updated type"
+      type: "some updated type",
+      mtfcc: "some updated mtfcc"
     }
-    @invalid_attrs %{fips: nil, geoid: nil, name: nil, statefp: nil, type: nil}
+    @invalid_attrs %{geoid: nil, name: nil, statefp: nil, type: nil, mtfcc: nil}
 
     def jurisdiction_fixture(attrs \\ %{}) do
       {:ok, jurisdiction} =
@@ -140,11 +157,11 @@ defmodule PYREx.GeographiesTest do
 
     test "create_jurisdiction/1 with valid data creates a jurisdiction" do
       assert {:ok, %Jurisdiction{} = jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
-      assert jurisdiction.fips == "some fips"
       assert jurisdiction.geoid == "some geoid"
       assert jurisdiction.name == "some name"
       assert jurisdiction.statefp == "some statefp"
       assert jurisdiction.type == "some type"
+      assert jurisdiction.mtfcc == "some mtfcc"
     end
 
     test "create_jurisdiction/1 with invalid data returns error changeset" do
@@ -157,11 +174,11 @@ defmodule PYREx.GeographiesTest do
       assert {:ok, %Jurisdiction{} = jurisdiction} =
                Geographies.update_jurisdiction(jurisdiction, @update_attrs)
 
-      assert jurisdiction.fips == "some updated fips"
       assert jurisdiction.geoid == "some updated geoid"
       assert jurisdiction.name == "some updated name"
       assert jurisdiction.statefp == "some updated statefp"
       assert jurisdiction.type == "some updated type"
+      assert jurisdiction.mtfcc == "some updated mtfcc"
     end
 
     test "update_jurisdiction/2 with invalid data returns error changeset" do
@@ -188,7 +205,8 @@ defmodule PYREx.GeographiesTest do
       {:ok, _} =
         Geographies.create_shape(%{
           geom: @geom1,
-          geoid: "some geoid"
+          geoid: "some geoid",
+          mtfcc: "some mtfcc"
         })
 
       {:ok, jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
@@ -200,7 +218,8 @@ defmodule PYREx.GeographiesTest do
       {:ok, _} =
         Geographies.create_shape(%{
           geom: @geom1,
-          geoid: "some geoid"
+          geoid: "some geoid",
+          mtfcc: "some mtfcc"
         })
 
       {:ok, jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
@@ -212,7 +231,8 @@ defmodule PYREx.GeographiesTest do
       {:ok, _} =
         Geographies.create_shape(%{
           geom: @geom1,
-          geoid: "some geoid"
+          geoid: "some geoid",
+          mtfcc: "some mtfcc"
         })
 
       {:ok, jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)
@@ -224,7 +244,8 @@ defmodule PYREx.GeographiesTest do
       {:ok, shape} =
         Geographies.create_shape(%{
           geom: @geom1,
-          geoid: "some geoid"
+          geoid: "some geoid",
+          mtfcc: "some mtfcc"
         })
 
       {:ok, jurisdiction} = Geographies.create_jurisdiction(@valid_attrs)

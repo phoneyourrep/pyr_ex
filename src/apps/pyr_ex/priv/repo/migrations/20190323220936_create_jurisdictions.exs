@@ -8,7 +8,8 @@ defmodule PYREx.Repo.Migrations.CreateJurisdictions do
       add :name, :string
       add :geoid, :string
       add :statefp, :string
-      add :fips, :string
+      add :mtfcc, :string
+      add :pyrgeoid, :string
 
       timestamps()
     end

@@ -2,7 +2,118 @@ congress:
   base_url: http://www2.census.gov/geo/tiger/TIGER2018/CD
   filenames:
     - tl_2018_us_cd116
+
 states:
   base_url: http://www2.census.gov/geo/tiger/TIGER2018/STATE
   filenames:
     - tl_2018_us_state
+
+state_legislative_districts_lower:
+  base_url: http://www2.census.gov/geo/tiger/TIGER2018/SLDL
+  filenames:
+    - tl_2018_01_sldl
+    - tl_2018_02_sldl
+    - tl_2018_04_sldl
+    - tl_2018_05_sldl
+    - tl_2018_06_sldl
+    - tl_2018_08_sldl
+    - tl_2018_09_sldl
+    - tl_2018_10_sldl
+    - tl_2018_12_sldl
+    - tl_2018_13_sldl
+    - tl_2018_15_sldl
+    - tl_2018_16_sldl
+    - tl_2018_17_sldl
+    - tl_2018_18_sldl
+    - tl_2018_19_sldl
+    - tl_2018_20_sldl
+    - tl_2018_21_sldl
+    - tl_2018_22_sldl
+    - tl_2018_23_sldl
+    - tl_2018_24_sldl
+    - tl_2018_25_sldl
+    - tl_2018_26_sldl
+    - tl_2018_27_sldl
+    - tl_2018_28_sldl
+    - tl_2018_29_sldl
+    - tl_2018_30_sldl
+    - tl_2018_32_sldl
+    - tl_2018_33_sldl
+    - tl_2018_34_sldl
+    - tl_2018_35_sldl
+    - tl_2018_36_sldl
+    - tl_2018_37_sldl
+    - tl_2018_38_sldl
+    - tl_2018_39_sldl
+    - tl_2018_40_sldl
+    - tl_2018_41_sldl
+    - tl_2018_42_sldl
+    - tl_2018_44_sldl
+    - tl_2018_45_sldl
+    - tl_2018_46_sldl
+    - tl_2018_47_sldl
+    - tl_2018_48_sldl
+    - tl_2018_49_sldl
+    - tl_2018_50_sldl
+    - tl_2018_51_sldl
+    - tl_2018_53_sldl
+    - tl_2018_54_sldl
+    - tl_2018_55_sldl
+    - tl_2018_56_sldl
+    - tl_2018_72_sldl
+
+state_legislative_districts_upper:
+  base_url: http://www2.census.gov/geo/tiger/TIGER2018/SLDU
+  filenames:
+    - tl_2018_01_sldu
+    - tl_2018_02_sldu
+    - tl_2018_04_sldu
+    - tl_2018_05_sldu
+    - tl_2018_06_sldu
+    - tl_2018_08_sldu
+    - tl_2018_09_sldu
+    - tl_2018_10_sldu
+    - tl_2018_11_sldu
+    - tl_2018_12_sldu
+    - tl_2018_13_sldu
+    - tl_2018_15_sldu
+    - tl_2018_16_sldu
+    - tl_2018_17_sldu
+    - tl_2018_18_sldu
+    - tl_2018_19_sldu
+    - tl_2018_20_sldu
+    - tl_2018_21_sldu
+    - tl_2018_22_sldu
+    - tl_2018_23_sldu
+    - tl_2018_24_sldu
+    - tl_2018_25_sldu
+    - tl_2018_26_sldu
+    - tl_2018_27_sldu
+    - tl_2018_28_sldu
+    - tl_2018_29_sldu
+    - tl_2018_30_sldu
+    - tl_2018_31_sldu
+    - tl_2018_32_sldu
+    - tl_2018_33_sldu
+    - tl_2018_34_sldu
+    - tl_2018_35_sldu
+    - tl_2018_36_sldu
+    - tl_2018_37_sldu
+    - tl_2018_38_sldu
+    - tl_2018_39_sldu
+    - tl_2018_40_sldu
+    - tl_2018_41_sldu
+    - tl_2018_42_sldu
+    - tl_2018_44_sldu
+    - tl_2018_45_sldu
+    - tl_2018_46_sldu
+    - tl_2018_47_sldu
+    - tl_2018_48_sldu
+    - tl_2018_49_sldu
+    - tl_2018_50_sldu
+    - tl_2018_51_sldu
+    - tl_2018_53_sldu
+    - tl_2018_54_sldu
+    - tl_2018_55_sldu
+    - tl_2018_56_sldu
+    - tl_2018_72_sldu

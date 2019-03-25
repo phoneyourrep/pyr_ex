@@ -240,13 +240,14 @@ defmodule PYREx.Geographies do
       intersecting_jurisdictions({33.184123, -88.317135})
       #=> [%PYREx.Geographies.Jurisdiction{
             __meta__: #Ecto.Schema.Metadata<:loaded, "jurisdictions">,
-            fips: "01",
             geoid: "01",
-            id: "pyr-jurisdiction/type:us_state/country:us/geoid:01/state:01/fips:01",
+            id: "pyr-jurisdiction/type:us_state/country:us/pyrgeoid:G400001/statefp:01",
             inserted_at: ~N[2019-03-24 00:23:52],
             name: "Alabama",
             shape: #Ecto.Association.NotLoaded<association :shape is not loaded>,
             statefp: "01",
+            mtfcc: G4000,
+            pyrgeoid: G400001,
             type: "us_state",
             updated_at: ~N[2019-03-24 00:23:52]
           }, %PYREx.Geographies.Jurisdiction{...}, ...]

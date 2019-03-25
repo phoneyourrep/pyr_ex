@@ -5,16 +5,20 @@ defmodule PYRExWeb.JurisdictionControllerTest do
   alias PYRExWeb.Authenticator
 
   @create_attrs %{
-    fips: "some fips",
     geoid: "some geoid",
     name: "some name",
     statefp: "some statefp",
-    type: "some type"
+    type: "some type",
+    mtfcc: "some mtfcc"
   }
 
   @shape_attrs %{
     geoid: "some geoid",
-    geom: %Geo.Point{coordinates: {1.0, 2.0}, srid: PYRExShapefile.srid()}
+    mtfcc: "some mtfcc",
+    geom: %Geo.Point{
+      coordinates: {1.0, 2.0},
+      srid: PYRExShapefile.srid()
+    }
   }
 
   def fixture(:jurisdiction) do
@@ -40,11 +44,12 @@ defmodule PYRExWeb.JurisdictionControllerTest do
 
       assert %{
                "id" => id,
-               "fips" => "some fips",
                "geoid" => "some geoid",
                "name" => "some name",
                "statefp" => "some statefp",
-               "type" => "some type"
+               "type" => "some type",
+               "mtfcc" => "some mtfcc",
+               "pyrgeoid" => "some mtfccsome geoid"
              } = json_response(conn, 200)["data"]
     end
   end
@@ -60,11 +65,12 @@ defmodule PYRExWeb.JurisdictionControllerTest do
       assert [
                %{
                  "id" => id,
-                 "fips" => "some fips",
                  "geoid" => "some geoid",
                  "name" => "some name",
                  "statefp" => "some statefp",
-                 "type" => "some type"
+                 "type" => "some type",
+                 "mtfcc" => "some mtfcc",
+                 "pyrgeoid" => "some mtfccsome geoid"
                }
              ] = json_response(conn, 200)["data"]
     end
@@ -79,11 +85,12 @@ defmodule PYRExWeb.JurisdictionControllerTest do
       assert [
                %{
                  "id" => id,
-                 "fips" => "some fips",
                  "geoid" => "some geoid",
                  "name" => "some name",
                  "statefp" => "some statefp",
-                 "type" => "some type"
+                 "type" => "some type",
+                 "mtfcc" => "some mtfcc",
+                 "pyrgeoid" => "some mtfccsome geoid"
                }
              ] = json_response(conn, 200)["data"]
 

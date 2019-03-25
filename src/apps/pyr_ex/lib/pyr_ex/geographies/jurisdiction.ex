@@ -4,27 +4,28 @@ defmodule PYREx.Geographies.Jurisdiction do
   alias PYREx.Geographies.{Jurisdiction, Shape}
 
   schema "jurisdictions" do
-    field :fips, :string
     field :geoid, :string
     field :name, :string
     field :type, :string
+    field :mtfcc, :string
+    field :pyrgeoid, :string
 
     belongs_to :state,
                Jurisdiction,
-               references: :fips,
+               references: :statefp,
                foreign_key: :statefp,
                where: [type: "us_state"]
 
     has_many :divisions,
              Jurisdiction,
-             references: :fips,
+             references: :statefp,
              foreign_key: :statefp,
-             where: [type: {:in, ["us_cd"]}]
+             where: [type: {:in, ["us_cd", "us_sldl", "us_sldu"]}]
 
     has_one :shape,
             Shape,
-            references: :geoid,
-            foreign_key: :geoid
+            references: :pyrgeoid,
+            foreign_key: :pyrgeoid
 
     timestamps()
   end
@@ -32,19 +33,26 @@ defmodule PYREx.Geographies.Jurisdiction do
   @doc false
   def changeset(jurisdiction, attrs) do
     jurisdiction
-    |> cast(attrs, [:type, :name, :geoid, :statefp, :fips])
-    |> validate_required([:type, :name, :geoid, :statefp, :fips])
+    |> cast(attrs, [:type, :name, :geoid, :statefp, :mtfcc])
+    |> validate_required([:type, :name, :geoid, :statefp, :mtfcc])
+    |> generate_pyrgeoid()
     |> generate_id()
-    |> validate_required([:id])
+    |> validate_required([:id, :pyrgeoid])
+  end
+
+  @doc false
+  def generate_pyrgeoid(changeset = %Ecto.Changeset{}) do
+    geoid = Map.get(changeset.changes, :geoid, changeset.data.geoid)
+    mtfcc = Map.get(changeset.changes, :mtfcc, changeset.data.mtfcc)
+    change(changeset, pyrgeoid: "#{mtfcc}#{geoid}")
   end
 
   @doc false
   def generate_id(changeset = %Ecto.Changeset{}) do
-    state = Map.get(changeset.changes, :statefp, changeset.data.statefp)
+    statefp = Map.get(changeset.changes, :statefp, changeset.data.statefp)
     type = Map.get(changeset.changes, :type, changeset.data.type)
-    fips = Map.get(changeset.changes, :fips, changeset.data.fips)
-    geoid = Map.get(changeset.changes, :geoid, changeset.data.geoid)
-    id = "pyr-jurisdiction/type:#{type}/country:us/geoid:#{geoid}/state:#{state}/fips:#{fips}"
+    pyrgeoid = Map.get(changeset.changes, :pyrgeoid, changeset.data.pyrgeoid)
+    id = "pyr-jurisdiction/type:#{type}/country:us/pyrgeoid:#{pyrgeoid}/statefp:#{statefp}"
     change(changeset, id: id)
   end
 end

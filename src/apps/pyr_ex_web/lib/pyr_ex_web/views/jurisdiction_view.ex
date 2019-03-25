@@ -17,7 +17,8 @@ defmodule PYRExWeb.JurisdictionView do
       name: jurisdiction.name,
       geoid: jurisdiction.geoid,
       statefp: jurisdiction.statefp,
-      fips: jurisdiction.fips
+      mtfcc: jurisdiction.mtfcc,
+      pyrgeoid: jurisdiction.pyrgeoid
     }
   end
 end
