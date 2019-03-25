@@ -4,7 +4,7 @@ dist/html/fonts/icomoon.eot
 dist/html/fonts/icomoon.svg
 dist/html/fonts/icomoon.ttf
 dist/html/fonts/icomoon.woff
-dist/sidebar_items-98e19e018d.js
+dist/sidebar_items-f0060af423.js
 api-reference.html
 search.html
 404.html
@@ -23,6 +23,7 @@ PYRExWeb.Accounts.UserController.html
 PYRExWeb.Accounts.UserView.html
 PYRExWeb.Authenticator.html
 PYRExWeb.ChangesetView.html
+PYRExWeb.Email.html
 PYRExWeb.Endpoint.html
 PYRExWeb.ErrorHelpers.html
 PYRExWeb.ErrorView.html
@@ -33,6 +34,7 @@ PYRExWeb.HomeView.html
 PYRExWeb.JurisdictionController.html
 PYRExWeb.JurisdictionView.html
 PYRExWeb.LayoutView.html
+PYRExWeb.Mailer.html
 PYRExWeb.Plugs.Authenticate.html
 PYRExWeb.Router.html
 PYRExWeb.Router.Helpers.html

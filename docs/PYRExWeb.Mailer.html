@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.19.3">
-    <title>PYRExWeb.LayoutView —  vdev</title>
+    <title>PYRExWeb.Mailer —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
     <script src="dist/sidebar_items-f0060af423.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
@@ -59,7 +59,7 @@
 
       <h1>
         <small class="visible-xs"> vdev</small>
-PYRExWeb.LayoutView              </h1>
+PYRExWeb.Mailer              </h1>
 
 
 
@@ -77,40 +77,18 @@ PYRExWeb.LayoutView              </h1>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#__phoenix_recompile__?/0">__phoenix_recompile__?()</a>
+    <a href="#deliver/1">deliver(email)</a>
   </div>
-    <div class="summary-synopsis"><p>Returns true whenever the list of templates changes in the filesystem</p>
-</div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#__resource__/0">__resource__()</a>
+    <a href="#deliver_later/1">deliver_later(email)</a>
   </div>
-    <div class="summary-synopsis"><p>The resource name, as an atom, for this view</p>
-</div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#__templates__/0">__templates__()</a>
+    <a href="#deliver_now/1">deliver_now(email)</a>
   </div>
-    <div class="summary-synopsis"><p>Returns the template root alongside all templates</p>
-</div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#render/2">render(template, assigns \\ %{})</a>
-  </div>
-    <div class="summary-synopsis"><p>Renders the given template locally</p>
-</div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#template_not_found/2">template_not_found(template, assigns)</a>
-  </div>
-    <div class="summary-synopsis"><p>Callback invoked when no template is found.
-By default it raises but can be customized
-to render a particular template</p>
-</div>
 </div>
   </div>
         </section>
@@ -123,72 +101,49 @@ to render a particular template</p>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="__phoenix_recompile__?/0">
+<section class="detail" id="deliver/1">
     <div class="detail-header">
-    <a href="#__phoenix_recompile__?/0" class="detail-link" title="Link to this function">
+    <a href="#deliver/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">__phoenix_recompile__?()</span>
-          </div>
-  <section class="docstring">
-<p>Returns true whenever the list of templates changes in the filesystem.</p>
-  </section>
-</section>
-<section class="detail" id="__resource__/0">
-    <div class="detail-header">
-    <a href="#__resource__/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">__resource__()</span>
-          </div>
-  <section class="docstring">
-<p>The resource name, as an atom, for this view</p>
-  </section>
-</section>
-<section class="detail" id="__templates__/0">
-    <div class="detail-header">
-    <a href="#__templates__/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">__templates__()</span>
-          </div>
-  <section class="docstring">
-<p>Returns the template root alongside all templates.</p>
-  </section>
-</section>
-<section class="detail" id="render/2">
-  
-    <span id="render/1"></span>
-  <div class="detail-header">
-    <a href="#render/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">render(template, assigns \\ %{})</span>
-          </div>
-  <section class="docstring">
-<p>Renders the given template locally.</p>
-  </section>
-</section>
-<section class="detail" id="template_not_found/2">
-    <div class="detail-header">
-    <a href="#template_not_found/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">template_not_found(template, assigns)</span>
+    <h1 class="signature">deliver(email)</span>
         
       <div class="specs">
-          <pre>template_not_found(<a href="https://hexdocs.pm/phoenix/1.4.2/Phoenix.Template.html#t:name/0">Phoenix.Template.name</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+          <pre>deliver(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
       </div>
   </div>
   <section class="docstring">
-<p>Callback invoked when no template is found.
-By default it raises but can be customized
-to render a particular template.</p>
+  </section>
+</section>
+<section class="detail" id="deliver_later/1">
+    <div class="detail-header">
+    <a href="#deliver_later/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">deliver_later(email)</span>
+        
+      <div class="specs">
+          <pre>deliver_later(<a href="https://hexdocs.pm/bamboo/1.2.0/Bamboo.Email.html#t:t/0">Bamboo.Email.t</a>()) :: <a href="https://hexdocs.pm/bamboo/1.2.0/Bamboo.Email.html#t:t/0">Bamboo.Email.t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+  </section>
+</section>
+<section class="detail" id="deliver_now/1">
+    <div class="detail-header">
+    <a href="#deliver_now/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">deliver_now(email)</span>
+        
+      <div class="specs">
+          <pre>deliver_now(<a href="https://hexdocs.pm/bamboo/1.2.0/Bamboo.Email.html#t:t/0">Bamboo.Email.t</a>()) :: <a href="https://hexdocs.pm/bamboo/1.2.0/Bamboo.Email.html#t:t/0">Bamboo.Email.t</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
   </section>
 </section>
           </div>
