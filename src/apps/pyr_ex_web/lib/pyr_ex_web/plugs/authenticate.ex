@@ -14,7 +14,7 @@ defmodule PYRExWeb.Plugs.Authenticate do
     else
       case Authenticator.verify(key) do
         {:ok, id} ->
-          assign(conn, :id, id)
+          assign(conn, :user_id, id)
 
         {:error, :invalid} ->
           conn
