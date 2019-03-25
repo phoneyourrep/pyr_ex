@@ -17,6 +17,8 @@ config :pyr_ex_web, PYRExWeb.Endpoint,
   check_origin: false,
   watchers: []
 
+# config :pyr_ex_web, PYRExWeb.Mailer, sandbox: true
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

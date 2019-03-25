@@ -3,7 +3,7 @@ defmodule PYRExWeb.Accounts.UserController do
 
   alias PYREx.Accounts
   alias PYREx.Accounts.User
-  alias PYRExWeb.Authenticator
+  alias PYRExWeb.{Authenticator, Email, Mailer}
 
   def index(conn, _params) do
     users = Accounts.list_users()
@@ -18,11 +18,14 @@ defmodule PYRExWeb.Accounts.UserController do
   def create(conn, %{"user" => user_params}) do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
-        # TODO: Add email service to mail key to user's email.
-        _key = Authenticator.generate_key(user)
+        key = Authenticator.generate_key(user)
+
+        user
+        |> Email.authentication_email(key)
+        |> Mailer.deliver_later()
 
         conn
-        |> put_flash(:info, "Check your email #{user.email} for API key")
+        |> put_flash(:info, "Check your email #{user.email} for your new API key")
         |> redirect(to: "/")
 
       {:error, %Ecto.Changeset{} = changeset} ->

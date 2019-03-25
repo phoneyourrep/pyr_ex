@@ -37,6 +37,7 @@ defmodule PYRExWeb.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bamboo, "~> 1.2"},
       {:phoenix, "~> 1.4.2"},
       {:phoenix_html, "~> 2.13"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},

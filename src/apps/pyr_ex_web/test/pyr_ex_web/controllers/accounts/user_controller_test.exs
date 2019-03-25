@@ -1,5 +1,6 @@
 defmodule PYRExWeb.Accounts.UserControllerTest do
   use PYRExWeb.ConnCase
+  # use Bamboo.Test, shared: true
 
   alias PYREx.Accounts
 
@@ -41,7 +42,7 @@ defmodule PYRExWeb.Accounts.UserControllerTest do
   describe "create user" do
     test "redirects to home when data is valid", %{conn: conn} do
       conn = post(conn, Routes.accounts_user_path(conn, :create), user: @create_attrs)
-      assert %{"info" => "Check your email some email for API key"} = get_flash(conn)
+      assert %{"info" => "Check your email some email for your new API key"} = get_flash(conn)
       assert redirected_to(conn) == "/"
     end
 
