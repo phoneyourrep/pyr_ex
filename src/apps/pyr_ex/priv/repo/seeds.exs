@@ -110,11 +110,8 @@ try do
 
   [congress_tasks, states_tasks, sldl_tasks, sldu_tasks]
   |> List.flatten()
-  |> Enum.chunk_every(3)
-  |> Enum.each(fn chunk ->
-    Enum.map(chunk, fn task -> Task.async(task) end)
-    |> Enum.each(fn task -> Task.await(task, :infinity) end)
-  end)
+  |> Task.async_stream(fn task -> task.() end, timeout: :infinity)
+  |> Stream.run()
 catch
   {:yamerl_exception,
    [
@@ -135,4 +132,5 @@ catch
 
     """
 end
+
 ##### End of Jurisdictions and Shapes #####
