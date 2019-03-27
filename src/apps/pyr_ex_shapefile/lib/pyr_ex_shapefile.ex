@@ -3,15 +3,13 @@ defmodule PYRExShapefile do
   Read shapefile data.
   """
 
-  @shp_dir "#{File.cwd!()}/shp"
-
   def shp(shapefile) do
-    File.stream!("#{@shp_dir}/#{shapefile}/#{shapefile}.shp", [], 2048)
+    File.stream!(shapefile, [], 2048)
     |> Exshape.Shp.read()
   end
 
   def dbf(shapefile) do
-    File.stream!("#{@shp_dir}/#{shapefile}/#{shapefile}.dbf", [], 2048)
+    File.stream!(shapefile, [], 2048)
     |> Exshape.Dbf.read()
   end
 
@@ -19,18 +17,18 @@ defmodule PYRExShapefile do
   Downloads the given shapefile from the U.S. Census Bureau and maps the data
   for database insertion. The file is not saved to the file system.
   """
-  def map_download(shapefile, base_url, opts \\ []) do
-    filename = "#{shapefile}.zip"
+  def map_download(filename, base_url, opts \\ []) do
     url = "#{base_url}/#{filename}"
-    opts = Keyword.merge([follow_redirect: true, max_redirects: 1], opts)
-    File.write!(filename, HTTPoison.get!(url, [], opts).body)
+    shapefile = System.tmp_dir!() <> filename
+    opts = Keyword.merge(opts, follow_redirect: true, max_redirects: 1)
+    File.write!(shapefile, HTTPoison.get!(url, [], opts).body)
 
     shapes =
       shapefile
       |> from_zip()
       |> map_shapes()
 
-    File.rm!(filename)
+    File.rm!(shapefile)
 
     shapes
   end
@@ -39,7 +37,7 @@ defmodule PYRExShapefile do
   Decodes data from a Zip archived shapefile in the current working directory.
   """
   def from_zip(shapefile) do
-    [{_, _, shapes}] = Exshape.from_zip("#{File.cwd!()}/#{shapefile}.zip")
+    [{_, _, shapes}] = Exshape.from_zip(shapefile)
     shapes
   end
 
