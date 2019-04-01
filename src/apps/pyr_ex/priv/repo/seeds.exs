@@ -10,7 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias PYRExShapefile, as: Shapefile
+alias PYREx.Shapefile
 alias PYREx.Geographies.{Shape, Jurisdiction}
 alias PYREx.Repo
 

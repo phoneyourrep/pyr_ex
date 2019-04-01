@@ -6,8 +6,8 @@ defmodule PYREx.GeographiesTest do
   describe "shapes" do
     alias PYREx.Geographies.Shape
 
-    @geom1 %Geo.Point{coordinates: {1.0, 2.0}, srid: PYRExShapefile.srid()}
-    @geom2 %Geo.Point{coordinates: {2.0, 2.0}, srid: PYRExShapefile.srid()}
+    @geom1 %Geo.Point{coordinates: {1.0, 2.0}, srid: PYREx.Shapefile.srid()}
+    @geom2 %Geo.Point{coordinates: {2.0, 2.0}, srid: PYREx.Shapefile.srid()}
 
     @valid_attrs %{
       geom: @geom1,

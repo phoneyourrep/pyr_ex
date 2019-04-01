@@ -1,4 +1,4 @@
-defmodule PYRExShapefile do
+defmodule PYREx.Shapefile do
   @moduledoc """
   Read shapefile data.
   """
@@ -83,7 +83,7 @@ defmodule PYRExShapefile do
 
   ## Examples
 
-      iex> PYRExShapefile.exshape_to_geo(%Exshape.Shp.Polygon{points: [[[
+      iex> PYREx.Shapefile.exshape_to_geo(%Exshape.Shp.Polygon{points: [[[
       ...>   %Exshape.Shp.Point{x: -96.639704, y: 42.737071},
       ...>   %Exshape.Shp.Point{x: -96.635886, y: 42.741002},
       ...>   %Exshape.Shp.Point{x: -96.632314, y: 42.745641}
@@ -112,7 +112,7 @@ defmodule PYRExShapefile do
 
   ## Examples
 
-      iex> PYRExShapefile.srid()
+      iex> PYREx.Shapefile.srid()
       3857
   """
   def srid, do: 3857

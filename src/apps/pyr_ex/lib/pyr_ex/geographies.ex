@@ -121,7 +121,7 @@ defmodule PYREx.Geographies do
   end
 
   def intersecting_shapes(coordinates = {lat, lon}) when is_number(lat) and is_number(lon) do
-    %Geo.Point{coordinates: coordinates, srid: PYRExShapefile.srid()}
+    %Geo.Point{coordinates: coordinates, srid: PYREx.Shapefile.srid()}
     |> intersecting_shapes()
   end
 
@@ -265,7 +265,7 @@ defmodule PYREx.Geographies do
 
   def intersecting_jurisdictions(coordinates = {lat, lon})
       when is_number(lat) and is_number(lon) do
-    %Geo.Point{coordinates: coordinates, srid: PYRExShapefile.srid()}
+    %Geo.Point{coordinates: coordinates, srid: PYREx.Shapefile.srid()}
     |> intersecting_jurisdictions()
   end
 

@@ -36,12 +36,14 @@ defmodule PYREx.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:exshape, "~> 2.1.2"},
+      {:geo, "~> 3.0"},
+      {:httpoison, "~> 1.5"},
       {:ecto_sql, "~> 3.0"},
       {:geo_postgis, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
       {:jason, "~> 1.0"},
       {:pyr_ex_geocoder, in_umbrella: true},
-      {:pyr_ex_shapefile, in_umbrella: true},
       {:yaml_elixir, "~> 2.1"}
     ]
   end

@@ -1,6 +1,6 @@
 defmodule PYRExShapefileTest do
   use ExUnit.Case
-  doctest PYRExShapefile
+  doctest PYREx.Shapefile
 
   @shapes [
     {%Exshape.Shp.Header{},
@@ -56,6 +56,6 @@ defmodule PYRExShapefileTest do
   ]
 
   test "maps shapefile data" do
-    assert PYRExShapefile.map_shapes(@shapes) == @mapped_shapes
+    assert PYREx.Shapefile.map_shapes(@shapes) == @mapped_shapes
   end
 end

@@ -17,7 +17,7 @@ defmodule PYRExWeb.JurisdictionControllerTest do
     mtfcc: "some mtfcc",
     geom: %Geo.Point{
       coordinates: {1.0, 2.0},
-      srid: PYRExShapefile.srid()
+      srid: PYREx.Shapefile.srid()
     }
   }
 
