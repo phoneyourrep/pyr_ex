@@ -18,7 +18,7 @@ defmodule PYRExWeb.ErrorView do
     %{errors: %{detail: Phoenix.Controller.status_message_from_template(template)}}
   end
 
-  def template_not_found(template, _assings) do
+  def template_not_found(template, _assigns) do
     Phoenix.Controller.status_message_from_template(template)
   end
 
