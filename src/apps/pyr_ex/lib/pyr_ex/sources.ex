@@ -15,11 +15,5 @@ defmodule PYREx.Sources do
     {:ok, %{body: body, status_code: 200}} = HTTPoison.get(@base_url <> "shapefiles.yml")
 
     YamlElixir.read_from_string!(body)
-    |> Stream.map(fn {k, v} ->
-      {String.to_atom(k),
-       Stream.map(v, fn {k, v} -> {String.to_atom(k), v} end)
-       |> Enum.into(%{})}
-    end)
-    |> Enum.into(%{})
   end
 end

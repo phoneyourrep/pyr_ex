@@ -16,16 +16,16 @@ alias PYREx.Repo
 
 ##### Jurisdictions and Shapes #####
 shapefiles = PYREx.Sources.shapefiles()
-congress = shapefiles.congress
-states = shapefiles.states
-sldl = shapefiles.state_legislative_districts_lower
-sldu = shapefiles.state_legislative_districts_upper
+congress = shapefiles["congress"]
+states = shapefiles["states"]
+sldl = shapefiles["state_legislative_districts_lower"]
+sldu = shapefiles["state_legislative_districts_upper"]
 
 congress_tasks =
-  Enum.map(congress.filenames, fn filename ->
+  Enum.map(congress["filenames"], fn filename ->
     fn ->
       filename
-      |> Shapefile.map_download(congress.base_url,
+      |> Shapefile.map_download(congress["base_url"],
         timeout: :infinity,
         recv_timeout: :infinity
       )
@@ -46,10 +46,10 @@ congress_tasks =
   end)
 
 states_tasks =
-  Enum.map(states.filenames, fn filename ->
+  Enum.map(states["filenames"], fn filename ->
     fn ->
       filename
-      |> Shapefile.map_download(states.base_url, timeout: :infinity, recv_timeout: :infinity)
+      |> Shapefile.map_download(states["base_url"], timeout: :infinity, recv_timeout: :infinity)
       |> Enum.map(fn shape ->
         Shape.changeset(%Shape{}, shape)
         |> Repo.insert!()
@@ -66,10 +66,10 @@ states_tasks =
   end)
 
 sldl_tasks =
-  Enum.map(sldl.filenames, fn filename ->
+  Enum.map(sldl["filenames"], fn filename ->
     fn ->
       filename
-      |> Shapefile.map_download(sldl.base_url, timeout: :infinity, recv_timeout: :infinity)
+      |> Shapefile.map_download(sldl["base_url"], timeout: :infinity, recv_timeout: :infinity)
       |> Enum.each(fn shape ->
         Shape.changeset(%Shape{}, shape)
         |> Repo.insert!()
@@ -87,10 +87,10 @@ sldl_tasks =
   end)
 
 sldu_tasks =
-  Enum.map(sldu.filenames, fn filename ->
+  Enum.map(sldu["filenames"], fn filename ->
     fn ->
       filename
-      |> Shapefile.map_download(sldu.base_url, timeout: :infinity, recv_timeout: :infinity)
+      |> Shapefile.map_download(sldu["base_url"], timeout: :infinity, recv_timeout: :infinity)
       |> Enum.each(fn shape ->
         Shape.changeset(%Shape{}, shape)
         |> Repo.insert!()
@@ -111,4 +111,5 @@ sldu_tasks =
 |> List.flatten()
 |> Task.async_stream(fn task -> task.() end, timeout: :infinity)
 |> Stream.run()
+
 ##### End of Jurisdictions and Shapes #####
