@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.3">
     <title>PYRExWeb.Authenticator —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
-    <script src="dist/sidebar_items-f0060af423.js"></script>
+    <script src="dist/sidebar_items-cd84803000.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
     
   </head>
@@ -118,9 +118,9 @@ Functions          </h1>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0849915792-1">%</span><span class="nc" data-group-id="0849915792-1">PYREx.Accounts.User</span><span class="p" data-group-id="0849915792-1">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p" data-group-id="0849915792-1">}</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">PYRExWeb.Authenticator</span><span class="o">.</span><span class="n">generate_key</span><span class="p" data-group-id="0849915792-2">(</span><span class="n">user</span><span class="p" data-group-id="0849915792-2">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">is_binary</span><span class="p" data-group-id="0849915792-3">(</span><span class="n">key</span><span class="p" data-group-id="0849915792-3">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2421500890-1">%</span><span class="nc" data-group-id="2421500890-1">PYREx.Accounts.User</span><span class="p" data-group-id="2421500890-1">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p" data-group-id="2421500890-1">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">PYRExWeb.Authenticator</span><span class="o">.</span><span class="n">generate_key</span><span class="p" data-group-id="2421500890-2">(</span><span class="n">user</span><span class="p" data-group-id="2421500890-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">is_binary</span><span class="p" data-group-id="2421500890-3">(</span><span class="n">key</span><span class="p" data-group-id="2421500890-3">)</span><span class="w">
 </span><span class="no">true</span></code></pre>
   </section>
 </section>
@@ -141,10 +141,10 @@ Functions          </h1>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6348779610-1">%</span><span class="nc" data-group-id="6348779610-1">PYREx.Accounts.User</span><span class="p" data-group-id="6348779610-1">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p" data-group-id="6348779610-1">}</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">PYRExWeb.Authenticator</span><span class="o">.</span><span class="n">generate_key</span><span class="p" data-group-id="6348779610-2">(</span><span class="n">user</span><span class="p" data-group-id="6348779610-2">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">PYRExWeb.Authenticator</span><span class="o">.</span><span class="n">verify</span><span class="p" data-group-id="6348779610-3">(</span><span class="n">key</span><span class="p" data-group-id="6348779610-3">)</span><span class="w">
-</span><span class="p" data-group-id="6348779610-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">34</span><span class="p" data-group-id="6348779610-4">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="3983623632-1">%</span><span class="nc" data-group-id="3983623632-1">PYREx.Accounts.User</span><span class="p" data-group-id="3983623632-1">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p" data-group-id="3983623632-1">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">PYRExWeb.Authenticator</span><span class="o">.</span><span class="n">generate_key</span><span class="p" data-group-id="3983623632-2">(</span><span class="n">user</span><span class="p" data-group-id="3983623632-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">PYRExWeb.Authenticator</span><span class="o">.</span><span class="n">verify</span><span class="p" data-group-id="3983623632-3">(</span><span class="n">key</span><span class="p" data-group-id="3983623632-3">)</span><span class="w">
+</span><span class="p" data-group-id="3983623632-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">34</span><span class="p" data-group-id="3983623632-4">}</span></code></pre>
   </section>
 </section>
           </div>
