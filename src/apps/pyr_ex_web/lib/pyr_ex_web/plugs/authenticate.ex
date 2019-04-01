@@ -1,4 +1,10 @@
 defmodule PYRExWeb.Plugs.Authenticate do
+  @moduledoc """
+  Authenticates the requestor's API key.
+
+  Checks the existence and value of the `"api_key"` query parameter
+  and redirects connection based on authentication of the key.
+  """
   import Plug.Conn
   import Phoenix.Controller, only: [render: 3, put_view: 2]
   alias PYRExWeb.Authenticator
