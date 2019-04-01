@@ -34,7 +34,7 @@ defmodule PYRExWeb.Authenticator do
       {:ok, 34}
   """
   def verify(key, opts \\ []) do
-    max_age = Keyword.get(opts, :max_age, :infinity)
-    Phoenix.Token.verify(Endpoint, @salt, key, max_age: max_age)
+    opts = Keyword.merge([max_age: :infinity], opts)
+    Phoenix.Token.verify(Endpoint, @salt, key, opts)
   end
 end

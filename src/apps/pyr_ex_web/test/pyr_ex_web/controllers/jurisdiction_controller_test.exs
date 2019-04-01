@@ -52,6 +52,28 @@ defmodule PYRExWeb.JurisdictionControllerTest do
                "pyrgeoid" => "some mtfccsome geoid"
              } = json_response(conn, 200)["data"]
     end
+
+    test "returns error without an api key", %{conn: conn} do
+      j = fixture(:jurisdiction)
+      conn = get(conn, Routes.jurisdiction_path(conn, :show, j.id))
+
+      assert %{
+               "errors" => %{
+                 "detail" => "API key required"
+               }
+             } = json_response(conn, 200)
+    end
+
+    test "returns error with invalid api key", %{conn: conn} do
+      j = fixture(:jurisdiction)
+      conn = get(conn, Routes.jurisdiction_path(conn, :show, j.id), api_key: "invalid_key")
+
+      assert %{
+               "errors" => %{
+                 "detail" => "Invalid API key: invalid_key"
+               }
+             } = json_response(conn, 200)
+    end
   end
 
   describe "index" do
@@ -98,6 +120,26 @@ defmodule PYRExWeb.JurisdictionControllerTest do
         get(conn, Routes.jurisdiction_path(conn, :index, lat: "2.0", lon: "2.0", api_key: key))
 
       assert json_response(conn, 200)["data"] == []
+    end
+
+    test "returns error without an api key", %{conn: conn} do
+      conn = get(conn, Routes.jurisdiction_path(conn, :index))
+
+      assert %{
+               "errors" => %{
+                 "detail" => "API key required"
+               }
+             } = json_response(conn, 200)
+    end
+
+    test "returns error with invalid api key", %{conn: conn} do
+      conn = get(conn, Routes.jurisdiction_path(conn, :index), api_key: "invalid_key")
+
+      assert %{
+               "errors" => %{
+                 "detail" => "Invalid API key: invalid_key"
+               }
+             } = json_response(conn, 200)
     end
   end
 end

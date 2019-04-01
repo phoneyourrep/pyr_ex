@@ -11,6 +11,7 @@ defmodule PYRExWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug PYRExWeb.Plugs.Authenticate
   end
 
   scope "/", PYRExWeb do

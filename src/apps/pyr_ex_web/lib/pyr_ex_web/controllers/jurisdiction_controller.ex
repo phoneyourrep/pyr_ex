@@ -3,8 +3,6 @@ defmodule PYRExWeb.JurisdictionController do
 
   alias PYREx.Geographies
 
-  plug PYRExWeb.Plugs.Authenticate
-
   action_fallback PYRExWeb.FallbackController
 
   def index(conn, %{"address" => address}) do
