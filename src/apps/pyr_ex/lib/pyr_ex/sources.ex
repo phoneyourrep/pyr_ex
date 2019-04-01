@@ -9,11 +9,16 @@ defmodule PYREx.Sources do
   @base_url "https://raw.githubusercontent.com/phoneyourrep/sources/master/"
 
   @doc """
-  The url paths for shapefile data.
+  Get a list of sources from remote repo.
   """
-  def shapefiles do
-    {:ok, %{body: body, status_code: 200}} = HTTPoison.get(@base_url <> "shapefiles.yml")
+  def get(resource) do
+    {:ok, %{body: body, status_code: 200}} = HTTPoison.get(@base_url <> resource)
 
     YamlElixir.read_from_string!(body)
   end
+
+  @doc """
+  The url paths for shapefile data.
+  """
+  def shapefiles, do: get("shapefiles.yml")
 end
