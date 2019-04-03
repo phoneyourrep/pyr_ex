@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.3">
     <title>PYREx.TestFixtures —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
-    <script src="dist/sidebar_items-e69c955787.js"></script>
+    <script src="dist/sidebar_items-443b51a8a7.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
     
   </head>
@@ -60,13 +60,13 @@
 
       <h1>
         <small class="visible-xs"> vdev</small>
-PYREx.TestFixtures              </h1>
+PYREx.TestFixtures <small>behaviour</small>              </h1>
 
 
         <section id="moduledoc">
 <p>A module for defining fixtures that can be used in tests.
 This module can be used with a list of fixtures to apply as parameters:</p>
-<pre><code class="nohighlight makeup elixir"><span class="kn">use</span><span class="w"> </span><span class="nc">PYREx.TestFixtures</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9793074753-1">[</span><span class="ss">:user</span><span class="p" data-group-id="9793074753-1">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="kn">use</span><span class="w"> </span><span class="nc">PYREx.TestFixtures</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2398723057-1">[</span><span class="ss">:user</span><span class="p" data-group-id="2398723057-1">]</span></code></pre>
         </section>
 
         <section id="summary" class="details-list">
@@ -77,56 +77,55 @@ This module can be used with a list of fixtures to apply as parameters:</p>
             </a>
             Summary
           </h1>
-  <div class="summary-functions summary">
+  <div class="summary-callbacks summary">
     <h2>
-      <a href="#functions">Functions</a>
+      <a href="#callbacks">Callbacks</a>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#__using__/1">__using__(fixtures)</a>
+    <a href="#c:user_fixture/1">user_fixture(attrs)</a>
   </div>
-    <div class="summary-synopsis"><p>Apply the <code class="inline">fixtures</code></p>
+    <div class="summary-synopsis"><p>Returns a valid user after inserting it into the database</p>
 </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#user/0">user()</a>
-  </div>
 </div>
   </div>
         </section>
 
-        <section id="functions" class="details-list">
+        <section id="callbacks" class="details-list">
           <h1 class="section-heading">
-            <a class="hover-link" href="#functions">
+            <a class="hover-link" href="#callbacks">
               <span class="icon-link" aria-hidden="true"></span>
               <span class="sr-only">Link to this section</span>
             </a>
-Functions          </h1>
-          <div class="functions-list">
-<section class="detail" id="__using__/1">
+Callbacks          </h1>
+          <div class="callbacks-list">
+<section class="detail" id="c:user_fixture/1">
     <div class="detail-header">
-    <a href="#__using__/1" class="detail-link" title="Link to this macro">
+    <a href="#c:user_fixture/1" class="detail-link" title="Link to this callback">
       <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this macro</span>
+      <span class="sr-only">Link to this callback</span>
     </a>
-    <h1 class="signature">__using__(fixtures)</span>
+    <h1 class="signature">user_fixture(attrs)</span>
     
-      <span class="note">(macro)</span>
+      <span class="note">(optional)</span>
+    
+      <div class="specs">
+          <pre>user_fixture(attrs :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="PYREx.Accounts.User.html#t:t/0">PYREx.Accounts.User.t</a>()</pre>
       </div>
+  </div>
   <section class="docstring">
-<p>Apply the <code class="inline">fixtures</code>.</p>
-  </section>
-</section>
-<section class="detail" id="user/0">
-    <div class="detail-header">
-    <a href="#user/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">user()</span>
-          </div>
-  <section class="docstring">
+<p>Returns a valid user after inserting it into the database.</p>
+<p>A map of attrs can be passed as an argument to override the defaults.</p>
+<h2 id="c:user_fixture/1-examples" class="section-heading">
+  <a href="#c:user_fixture/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt;</span><span class="n">user_fixture</span><span class="p" data-group-id="7183168507-1">(</span><span class="p" data-group-id="7183168507-1">)</span><span class="w">
+</span><span class="p" data-group-id="7183168507-2">%</span><span class="nc" data-group-id="7183168507-2">PYREx.Accounts.User</span><span class="p" data-group-id="7183168507-2">{</span><span class="p" data-group-id="7183168507-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt;</span><span class="n">user_fixture</span><span class="p" data-group-id="7183168507-3">(</span><span class="p" data-group-id="7183168507-4">%{</span><span class="ss">is_authorized</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="7183168507-4">}</span><span class="p" data-group-id="7183168507-3">)</span><span class="w">
+</span><span class="p" data-group-id="7183168507-5">%</span><span class="nc" data-group-id="7183168507-5">PYREx.Accounts.User</span><span class="p" data-group-id="7183168507-5">{</span><span class="ss">is_authorized</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="7183168507-5">}</span></code></pre>
   </section>
 </section>
           </div>

@@ -7,6 +7,25 @@ defmodule PYREx.TestFixtures do
 
   """
 
+  @doc """
+  Returns a valid user after inserting it into the database.
+
+  A map of attrs can be passed as an argument to override the defaults.
+
+  ## Examples
+
+      iex>user_fixture()
+      %PYREx.Accounts.User{}
+
+      iex>user_fixture(%{is_authorized: false})
+      %PYREx.Accounts.User{is_authorized: false}
+
+  """
+  @callback user_fixture(attrs :: map) :: PYREx.Accounts.User.t()
+
+  @optional_callbacks [user_fixture: 1]
+
+  @doc false
   def user do
     alias PYREx.Accounts
 
@@ -45,9 +64,7 @@ defmodule PYREx.TestFixtures do
     end
   end
 
-  @doc """
-  Apply the `fixtures`.
-  """
+  @doc false
   defmacro __using__(fixtures) when is_list(fixtures) do
     for fixture <- fixtures, is_atom(fixture), do: apply(__MODULE__, fixture, [])
   end
