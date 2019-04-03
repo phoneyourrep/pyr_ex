@@ -1,29 +1,7 @@
 defmodule PYRExWeb.Accounts.UserControllerTest do
   use PYRExWeb.ConnCase
+  use PYREx.TestFixtures, [:user]
   # use Bamboo.Test, shared: true
-
-  alias PYREx.Accounts
-
-  @create_attrs %{
-    email: "some email",
-    intended_usage: "some intended_usage",
-    name: "some name",
-    organization: "some organization",
-    website: "some website"
-  }
-  @update_attrs %{
-    email: "some updated email",
-    intended_usage: "some updated intended_usage",
-    name: "some updated name",
-    organization: "some updated organization",
-    website: "some updated website"
-  }
-  @invalid_attrs %{email: nil, intended_usage: nil, name: nil, organization: nil, website: nil}
-
-  def fixture(:user) do
-    {:ok, user} = Accounts.create_user(@create_attrs)
-    user
-  end
 
   describe "index" do
     test "lists all users", %{conn: conn} do
@@ -41,8 +19,8 @@ defmodule PYRExWeb.Accounts.UserControllerTest do
 
   describe "create user" do
     test "redirects to home when data is valid", %{conn: conn} do
-      conn = post(conn, Routes.accounts_user_path(conn, :create), user: @create_attrs)
-      assert %{"info" => "Check your email some email for your new API key"} = get_flash(conn)
+      conn = post(conn, Routes.accounts_user_path(conn, :create), user: @valid_attrs)
+      assert %{"info" => "Check your email some@email for your new API key"} = get_flash(conn)
       assert redirected_to(conn) == "/"
     end
 
@@ -69,7 +47,7 @@ defmodule PYRExWeb.Accounts.UserControllerTest do
       assert redirected_to(conn) == Routes.accounts_user_path(conn, :show, user)
 
       conn = get(conn, Routes.accounts_user_path(conn, :show, user))
-      assert html_response(conn, 200) =~ "some updated email"
+      assert html_response(conn, 200) =~ "some.updated@email"
     end
 
     test "renders errors when data is invalid", %{conn: conn, user: user} do
@@ -92,7 +70,7 @@ defmodule PYRExWeb.Accounts.UserControllerTest do
   end
 
   defp create_user(_) do
-    user = fixture(:user)
+    user = user_fixture()
     {:ok, user: user}
   end
 end

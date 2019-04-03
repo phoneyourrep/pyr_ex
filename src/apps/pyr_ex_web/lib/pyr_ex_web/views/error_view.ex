@@ -29,4 +29,8 @@ defmodule PYRExWeb.ErrorView do
   def render("no_key.json", _assigns) do
     %{errors: %{detail: "API key required"}}
   end
+
+  def render("unauthorized.json", _assigns) do
+    %{errors: %{detail: "API key is unauthorized due to misuse"}}
+  end
 end

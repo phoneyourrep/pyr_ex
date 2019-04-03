@@ -9,21 +9,6 @@ defmodule PYRExGeocoder do
   @headers [{"Accept", "application/json"}]
   @params [benchmark: "Public_AR_Current"]
 
-  @doc false
-  def process_request_url(url) do
-    @base_url <> url
-  end
-
-  @doc false
-  def process_request_headers(headers) do
-    @headers ++ headers
-  end
-
-  @doc false
-  def process_request_options(options) do
-    update_in(options, [:params], fn x -> Keyword.merge(x, @params) end)
-  end
-
   @doc """
   Geocodes an address into x/y coordinates.
 
@@ -44,5 +29,20 @@ defmodule PYRExGeocoder do
       %{"x" => x, "y" => y} -> {:ok, %{x: x, y: y}}
       _ -> :error
     end
+  end
+
+  @doc false
+  def process_request_url(url) do
+    @base_url <> url
+  end
+
+  @doc false
+  def process_request_headers(headers) do
+    @headers ++ headers
+  end
+
+  @doc false
+  def process_request_options(options) do
+    update_in(options, [:params], fn x -> Keyword.merge(x, @params) end)
   end
 end
