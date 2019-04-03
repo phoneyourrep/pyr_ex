@@ -481,8 +481,8 @@ Functions          </h1>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">PYRExGeocoder</span><span class="o">.</span><span class="n">coordinates</span><span class="p" data-group-id="6456071550-1">(</span><span class="s">&quot;1600 Pennsylvania Ave NW, Washington, D.C., 20500&quot;</span><span class="p" data-group-id="6456071550-1">)</span><span class="w">
-</span><span class="p" data-group-id="6456071550-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6456071550-3">%{</span><span class="ss">x</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mf">77.03535</span><span class="p">,</span><span class="w"> </span><span class="ss">y</span><span class="p">:</span><span class="w"> </span><span class="mf">38.898754</span><span class="p" data-group-id="6456071550-3">}</span><span class="p" data-group-id="6456071550-2">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">PYRExGeocoder</span><span class="o">.</span><span class="n">coordinates</span><span class="p" data-group-id="6398623386-1">(</span><span class="s">&quot;1600 Pennsylvania Ave NW, Washington, D.C., 20500&quot;</span><span class="p" data-group-id="6398623386-1">)</span><span class="w">
+</span><span class="p" data-group-id="6398623386-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6398623386-3">%{</span><span class="ss">x</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mf">77.03535</span><span class="p">,</span><span class="w"> </span><span class="ss">y</span><span class="p">:</span><span class="w"> </span><span class="mf">38.898754</span><span class="p" data-group-id="6398623386-3">}</span><span class="p" data-group-id="6398623386-2">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="delete/3">
@@ -1024,14 +1024,14 @@ request is successful, <code class="inline">{:error, reason}</code> otherwise.</
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9962485688-1">%</span><span class="nc" data-group-id="9962485688-1">HTTPoison.Request</span><span class="p" data-group-id="9962485688-1">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="3720399741-1">%</span><span class="nc" data-group-id="3720399741-1">HTTPoison.Request</span><span class="p" data-group-id="3720399741-1">{</span><span class="w">
   </span><span class="ss">method</span><span class="p">:</span><span class="w"> </span><span class="ss">:post</span><span class="p">,</span><span class="w">
   </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://my.website.com&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">foo</span><span class="se">\&quot;</span><span class="s">: 3}&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="ss">headers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9962485688-2">[</span><span class="p" data-group-id="9962485688-3">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="9962485688-3">}</span><span class="p" data-group-id="9962485688-2">]</span><span class="w">
-</span><span class="p" data-group-id="9962485688-1">}</span><span class="w">
+  </span><span class="ss">headers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3720399741-2">[</span><span class="p" data-group-id="3720399741-3">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="3720399741-3">}</span><span class="p" data-group-id="3720399741-2">]</span><span class="w">
+</span><span class="p" data-group-id="3720399741-1">}</span><span class="w">
 
-</span><span class="n">request</span><span class="p" data-group-id="9962485688-4">(</span><span class="n">request</span><span class="p" data-group-id="9962485688-4">)</span></code></pre>
+</span><span class="n">request</span><span class="p" data-group-id="3720399741-4">(</span><span class="n">request</span><span class="p" data-group-id="3720399741-4">)</span></code></pre>
   </section>
 </section>
 <section class="detail" id="request/5">
@@ -1080,7 +1080,7 @@ request is successful, <code class="inline">{:error, reason}</code> otherwise.</
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="n">request</span><span class="p" data-group-id="4459047419-1">(</span><span class="ss">:post</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;https://my.website.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">foo</span><span class="se">\&quot;</span><span class="s">: 3}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4459047419-2">[</span><span class="p" data-group-id="4459047419-3">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="4459047419-3">}</span><span class="p" data-group-id="4459047419-2">]</span><span class="p" data-group-id="4459047419-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">request</span><span class="p" data-group-id="7974390572-1">(</span><span class="ss">:post</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;https://my.website.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">foo</span><span class="se">\&quot;</span><span class="s">: 3}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7974390572-2">[</span><span class="p" data-group-id="7974390572-3">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="7974390572-3">}</span><span class="p" data-group-id="7974390572-2">]</span><span class="p" data-group-id="7974390572-1">)</span></code></pre>
   </section>
 </section>
 <section class="detail" id="request!/5">

@@ -25,7 +25,7 @@ defmodule Mix.Tasks.PyrEx.Build do
     build_docs(argv)
   end
 
-  @spec run_formatter([binary()], keyword) :: any()
+  @spec run_formatter([binary()], keyword()) :: any()
   defp run_formatter(argv, opts) do
     if Keyword.get(opts, :format, true) do
       Mix.shell().info("#{cyan()}#{bright()}Running formatter")
@@ -37,7 +37,7 @@ defmodule Mix.Tasks.PyrEx.Build do
   @spec run_tests([binary()]) :: any()
   defp run_tests(argv), do: Mix.Task.run("test", argv)
 
-  @spec build_docs([binary]) :: any
+  @spec build_docs([binary()]) :: any()
   defp build_docs(argv) do
     Mix.Task.run("docs", argv)
     File.rm_rf!("../docs")
