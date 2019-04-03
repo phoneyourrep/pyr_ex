@@ -5,7 +5,10 @@ defmodule PYREx.Umbrella.MixProject do
     [
       apps_path: "apps",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      preferred_cli_env: [
+        "pyr_ex.build": :test
+      ]
     ]
   end
 

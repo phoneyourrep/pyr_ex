@@ -4,13 +4,14 @@ dist/html/fonts/icomoon.eot
 dist/html/fonts/icomoon.svg
 dist/html/fonts/icomoon.ttf
 dist/html/fonts/icomoon.woff
-dist/sidebar_items-cd84803000.js
+dist/sidebar_items-1b57cee04a.js
 api-reference.html
 search.html
 404.html
 PYREx.html
 PYREx.Accounts.html
 PYREx.Accounts.User.html
+PYREx.DataCase.html
 PYREx.Geographies.html
 PYREx.Geographies.Jurisdiction.html
 PYREx.Geographies.Shape.html
@@ -24,6 +25,8 @@ PYRExWeb.Accounts.UserController.html
 PYRExWeb.Accounts.UserView.html
 PYRExWeb.Authenticator.html
 PYRExWeb.ChangesetView.html
+PYRExWeb.ChannelCase.html
+PYRExWeb.ConnCase.html
 PYRExWeb.Email.html
 PYRExWeb.Endpoint.html
 PYRExWeb.ErrorHelpers.html
@@ -40,4 +43,5 @@ PYRExWeb.Plugs.Authenticate.html
 PYRExWeb.Router.html
 PYRExWeb.Router.Helpers.html
 PYRExWeb.UserSocket.html
+Mix.Tasks.PyrEx.Build.html
 index.html

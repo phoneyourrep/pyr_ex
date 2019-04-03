@@ -5,13 +5,13 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.19.3">
-    <title>PYRExWeb —  vdev</title>
+    <title>pyr_ex.build —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
     <script src="dist/sidebar_items-1b57cee04a.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
     
   </head>
-  <body data-type="modules">
+  <body data-type="tasks">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
     <div class="main">
 <button class="sidebar-button sidebar-toggle">
@@ -60,21 +60,20 @@
 
       <h1>
         <small class="visible-xs"> vdev</small>
-PYRExWeb              </h1>
+mix pyr_ex.build              </h1>
 
 
         <section id="moduledoc">
-<p>The entrypoint for defining your web interface, such
-as controllers, views, channels and so on.</p>
-<p>This can be used in your application as:</p>
-<pre><code class="nohighlight makeup elixir"><span class="kn">use</span><span class="w"> </span><span class="nc">PYRExWeb</span><span class="p">,</span><span class="w"> </span><span class="ss">:controller</span><span class="w">
-</span><span class="kn">use</span><span class="w"> </span><span class="nc">PYRExWeb</span><span class="p">,</span><span class="w"> </span><span class="ss">:view</span></code></pre>
-<p>The definitions below will be executed for every view,
-controller, etc, so keep them short and clean, focused
-on imports, uses and aliases.</p>
-<p>Do NOT define functions inside the quoted expressions
-below. Instead, define any helper function in modules
-and import those modules here.</p>
+<p>Build task for contributing to the PYREx umbrella app.</p>
+<ul>
+<li>Runs the formatter
+</li>
+<li>Runs tests on all sub apps
+</li>
+<li>Generates docs
+</li>
+</ul>
+<p>Run it in the <code class="inline">./src</code> directory with command <a href="#content"><code class="inline">mix pyr_ex.build</code></a>.</p>
         </section>
 
         <section id="summary" class="details-list">
@@ -91,30 +90,10 @@ and import those modules here.</p>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#__using__/1">__using__(which)</a>
+    <a href="#run/1">run(argv)</a>
   </div>
-    <div class="summary-synopsis"><p>When used, dispatch to the appropriate controller/view/etc</p>
+    <div class="summary-synopsis"><p>Runs the <code class="inline">pyr_ex.build</code> task</p>
 </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#channel/0">channel()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#controller/0">controller()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#router/0">router()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#view/0">view()</a>
-  </div>
 </div>
   </div>
         </section>
@@ -127,62 +106,20 @@ and import those modules here.</p>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="__using__/1">
+<section class="detail" id="run/1">
     <div class="detail-header">
-    <a href="#__using__/1" class="detail-link" title="Link to this macro">
+    <a href="#run/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this macro</span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">__using__(which)</span>
-    
-      <span class="note">(macro)</span>
+    <h1 class="signature">run(argv)</span>
+        
+      <div class="specs">
+          <pre>run(argv :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]) :: {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()}</pre>
       </div>
+  </div>
   <section class="docstring">
-<p>When used, dispatch to the appropriate controller/view/etc.</p>
-  </section>
-</section>
-<section class="detail" id="channel/0">
-    <div class="detail-header">
-    <a href="#channel/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">channel()</span>
-          </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="controller/0">
-    <div class="detail-header">
-    <a href="#controller/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">controller()</span>
-          </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="router/0">
-    <div class="detail-header">
-    <a href="#router/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">router()</span>
-          </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="view/0">
-    <div class="detail-header">
-    <a href="#view/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">view()</span>
-          </div>
-  <section class="docstring">
+<p>Runs the <code class="inline">pyr_ex.build</code> task.</p>
   </section>
 </section>
           </div>

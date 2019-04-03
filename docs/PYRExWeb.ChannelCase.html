@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.19.3">
-    <title>PYRExWeb.HomeController —  vdev</title>
+    <title>PYRExWeb.ChannelCase —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
     <script src="dist/sidebar_items-1b57cee04a.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
@@ -60,51 +60,22 @@
 
       <h1>
         <small class="visible-xs"> vdev</small>
-PYRExWeb.HomeController              </h1>
+PYRExWeb.ChannelCase              </h1>
 
 
-
-        <section id="summary" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#summary">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-            Summary
-          </h1>
-  <div class="summary-functions summary">
-    <h2>
-      <a href="#functions">Functions</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#index/2">index(conn, params)</a>
-  </div>
-</div>
-  </div>
+        <section id="moduledoc">
+<p>This module defines the test case to be used by
+channel tests.</p>
+<p>Such tests rely on <a href="https://hexdocs.pm/phoenix/1.4.2/Phoenix.ChannelTest.html"><code class="inline">Phoenix.ChannelTest</code></a> and also
+import other functionality to make it easier
+to build common data structures and query the data layer.</p>
+<p>Finally, if the test case interacts with the database,
+it cannot be async. For this reason, every test runs
+inside a transaction which is reset at the beginning
+of the test unless the test case is marked as async.</p>
         </section>
 
-        <section id="functions" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#functions">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Functions          </h1>
-          <div class="functions-list">
-<section class="detail" id="index/2">
-    <div class="detail-header">
-    <a href="#index/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">index(conn, params)</span>
-          </div>
-  <section class="docstring">
-  </section>
-</section>
-          </div>
-        </section>
+
           <footer class="footer">
         <p>
           <span class="line">

@@ -6,8 +6,20 @@ defmodule PYREx.AccountsTest do
   describe "users" do
     alias PYREx.Accounts.User
 
-    @valid_attrs %{email: "some email", intended_usage: "some intended_usage", name: "some name", organization: "some organization", website: "some website"}
-    @update_attrs %{email: "some updated email", intended_usage: "some updated intended_usage", name: "some updated name", organization: "some updated organization", website: "some updated website"}
+    @valid_attrs %{
+      email: "some email",
+      intended_usage: "some intended_usage",
+      name: "some name",
+      organization: "some organization",
+      website: "some website"
+    }
+    @update_attrs %{
+      email: "some updated email",
+      intended_usage: "some updated intended_usage",
+      name: "some updated name",
+      organization: "some updated organization",
+      website: "some updated website"
+    }
     @invalid_attrs %{email: nil, intended_usage: nil, name: nil, organization: nil, website: nil}
 
     def user_fixture(attrs \\ %{}) do

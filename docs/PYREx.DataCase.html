@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.19.3">
-    <title>PYRExWeb —  vdev</title>
+    <title>PYREx.DataCase —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
     <script src="dist/sidebar_items-1b57cee04a.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
@@ -60,21 +60,18 @@
 
       <h1>
         <small class="visible-xs"> vdev</small>
-PYRExWeb              </h1>
+PYREx.DataCase              </h1>
 
 
         <section id="moduledoc">
-<p>The entrypoint for defining your web interface, such
-as controllers, views, channels and so on.</p>
-<p>This can be used in your application as:</p>
-<pre><code class="nohighlight makeup elixir"><span class="kn">use</span><span class="w"> </span><span class="nc">PYRExWeb</span><span class="p">,</span><span class="w"> </span><span class="ss">:controller</span><span class="w">
-</span><span class="kn">use</span><span class="w"> </span><span class="nc">PYRExWeb</span><span class="p">,</span><span class="w"> </span><span class="ss">:view</span></code></pre>
-<p>The definitions below will be executed for every view,
-controller, etc, so keep them short and clean, focused
-on imports, uses and aliases.</p>
-<p>Do NOT define functions inside the quoted expressions
-below. Instead, define any helper function in modules
-and import those modules here.</p>
+<p>This module defines the setup for tests requiring
+access to the application&#39;s data layer.</p>
+<p>You may define functions here to be used as helpers in
+your tests.</p>
+<p>Finally, if the test case interacts with the database,
+it cannot be async. For this reason, every test runs
+inside a transaction which is reset at the beginning
+of the test unless the test case is marked as async.</p>
         </section>
 
         <section id="summary" class="details-list">
@@ -91,30 +88,10 @@ and import those modules here.</p>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#__using__/1">__using__(which)</a>
+    <a href="#errors_on/1">errors_on(changeset)</a>
   </div>
-    <div class="summary-synopsis"><p>When used, dispatch to the appropriate controller/view/etc</p>
+    <div class="summary-synopsis"><p>A helper that transforms changeset errors into a map of messages</p>
 </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#channel/0">channel()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#controller/0">controller()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#router/0">router()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#view/0">view()</a>
-  </div>
 </div>
   </div>
         </section>
@@ -127,62 +104,19 @@ and import those modules here.</p>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="__using__/1">
+<section class="detail" id="errors_on/1">
     <div class="detail-header">
-    <a href="#__using__/1" class="detail-link" title="Link to this macro">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this macro</span>
-    </a>
-    <h1 class="signature">__using__(which)</span>
-    
-      <span class="note">(macro)</span>
-      </div>
-  <section class="docstring">
-<p>When used, dispatch to the appropriate controller/view/etc.</p>
-  </section>
-</section>
-<section class="detail" id="channel/0">
-    <div class="detail-header">
-    <a href="#channel/0" class="detail-link" title="Link to this function">
+    <a href="#errors_on/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">channel()</span>
+    <h1 class="signature">errors_on(changeset)</span>
           </div>
   <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="controller/0">
-    <div class="detail-header">
-    <a href="#controller/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">controller()</span>
-          </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="router/0">
-    <div class="detail-header">
-    <a href="#router/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">router()</span>
-          </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="view/0">
-    <div class="detail-header">
-    <a href="#view/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">view()</span>
-          </div>
-  <section class="docstring">
+<p>A helper that transforms changeset errors into a map of messages.</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">assert</span><span class="w"> </span><span class="p" data-group-id="4516325904-1">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">changeset</span><span class="p" data-group-id="4516325904-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Accounts</span><span class="o">.</span><span class="n">create_user</span><span class="p" data-group-id="4516325904-2">(</span><span class="p" data-group-id="4516325904-3">%{</span><span class="ss">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;short&quot;</span><span class="p" data-group-id="4516325904-3">}</span><span class="p" data-group-id="4516325904-2">)</span><span class="w">
+</span><span class="n">assert</span><span class="w"> </span><span class="s">&quot;password is too short&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">errors_on</span><span class="p" data-group-id="4516325904-4">(</span><span class="n">changeset</span><span class="p" data-group-id="4516325904-4">)</span><span class="o">.</span><span class="n">password</span><span class="w">
+</span><span class="n">assert</span><span class="w"> </span><span class="p" data-group-id="4516325904-5">%{</span><span class="ss">password</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4516325904-6">[</span><span class="s">&quot;password is too short&quot;</span><span class="p" data-group-id="4516325904-6">]</span><span class="p" data-group-id="4516325904-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">errors_on</span><span class="p" data-group-id="4516325904-7">(</span><span class="n">changeset</span><span class="p" data-group-id="4516325904-7">)</span></code></pre>
   </section>
 </section>
           </div>

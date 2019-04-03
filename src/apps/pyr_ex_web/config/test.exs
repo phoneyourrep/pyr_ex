@@ -10,5 +10,4 @@ config :pyr_ex_web, PYRExWeb.Endpoint,
   http: [port: 4002],
   server: false
 
-config :pyr_ex_web, PYRExWeb.Mailer,
-  adapter: Bamboo.TestAdapter
+config :pyr_ex_web, PYRExWeb.Mailer, adapter: Bamboo.TestAdapter
