@@ -4,7 +4,7 @@ dist/html/fonts/icomoon.eot
 dist/html/fonts/icomoon.svg
 dist/html/fonts/icomoon.ttf
 dist/html/fonts/icomoon.woff
-dist/sidebar_items-1b57cee04a.js
+dist/sidebar_items-e69c955787.js
 api-reference.html
 search.html
 404.html
@@ -19,6 +19,7 @@ PYREx.Repo.html
 PYREx.Schema.html
 PYREx.Shapefile.html
 PYREx.Sources.html
+PYREx.TestFixtures.html
 PYRExGeocoder.html
 PYRExWeb.html
 PYRExWeb.Accounts.UserController.html

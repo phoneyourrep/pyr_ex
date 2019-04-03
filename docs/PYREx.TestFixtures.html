@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.19.3">
-    <title>PYREx —  vdev</title>
+    <title>PYREx.TestFixtures —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
     <script src="dist/sidebar_items-e69c955787.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
@@ -60,17 +60,77 @@
 
       <h1>
         <small class="visible-xs"> vdev</small>
-PYREx              </h1>
+PYREx.TestFixtures              </h1>
 
 
         <section id="moduledoc">
-<p>PYREx keeps the contexts that define your domain
-and business logic.</p>
-<p>Contexts are also responsible for managing your data, regardless
-if it comes from the database, an external API or others.</p>
+<p>A module for defining fixtures that can be used in tests.
+This module can be used with a list of fixtures to apply as parameters:</p>
+<pre><code class="nohighlight makeup elixir"><span class="kn">use</span><span class="w"> </span><span class="nc">PYREx.TestFixtures</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6747572809-1">[</span><span class="ss">:user</span><span class="p" data-group-id="6747572809-1">]</span></code></pre>
         </section>
 
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#__using__/1">__using__(fixtures)</a>
+  </div>
+    <div class="summary-synopsis"><p>Apply the <code class="inline">fixtures</code></p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#user/0">user()</a>
+  </div>
+</div>
+  </div>
+        </section>
 
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="__using__/1">
+    <div class="detail-header">
+    <a href="#__using__/1" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature">__using__(fixtures)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Apply the <code class="inline">fixtures</code>.</p>
+  </section>
+</section>
+<section class="detail" id="user/0">
+    <div class="detail-header">
+    <a href="#user/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">user()</span>
+          </div>
+  <section class="docstring">
+  </section>
+</section>
+          </div>
+        </section>
           <footer class="footer">
         <p>
           <span class="line">
