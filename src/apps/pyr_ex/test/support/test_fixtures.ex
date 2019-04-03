@@ -5,12 +5,16 @@ defmodule PYREx.TestFixtures do
 
       use PYREx.TestFixtures, [:user]
 
+  Available fixtures:
+
+    * `:user`
+
   """
 
   @doc """
   Returns a valid user after inserting it into the database.
 
-  A map of attrs can be passed as an argument to override the defaults.
+  A map of `attrs` can be passed as an argument to override the defaults.
 
   ## Examples
 

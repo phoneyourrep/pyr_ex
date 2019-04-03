@@ -66,7 +66,12 @@ PYREx.TestFixtures <small>behaviour</small>              </h1>
         <section id="moduledoc">
 <p>A module for defining fixtures that can be used in tests.
 This module can be used with a list of fixtures to apply as parameters:</p>
-<pre><code class="nohighlight makeup elixir"><span class="kn">use</span><span class="w"> </span><span class="nc">PYREx.TestFixtures</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2398723057-1">[</span><span class="ss">:user</span><span class="p" data-group-id="2398723057-1">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="kn">use</span><span class="w"> </span><span class="nc">PYREx.TestFixtures</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6188263315-1">[</span><span class="ss">:user</span><span class="p" data-group-id="6188263315-1">]</span></code></pre>
+<p>Available fixtures:</p>
+<ul>
+<li><code class="inline">:user</code>
+</li>
+</ul>
         </section>
 
         <section id="summary" class="details-list">
@@ -115,17 +120,17 @@ Callbacks          </h1>
   </div>
   <section class="docstring">
 <p>Returns a valid user after inserting it into the database.</p>
-<p>A map of attrs can be passed as an argument to override the defaults.</p>
+<p>A map of <code class="inline">attrs</code> can be passed as an argument to override the defaults.</p>
 <h2 id="c:user_fixture/1-examples" class="section-heading">
   <a href="#c:user_fixture/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt;</span><span class="n">user_fixture</span><span class="p" data-group-id="7183168507-1">(</span><span class="p" data-group-id="7183168507-1">)</span><span class="w">
-</span><span class="p" data-group-id="7183168507-2">%</span><span class="nc" data-group-id="7183168507-2">PYREx.Accounts.User</span><span class="p" data-group-id="7183168507-2">{</span><span class="p" data-group-id="7183168507-2">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt;</span><span class="n">user_fixture</span><span class="p" data-group-id="2114434723-1">(</span><span class="p" data-group-id="2114434723-1">)</span><span class="w">
+</span><span class="p" data-group-id="2114434723-2">%</span><span class="nc" data-group-id="2114434723-2">PYREx.Accounts.User</span><span class="p" data-group-id="2114434723-2">{</span><span class="p" data-group-id="2114434723-2">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt;</span><span class="n">user_fixture</span><span class="p" data-group-id="7183168507-3">(</span><span class="p" data-group-id="7183168507-4">%{</span><span class="ss">is_authorized</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="7183168507-4">}</span><span class="p" data-group-id="7183168507-3">)</span><span class="w">
-</span><span class="p" data-group-id="7183168507-5">%</span><span class="nc" data-group-id="7183168507-5">PYREx.Accounts.User</span><span class="p" data-group-id="7183168507-5">{</span><span class="ss">is_authorized</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="7183168507-5">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt;</span><span class="n">user_fixture</span><span class="p" data-group-id="2114434723-3">(</span><span class="p" data-group-id="2114434723-4">%{</span><span class="ss">is_authorized</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="2114434723-4">}</span><span class="p" data-group-id="2114434723-3">)</span><span class="w">
+</span><span class="p" data-group-id="2114434723-5">%</span><span class="nc" data-group-id="2114434723-5">PYREx.Accounts.User</span><span class="p" data-group-id="2114434723-5">{</span><span class="ss">is_authorized</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="2114434723-5">}</span></code></pre>
   </section>
 </section>
           </div>
