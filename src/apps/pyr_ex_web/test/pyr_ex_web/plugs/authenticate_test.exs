@@ -17,6 +17,14 @@ defmodule PYRExWeb.Plugs.AuthenticateTest do
       |> Authenticate.call(%{})
 
     assert json_response(conn, 200)["errors"]["detail"] == "Invalid API key: key is invalid"
+
+    key = PYRExWeb.Authenticator.generate_key(50000)
+
+    conn =
+      build_conn(:get, "/api/jurisdictions", api_key: key)
+      |> Authenticate.call(%{})
+
+    assert json_response(conn, 200)["errors"]["detail"] == "Invalid API key: #{key}"
   end
 
   test "returns an error when API key is unauthorized" do
