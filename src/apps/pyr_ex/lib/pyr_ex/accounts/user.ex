@@ -10,7 +10,7 @@ defmodule PYREx.Accounts.User do
     * `:organization` - String.
     * `:website` - String.
     * `:intended_usage` - String. Longer form explanation of how the API will be used.
-    * `:authorized` - Boolean. Is the user associated with the email address authorized to
+    * `:is_authorized` - Boolean. Is the user associated with the email address authorized to
     use the API? Authorization may be suspended for misuse.
 
   """
