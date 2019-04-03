@@ -21,8 +21,6 @@ config :pyr_ex_web, PYRExWeb.Mailer,
   adapter: Bamboo.SendGridAdapter,
   api_key: {:system, "PYREX_SENDGRID_API_KEY"}
 
-config :bamboo, :json_library, Jason
-
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
