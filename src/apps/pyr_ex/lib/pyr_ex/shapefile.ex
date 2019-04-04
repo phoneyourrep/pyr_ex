@@ -23,6 +23,16 @@ defmodule PYREx.Shapefile do
     opts = Keyword.merge(opts, follow_redirect: true, max_redirects: 1)
     File.write!(shapefile, HTTPoison.get!(url, [], opts).body)
 
+    # TODO: Handle failure in the case of server responses like the following:
+    # <HTML><HEAD>
+    # <TITLE>Service Unavailable</TITLE>
+    # </HEAD><BODY>
+    # <H1>Service Unavailable - DNS failure</H1>
+    # The server is temporarily unable to service your request.  Please try again
+    # later.<P>
+    # Reference&#32;&#35;11&#46;71896783&#46;1554355711&#46;3a7ff4f
+    # </BODY></HTML>
+
     shapes =
       shapefile
       |> from_zip()
