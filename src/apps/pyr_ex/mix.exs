@@ -11,6 +11,7 @@ defmodule PYREx.MixProject do
       lockfile: "../../mix.lock",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
@@ -39,13 +40,21 @@ defmodule PYREx.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bamboo, "~> 1.2"},
+      {:ecto_sql, "~> 3.0"},
       {:exshape, "~> 2.1.2"},
       {:geo, "~> 3.0"},
-      {:httpoison, "~> 1.5"},
-      {:ecto_sql, "~> 3.0"},
       {:geo_postgis, "~> 2.0"},
-      {:postgrex, ">= 0.0.0"},
+      {:gettext, "~> 0.11"},
+      {:httpoison, "~> 1.5"},
       {:jason, "~> 1.0"},
+      {:phoenix, "~> 1.4.2"},
+      {:phoenix_html, "~> 2.13"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix_ecto, "~> 4.0"},
+      {:plug_cowboy, "~> 2.0"},
+      {:postgrex, ">= 0.0.0"},
       {:pyr_ex_geocoder, in_umbrella: true},
       {:yaml_elixir, "~> 2.1"}
     ]

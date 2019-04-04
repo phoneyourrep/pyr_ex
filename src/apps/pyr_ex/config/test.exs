@@ -14,3 +14,11 @@ config :pyr_ex, PYREx.Repo,
   extensions: [{Geo.PostGIS.Extension, library: Geo}],
   adapter: Ecto.Adapters.Postgres,
   types: PYREx.PostgresTypes
+
+# We don't run a server during test. If one is required,
+# you can enable the server option below.
+config :pyr_ex, PYRExWeb.Endpoint,
+  http: [port: 4002],
+  server: false
+
+config :pyr_ex, PYRExWeb.Mailer, adapter: Bamboo.TestAdapter
