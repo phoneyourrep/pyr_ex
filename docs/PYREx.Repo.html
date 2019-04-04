@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.3">
     <title>PYREx.Repo —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
-    <script src="dist/sidebar_items-443b51a8a7.js"></script>
+    <script src="dist/sidebar_items-b11f0e0cde.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
     
   </head>
@@ -149,7 +149,7 @@ given id</p>
   <div class="summary-signature">
     <a href="#get!/3">get!(queryable, id, opts \\ [])</a>
   </div>
-    <div class="summary-synopsis"><p>Similar to <code class="inline">c:get/3</code> but raises <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if no record was found</p>
+    <div class="summary-synopsis"><p>Similar to <code class="inline">c:get/3</code> but raises <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if no record was found</p>
 </div>
 </div>
 <div class="summary-row">
@@ -163,7 +163,14 @@ given id</p>
   <div class="summary-signature">
     <a href="#get_by!/3">get_by!(queryable, clauses, opts \\ [])</a>
   </div>
-    <div class="summary-synopsis"><p>Similar to <a href="#get_by/3"><code class="inline">get_by/3</code></a> but raises <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if no record was found</p>
+    <div class="summary-synopsis"><p>Similar to <code class="inline">c:get_by/3</code> but raises <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if no record was found</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_dynamic_repo/0">get_dynamic_repo()</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the atom name or pid of the current repository</p>
 </div>
 </div>
 <div class="summary-row">
@@ -177,7 +184,7 @@ given id</p>
   <div class="summary-signature">
     <a href="#insert/2">insert(struct, opts \\ [])</a>
   </div>
-    <div class="summary-synopsis"><p>Inserts a struct defined via <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Schema.html"><code class="inline">Ecto.Schema</code></a> or a changeset</p>
+    <div class="summary-synopsis"><p>Inserts a struct defined via <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Schema.html"><code class="inline">Ecto.Schema</code></a> or a changeset</p>
 </div>
 </div>
 <div class="summary-row">
@@ -228,7 +235,7 @@ is invalid</p>
   <div class="summary-signature">
     <a href="#one!/2">one!(queryable, opts \\ [])</a>
   </div>
-    <div class="summary-synopsis"><p>Similar to <code class="inline">c:one/2</code> but raises <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if no record was found</p>
+    <div class="summary-synopsis"><p>Similar to <code class="inline">c:one/2</code> but raises <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if no record was found</p>
 </div>
 </div>
 <div class="summary-row">
@@ -236,6 +243,13 @@ is invalid</p>
     <a href="#preload/3">preload(struct_or_structs_or_nil, preloads, opts \\ [])</a>
   </div>
     <div class="summary-synopsis"><p>Preloads all associations on the given struct or structs</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#put_dynamic_repo/1">put_dynamic_repo(dynamic)</a>
+  </div>
+    <div class="summary-synopsis"><p>Sets the dynamic repository to be used in further iteractions</p>
 </div>
 </div>
 <div class="summary-row">
@@ -293,7 +307,7 @@ matching the given query</p>
   <div class="summary-signature">
     <a href="#transaction/2">transaction(fun_or_multi, opts \\ [])</a>
   </div>
-    <div class="summary-synopsis"><p>Runs the given function or <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Multi.html"><code class="inline">Ecto.Multi</code></a> inside a transaction</p>
+    <div class="summary-synopsis"><p>Runs the given function or <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Multi.html"><code class="inline">Ecto.Multi</code></a> inside a transaction</p>
 </div>
 </div>
 <div class="summary-row">
@@ -351,6 +365,15 @@ the column being aggregated.</p>
   Options
 </h2>
 
+<ul>
+<li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
+in Postgres or the database in MySQL). This will be applied to all <code class="inline">from</code>
+and <code class="inline">join</code>s in the query that did not have a prefix previously given
+either via the <code class="inline">:prefix</code> option on <code class="inline">join</code>/<code class="inline">from</code> or via <code class="inline">@schema_prefix</code>
+in the schema. For more information see the &quot;Query Prefix&quot; section of the
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> documentation.
+</li>
+</ul>
 <p>See the &quot;Shared options&quot; section at the module documentation.</p>
 <h2 id="aggregate/4-examples" class="section-heading">
   <a href="#aggregate/4-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -358,12 +381,16 @@ the column being aggregated.</p>
 </h2>
 
 <pre><code class="nohighlight makeup elixir"><span class="c1"># Returns the number of visits per blog post</span><span class="w">
-</span><span class="nc">Repo</span><span class="o">.</span><span class="n">aggregate</span><span class="p" data-group-id="5056512035-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">:count</span><span class="p">,</span><span class="w"> </span><span class="ss">:visits</span><span class="p" data-group-id="5056512035-1">)</span><span class="w">
+</span><span class="nc">Repo</span><span class="o">.</span><span class="n">aggregate</span><span class="p" data-group-id="5612899019-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">:count</span><span class="p">,</span><span class="w"> </span><span class="ss">:visits</span><span class="p" data-group-id="5612899019-1">)</span><span class="w">
+
+</span><span class="c1"># Returns the number of visits per blog post in the &quot;private&quot; schema path</span><span class="w">
+</span><span class="c1"># (in Postgres) or database (in MySQL)</span><span class="w">
+</span><span class="nc">Repo</span><span class="o">.</span><span class="n">aggregate</span><span class="p" data-group-id="5612899019-2">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">:count</span><span class="p">,</span><span class="w"> </span><span class="ss">:visits</span><span class="p">,</span><span class="w"> </span><span class="ss">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;private&quot;</span><span class="p" data-group-id="5612899019-2">)</span><span class="w">
 
 </span><span class="c1"># Returns the average number of visits for the top 10</span><span class="w">
 </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="nc">Repo</span><span class="o">.</span><span class="n">aggregate</span><span class="p" data-group-id="5056512035-2">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="ss">:avg</span><span class="p">,</span><span class="w"> </span><span class="ss">:visits</span><span class="p" data-group-id="5056512035-2">)</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:aggregate/4"><code class="inline">Ecto.Repo.aggregate/4</code></a>.</p>
+</span><span class="nc">Repo</span><span class="o">.</span><span class="n">aggregate</span><span class="p" data-group-id="5612899019-3">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="ss">:avg</span><span class="p">,</span><span class="w"> </span><span class="ss">:visits</span><span class="p" data-group-id="5612899019-3">)</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:aggregate/4"><code class="inline">Ecto.Repo.aggregate/4</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="all/2">
@@ -378,7 +405,7 @@ the column being aggregated.</p>
           </div>
   <section class="docstring">
 <p>Fetches all entries from the data store matching the given query.</p>
-<p>May raise <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.QueryError.html"><code class="inline">Ecto.QueryError</code></a> if query validation fails.</p>
+<p>May raise <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.QueryError.html"><code class="inline">Ecto.QueryError</code></a> if query validation fails.</p>
 <h2 id="all/2-options" class="section-heading">
   <a href="#all/2-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Options
@@ -386,8 +413,11 @@ the column being aggregated.</p>
 
 <ul>
 <li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
-in Postgres or the database in MySQL). This overrides the prefix set
-in the query.
+in Postgres or the database in MySQL). This will be applied to all <code class="inline">from</code>
+and <code class="inline">join</code>s in the query that did not have a prefix previously given
+either via the <code class="inline">:prefix</code> option on <code class="inline">join</code>/<code class="inline">from</code> or via <code class="inline">@schema_prefix</code>
+in the schema. For more information see the &quot;Query Prefix&quot; section of the
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> documentation.
 </li>
 </ul>
 <p>See the &quot;Shared options&quot; section at the module documentation.</p>
@@ -399,8 +429,8 @@ in the query.
 <pre><code class="nohighlight makeup elixir"><span class="c1"># Fetch all post titles</span><span class="w">
 </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w">
      </span><span class="ss">select</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">title</span><span class="w">
-</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">all</span><span class="p" data-group-id="4273904379-1">(</span><span class="n">query</span><span class="p" data-group-id="4273904379-1">)</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:all/2"><code class="inline">Ecto.Repo.all/2</code></a>.</p>
+</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">all</span><span class="p" data-group-id="7699291481-1">(</span><span class="n">query</span><span class="p" data-group-id="7699291481-1">)</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:all/2"><code class="inline">Ecto.Repo.all/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="checkout/2">
@@ -429,7 +459,7 @@ without checking out a new connection.</p>
 </h2>
 
 <p>See the &quot;Shared options&quot; section at the module documentation.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:checkout/2"><code class="inline">Ecto.Repo.checkout/2</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:checkout/2"><code class="inline">Ecto.Repo.checkout/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="child_spec/1">
@@ -455,7 +485,7 @@ without checking out a new connection.</p>
 <p>Returns the adapter configuration stored in the <code class="inline">:otp_app</code> environment.</p>
 <p>If the <code class="inline">c:init/2</code> callback is implemented in the repository,
 it will be invoked with the first argument set to <code class="inline">:runtime</code>.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:config/0"><code class="inline">Ecto.Repo.config/0</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:config/0"><code class="inline">Ecto.Repo.config/0</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="delete/2">
@@ -470,9 +500,9 @@ it will be invoked with the first argument set to <code class="inline">:runtime<
           </div>
   <section class="docstring">
 <p>Deletes a struct using its primary key.</p>
-<p>If the struct has no primary key, <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.NoPrimaryKeyFieldError.html"><code class="inline">Ecto.NoPrimaryKeyFieldError</code></a>
+<p>If the struct has no primary key, <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.NoPrimaryKeyFieldError.html"><code class="inline">Ecto.NoPrimaryKeyFieldError</code></a>
 will be raised. If the struct has been removed from db prior to
-call, <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a> will be raised.</p>
+call, <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a> will be raised.</p>
 <p>It returns <code class="inline">{:ok, struct}</code> if the struct has been successfully
 deleted or <code class="inline">{:error, changeset}</code> if there was a validation
 or a known constraint error.</p>
@@ -484,11 +514,11 @@ or a known constraint error.</p>
 <ul>
 <li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
 in Postgres or the database in MySQL). This overrides the prefix set
-in the struct.
+in the query and any <code class="inline">@schema_prefix</code> set in the schema.
 </li>
 <li><code class="inline">:stale_error_field</code> - The field where stale errors will be added in
 the returning changeset. This option can be used to avoid raising
-<a href="https://hexdocs.pm/ecto/3.0.7/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a>.
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a>.
 </li>
 <li><code class="inline">:stale_error_message</code> - The message to add to the configured
 <code class="inline">:stale_error_field</code> when stale errors happen, defaults to &quot;is stale&quot;.
@@ -500,12 +530,12 @@ the returning changeset. This option can be used to avoid raising
   Example
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="n">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get!</span><span class="p" data-group-id="2159921180-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="2159921180-1">)</span><span class="w">
-</span><span class="k">case</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">delete</span><span class="w"> </span><span class="n">post</span><span class="w"> </span><span class="k" data-group-id="2159921180-2">do</span><span class="w">
-  </span><span class="p" data-group-id="2159921180-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">struct</span><span class="p" data-group-id="2159921180-3">}</span><span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Deleted with success</span><span class="w">
-  </span><span class="p" data-group-id="2159921180-4">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">changeset</span><span class="p" data-group-id="2159921180-4">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Something went wrong</span><span class="w">
-</span><span class="k" data-group-id="2159921180-2">end</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:delete/2"><code class="inline">Ecto.Repo.delete/2</code></a>.</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get!</span><span class="p" data-group-id="6437725956-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="6437725956-1">)</span><span class="w">
+</span><span class="k">case</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">delete</span><span class="w"> </span><span class="n">post</span><span class="w"> </span><span class="k" data-group-id="6437725956-2">do</span><span class="w">
+  </span><span class="p" data-group-id="6437725956-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">struct</span><span class="p" data-group-id="6437725956-3">}</span><span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Deleted with success</span><span class="w">
+  </span><span class="p" data-group-id="6437725956-4">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">changeset</span><span class="p" data-group-id="6437725956-4">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Something went wrong</span><span class="w">
+</span><span class="k" data-group-id="6437725956-2">end</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:delete/2"><code class="inline">Ecto.Repo.delete/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="delete!/2">
@@ -520,7 +550,7 @@ the returning changeset. This option can be used to avoid raising
           </div>
   <section class="docstring">
 <p>Same as <code class="inline">c:delete/2</code> but returns the struct or raises if the changeset is invalid.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:delete!/2"><code class="inline">Ecto.Repo.delete!/2</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:delete!/2"><code class="inline">Ecto.Repo.delete!/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="delete_all/2">
@@ -547,7 +577,7 @@ not all databases support returning data from DELETEs.</p>
 <ul>
 <li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
 in Postgres or the database in MySQL). This overrides the prefix set
-in the query.
+in the query and any <code class="inline">@schema_prefix</code> set in the schema.
 </li>
 </ul>
 <p>See the &quot;Shared options&quot; section at the module documentation for
@@ -557,10 +587,10 @@ remaining options.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">delete_all</span><span class="p" data-group-id="3201783130-1">(</span><span class="nc">Post</span><span class="p" data-group-id="3201783130-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">delete_all</span><span class="p" data-group-id="0619607145-1">(</span><span class="nc">Post</span><span class="p" data-group-id="0619607145-1">)</span><span class="w">
 
-</span><span class="n">from</span><span class="p" data-group-id="3201783130-2">(</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="3201783130-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">delete_all</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:delete_all/2"><code class="inline">Ecto.Repo.delete_all/2</code></a>.</p>
+</span><span class="n">from</span><span class="p" data-group-id="0619607145-2">(</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="0619607145-2">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">delete_all</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:delete_all/2"><code class="inline">Ecto.Repo.delete_all/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="exists?/2">
@@ -581,8 +611,32 @@ remaining options.</p>
   Options
 </h2>
 
+<ul>
+<li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
+in Postgres or the database in MySQL). This will be applied to all <code class="inline">from</code>
+and <code class="inline">join</code>s in the query that did not have a prefix previously given
+either via the <code class="inline">:prefix</code> option on <code class="inline">join</code>/<code class="inline">from</code> or via <code class="inline">@schema_prefix</code>
+in the schema. For more information see the &quot;Query Prefix&quot; section of the
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> documentation.
+</li>
+</ul>
 <p>See the &quot;Shared options&quot; section at the module documentation.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:exists?/2"><code class="inline">Ecto.Repo.exists?/2</code></a>.</p>
+<h2 id="exists?/2-examples" class="section-heading">
+  <a href="#exists?/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="c1"># checks if any posts exist</span><span class="w">
+</span><span class="nc">Repo</span><span class="o">.</span><span class="n">exists?</span><span class="p" data-group-id="5881173576-1">(</span><span class="nc">Post</span><span class="p" data-group-id="5881173576-1">)</span><span class="w">
+
+</span><span class="c1"># checks if any posts exist in the &quot;private&quot; schema path (in Postgres) or</span><span class="w">
+</span><span class="c1"># database (in MySQL)</span><span class="w">
+</span><span class="nc">Repo</span><span class="o">.</span><span class="n">exists?</span><span class="p" data-group-id="5881173576-2">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">schema</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;private&quot;</span><span class="p" data-group-id="5881173576-2">)</span><span class="w">
+
+</span><span class="c1"># checks if any post with a like count greater than 10 exists</span><span class="w">
+</span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">like_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nc">Repo</span><span class="o">.</span><span class="n">exists?</span><span class="p" data-group-id="5881173576-3">(</span><span class="n">query</span><span class="p" data-group-id="5881173576-3">)</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:exists?/2"><code class="inline">Ecto.Repo.exists?/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="get/3">
@@ -605,14 +659,25 @@ has no or more than one primary key, it will raise an argument error.</p>
   Options
 </h2>
 
+<ul>
+<li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
+in Postgres or the database in MySQL). This will be applied to all <code class="inline">from</code>
+and <code class="inline">join</code>s in the query that did not have a prefix previously given
+either via the <code class="inline">:prefix</code> option on <code class="inline">join</code>/<code class="inline">from</code> or via <code class="inline">@schema_prefix</code>
+in the schema. For more information see the &quot;Query Prefix&quot; section of the
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> documentation.
+</li>
+</ul>
 <p>See the &quot;Shared options&quot; section at the module documentation.</p>
 <h2 id="get/3-example" class="section-heading">
   <a href="#get/3-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Example
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="9782304956-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="9782304956-1">)</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:get/3"><code class="inline">Ecto.Repo.get/3</code></a>.</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="6316711082-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="6316711082-1">)</span><span class="w">
+
+</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="6316711082-2">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="ss">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;public&quot;</span><span class="p" data-group-id="6316711082-2">)</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:get/3"><code class="inline">Ecto.Repo.get/3</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="get!/3">
@@ -626,20 +691,31 @@ has no or more than one primary key, it will raise an argument error.</p>
     <h1 class="signature">get!(queryable, id, opts \\ [])</span>
           </div>
   <section class="docstring">
-<p>Similar to <code class="inline">c:get/3</code> but raises <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if no record was found.</p>
+<p>Similar to <code class="inline">c:get/3</code> but raises <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if no record was found.</p>
 <h2 id="get!/3-options" class="section-heading">
   <a href="#get!/3-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Options
 </h2>
 
+<ul>
+<li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
+in Postgres or the database in MySQL). This will be applied to all <code class="inline">from</code>
+and <code class="inline">join</code>s in the query that did not have a prefix previously given
+either via the <code class="inline">:prefix</code> option on <code class="inline">join</code>/<code class="inline">from</code> or via <code class="inline">@schema_prefix</code>
+in the schema. For more information see the &quot;Query Prefix&quot; section of the
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> documentation.
+</li>
+</ul>
 <p>See the &quot;Shared options&quot; section at the module documentation.</p>
 <h2 id="get!/3-example" class="section-heading">
   <a href="#get!/3-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Example
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get!</span><span class="p" data-group-id="7732415564-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="7732415564-1">)</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:get!/3"><code class="inline">Ecto.Repo.get!/3</code></a>.</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get!</span><span class="p" data-group-id="0216584801-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="0216584801-1">)</span><span class="w">
+
+</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get!</span><span class="p" data-group-id="0216584801-2">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="ss">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;public&quot;</span><span class="p" data-group-id="0216584801-2">)</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:get!/3"><code class="inline">Ecto.Repo.get!/3</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="get_by/3">
@@ -660,14 +736,25 @@ has no or more than one primary key, it will raise an argument error.</p>
   Options
 </h2>
 
+<ul>
+<li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
+in Postgres or the database in MySQL). This will be applied to all <code class="inline">from</code>
+and <code class="inline">join</code>s in the query that did not have a prefix previously given
+either via the <code class="inline">:prefix</code> option on <code class="inline">join</code>/<code class="inline">from</code> or via <code class="inline">@schema_prefix</code>
+in the schema. For more information see the &quot;Query Prefix&quot; section of the
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> documentation.
+</li>
+</ul>
 <p>See the &quot;Shared options&quot; section at the module documentation.</p>
 <h2 id="get_by/3-example" class="section-heading">
   <a href="#get_by/3-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Example
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get_by</span><span class="p" data-group-id="6059060775-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My post&quot;</span><span class="p" data-group-id="6059060775-1">)</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:get_by/3"><code class="inline">Ecto.Repo.get_by/3</code></a>.</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get_by</span><span class="p" data-group-id="0297409712-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My post&quot;</span><span class="p" data-group-id="0297409712-1">)</span><span class="w">
+
+</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get_by</span><span class="p" data-group-id="0297409712-2">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0297409712-3">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My post&quot;</span><span class="p" data-group-id="0297409712-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;public&quot;</span><span class="p" data-group-id="0297409712-2">)</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:get_by/3"><code class="inline">Ecto.Repo.get_by/3</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="get_by!/3">
@@ -681,21 +768,46 @@ has no or more than one primary key, it will raise an argument error.</p>
     <h1 class="signature">get_by!(queryable, clauses, opts \\ [])</span>
           </div>
   <section class="docstring">
-<p>Similar to <a href="#get_by/3"><code class="inline">get_by/3</code></a> but raises <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if no record was found.</p>
+<p>Similar to <code class="inline">c:get_by/3</code> but raises <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if no record was found.</p>
 <p>Raises if more than one entry.</p>
 <h2 id="get_by!/3-options" class="section-heading">
   <a href="#get_by!/3-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Options
 </h2>
 
+<ul>
+<li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
+in Postgres or the database in MySQL). This will be applied to all <code class="inline">from</code>
+and <code class="inline">join</code>s in the query that did not have a prefix previously given
+either via the <code class="inline">:prefix</code> option on <code class="inline">join</code>/<code class="inline">from</code> or via <code class="inline">@schema_prefix</code>
+in the schema. For more information see the &quot;Query Prefix&quot; section of the
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> documentation.
+</li>
+</ul>
 <p>See the &quot;Shared options&quot; section at the module documentation.</p>
 <h2 id="get_by!/3-example" class="section-heading">
   <a href="#get_by!/3-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Example
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get_by!</span><span class="p" data-group-id="5860299590-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My post&quot;</span><span class="p" data-group-id="5860299590-1">)</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:get_by!/3"><code class="inline">Ecto.Repo.get_by!/3</code></a>.</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get_by!</span><span class="p" data-group-id="7526872213-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My post&quot;</span><span class="p" data-group-id="7526872213-1">)</span><span class="w">
+
+</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get_by!</span><span class="p" data-group-id="7526872213-2">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7526872213-3">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My post&quot;</span><span class="p" data-group-id="7526872213-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;public&quot;</span><span class="p" data-group-id="7526872213-2">)</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:get_by!/3"><code class="inline">Ecto.Repo.get_by!/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="get_dynamic_repo/0">
+    <div class="detail-header">
+    <a href="#get_dynamic_repo/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_dynamic_repo()</span>
+          </div>
+  <section class="docstring">
+<p>Returns the atom name or pid of the current repository.</p>
+<p>See <code class="inline">c:put_dynamic_repo/1</code> for more information.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:get_dynamic_repo/0"><code class="inline">Ecto.Repo.get_dynamic_repo/0</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="in_transaction?/0">
@@ -708,12 +820,12 @@ has no or more than one primary key, it will raise an argument error.</p>
           </div>
   <section class="docstring">
 <p>Returns true if the current process is inside a transaction.</p>
-<p>If you are using the <a href="https://hexdocs.pm/ecto_sql/3.0.5/Ecto.Adapters.SQL.Sandbox.html"><code class="inline">Ecto.Adapters.SQL.Sandbox</code></a> in tests, note that even
+<p>If you are using the <a href="https://hexdocs.pm/ecto_sql/3.1.0/Ecto.Adapters.SQL.Sandbox.html"><code class="inline">Ecto.Adapters.SQL.Sandbox</code></a> in tests, note that even
 though each test is inside a transaction, <a href="#in_transaction?/0"><code class="inline">in_transaction?/0</code></a> will only
 return true inside transactions explicitly created with <a href="#transaction/2"><code class="inline">transaction/2</code></a>. This
 is done so the test environment mimics dev and prod.</p>
 <p>If you are trying to debug transaction-related code while using
-<a href="https://hexdocs.pm/ecto_sql/3.0.5/Ecto.Adapters.SQL.Sandbox.html"><code class="inline">Ecto.Adapters.SQL.Sandbox</code></a>, it may be more helpful to configure the database
+<a href="https://hexdocs.pm/ecto_sql/3.1.0/Ecto.Adapters.SQL.Sandbox.html"><code class="inline">Ecto.Adapters.SQL.Sandbox</code></a>, it may be more helpful to configure the database
 to log all statements and consult those logs.</p>
 <h2 id="in_transaction?/0-examples" class="section-heading">
   <a href="#in_transaction?/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -723,10 +835,10 @@ to log all statements and consult those logs.</p>
 <pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">in_transaction?</span><span class="w">
 </span><span class="c1">#=&gt; false</span><span class="w">
 
-</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">transaction</span><span class="p" data-group-id="7157088973-1">(</span><span class="k" data-group-id="7157088973-2">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">transaction</span><span class="p" data-group-id="7126615201-1">(</span><span class="k" data-group-id="7126615201-2">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
   </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">in_transaction?</span><span class="w"> </span><span class="c1">#=&gt; true</span><span class="w">
-</span><span class="k" data-group-id="7157088973-2">end</span><span class="p" data-group-id="7157088973-1">)</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:in_transaction?/0"><code class="inline">Ecto.Repo.in_transaction?/0</code></a>.</p>
+</span><span class="k" data-group-id="7126615201-2">end</span><span class="p" data-group-id="7126615201-1">)</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:in_transaction?/0"><code class="inline">Ecto.Repo.in_transaction?/0</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="insert/2">
@@ -740,7 +852,7 @@ to log all statements and consult those logs.</p>
     <h1 class="signature">insert(struct, opts \\ [])</span>
           </div>
   <section class="docstring">
-<p>Inserts a struct defined via <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Schema.html"><code class="inline">Ecto.Schema</code></a> or a changeset.</p>
+<p>Inserts a struct defined via <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Schema.html"><code class="inline">Ecto.Schema</code></a> or a changeset.</p>
 <p>In case a struct is given, the struct is converted into a changeset
 with all non-nil fields as part of the changeset.</p>
 <p>In case a changeset is given, the changes in the changeset are
@@ -763,11 +875,13 @@ Not all databases support this option.
 </li>
 <li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
 in Postgres or the database in MySQL). This overrides the prefix set
-in the struct.
+in the query and any <code class="inline">@schema_prefix</code> set any schemas. Also, the
+<code class="inline">@schema_prefix</code> for the parent record will override all default
+<code class="inline">@schema_prefix</code>s set in any child schemas for associations.
 </li>
 <li><code class="inline">:on_conflict</code> - It may be one of <code class="inline">:raise</code> (the default), <code class="inline">:nothing</code>,
 <code class="inline">:replace_all</code>, <code class="inline">:replace_all_except_primary_key</code>, <code class="inline">{:replace, fields}</code>,
-a keyword list of update instructions or an <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> query for updates.
+a keyword list of update instructions or an <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> query for updates.
 See the &quot;Upserts&quot; section for more information.
 </li>
 <li><code class="inline">:conflict_target</code> - A list of column names to verify for conflicts.
@@ -778,7 +892,7 @@ that support the &quot;ON CONSTRAINT&quot; expression, such as PostgreSQL.
 </li>
 <li><code class="inline">:stale_error_field</code> - The field where stale errors will be added in
 the returning changeset. This option can be used to avoid raising
-<a href="https://hexdocs.pm/ecto/3.0.7/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a>.
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a>.
 </li>
 <li><code class="inline">:stale_error_message</code> - The message to add to the configured
 <code class="inline">:stale_error_field</code> when stale errors happen, defaults to &quot;is stale&quot;.
@@ -792,10 +906,10 @@ the returning changeset. This option can be used to avoid raising
 
 <p>A typical example is calling <code class="inline">MyRepo.insert/1</code> with a struct
 and acting on the return value:</p>
-<pre><code class="nohighlight makeup elixir"><span class="k">case</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="w"> </span><span class="p" data-group-id="7435128656-1">%</span><span class="nc" data-group-id="7435128656-1">Post</span><span class="p" data-group-id="7435128656-1">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Ecto is great&quot;</span><span class="p" data-group-id="7435128656-1">}</span><span class="w"> </span><span class="k" data-group-id="7435128656-2">do</span><span class="w">
-  </span><span class="p" data-group-id="7435128656-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">struct</span><span class="p" data-group-id="7435128656-3">}</span><span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Inserted with success</span><span class="w">
-  </span><span class="p" data-group-id="7435128656-4">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">changeset</span><span class="p" data-group-id="7435128656-4">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Something went wrong</span><span class="w">
-</span><span class="k" data-group-id="7435128656-2">end</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="k">case</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="w"> </span><span class="p" data-group-id="4440901490-1">%</span><span class="nc" data-group-id="4440901490-1">Post</span><span class="p" data-group-id="4440901490-1">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Ecto is great&quot;</span><span class="p" data-group-id="4440901490-1">}</span><span class="w"> </span><span class="k" data-group-id="4440901490-2">do</span><span class="w">
+  </span><span class="p" data-group-id="4440901490-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">struct</span><span class="p" data-group-id="4440901490-3">}</span><span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Inserted with success</span><span class="w">
+  </span><span class="p" data-group-id="4440901490-4">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">changeset</span><span class="p" data-group-id="4440901490-4">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Something went wrong</span><span class="w">
+</span><span class="k" data-group-id="4440901490-2">end</span></code></pre>
 <h2 id="insert/2-upserts" class="section-heading">
   <a href="#insert/2-upserts" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Upserts
@@ -821,8 +935,8 @@ conflict_target
 <li>a keyword list of update instructions - such as the one given to
 <code class="inline">c:update_all/3</code>, for example: <code class="inline">[set: [title: &quot;new title&quot;]]</code>
 </li>
-<li>an <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> that will act as an <code class="inline">UPDATE</code> statement, such as the
-one given to <code class="inline">c:update_all/3</code>. If the struct cannot be found, <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a>
+<li>an <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> that will act as an <code class="inline">UPDATE</code> statement, such as the
+one given to <code class="inline">c:update_all/3</code>. If the struct cannot be found, <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a>
 will be raised.
 </li>
 </ul>
@@ -830,9 +944,9 @@ will be raised.
 on databases such as MySQL.</p>
 <p>As an example, imagine <code class="inline">:title</code> is marked as a unique column in
 the database:</p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="9634639125-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">inserted</span><span class="p" data-group-id="9634639125-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="9634639125-2">(</span><span class="p" data-group-id="9634639125-3">%</span><span class="nc" data-group-id="9634639125-3">Post</span><span class="p" data-group-id="9634639125-3">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this is unique&quot;</span><span class="p" data-group-id="9634639125-3">}</span><span class="p" data-group-id="9634639125-2">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="8490802902-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">inserted</span><span class="p" data-group-id="8490802902-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="8490802902-2">(</span><span class="p" data-group-id="8490802902-3">%</span><span class="nc" data-group-id="8490802902-3">Post</span><span class="p" data-group-id="8490802902-3">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this is unique&quot;</span><span class="p" data-group-id="8490802902-3">}</span><span class="p" data-group-id="8490802902-2">)</span></code></pre>
 <p>Now we can insert with the same title but do nothing on conflicts:</p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="5047323674-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">ignored</span><span class="p" data-group-id="5047323674-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="5047323674-2">(</span><span class="p" data-group-id="5047323674-3">%</span><span class="nc" data-group-id="5047323674-3">Post</span><span class="p" data-group-id="5047323674-3">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this is unique&quot;</span><span class="p" data-group-id="5047323674-3">}</span><span class="p">,</span><span class="w"> </span><span class="ss">on_conflict</span><span class="p">:</span><span class="w"> </span><span class="ss">:nothing</span><span class="p" data-group-id="5047323674-2">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="3019817447-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">ignored</span><span class="p" data-group-id="3019817447-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="3019817447-2">(</span><span class="p" data-group-id="3019817447-3">%</span><span class="nc" data-group-id="3019817447-3">Post</span><span class="p" data-group-id="3019817447-3">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this is unique&quot;</span><span class="p" data-group-id="3019817447-3">}</span><span class="p">,</span><span class="w"> </span><span class="ss">on_conflict</span><span class="p">:</span><span class="w"> </span><span class="ss">:nothing</span><span class="p" data-group-id="3019817447-2">)</span><span class="w">
 </span><span class="n">assert</span><span class="w"> </span><span class="n">ignored</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="no">nil</span></code></pre>
 <p>Because we used <code class="inline">on_conflict: :nothing</code>, instead of getting an error,
 we got <code class="inline">{:ok, struct}</code>. However the returned struct does not reflect
@@ -845,14 +959,14 @@ is slightly more complex, as the database does not actually inform us
 if an insert or update happened. Let&#39;s insert a post with the same title
 but use a query to update the body column in case of conflicts:</p>
 <pre><code class="nohighlight makeup elixir"><span class="c1"># In Postgres (it requires the conflict target for updates):</span><span class="w">
-</span><span class="n">on_conflict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0120852924-1">[</span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0120852924-2">[</span><span class="ss">body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;updated&quot;</span><span class="p" data-group-id="0120852924-2">]</span><span class="p" data-group-id="0120852924-1">]</span><span class="w">
-</span><span class="p" data-group-id="0120852924-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">updated</span><span class="p" data-group-id="0120852924-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="0120852924-4">(</span><span class="p" data-group-id="0120852924-5">%</span><span class="nc" data-group-id="0120852924-5">Post</span><span class="p" data-group-id="0120852924-5">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this is unique&quot;</span><span class="p" data-group-id="0120852924-5">}</span><span class="p">,</span><span class="w">
-                               </span><span class="ss">on_conflict</span><span class="p">:</span><span class="w"> </span><span class="n">on_conflict</span><span class="p">,</span><span class="w"> </span><span class="ss">conflict_target</span><span class="p">:</span><span class="w"> </span><span class="ss">:title</span><span class="p" data-group-id="0120852924-4">)</span><span class="w">
+</span><span class="n">on_conflict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5645539597-1">[</span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5645539597-2">[</span><span class="ss">body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;updated&quot;</span><span class="p" data-group-id="5645539597-2">]</span><span class="p" data-group-id="5645539597-1">]</span><span class="w">
+</span><span class="p" data-group-id="5645539597-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">updated</span><span class="p" data-group-id="5645539597-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="5645539597-4">(</span><span class="p" data-group-id="5645539597-5">%</span><span class="nc" data-group-id="5645539597-5">Post</span><span class="p" data-group-id="5645539597-5">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this is unique&quot;</span><span class="p" data-group-id="5645539597-5">}</span><span class="p">,</span><span class="w">
+                               </span><span class="ss">on_conflict</span><span class="p">:</span><span class="w"> </span><span class="n">on_conflict</span><span class="p">,</span><span class="w"> </span><span class="ss">conflict_target</span><span class="p">:</span><span class="w"> </span><span class="ss">:title</span><span class="p" data-group-id="5645539597-4">)</span><span class="w">
 
 </span><span class="c1"># In MySQL (conflict target is not supported):</span><span class="w">
-</span><span class="n">on_conflict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0120852924-6">[</span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0120852924-7">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;updated&quot;</span><span class="p" data-group-id="0120852924-7">]</span><span class="p" data-group-id="0120852924-6">]</span><span class="w">
-</span><span class="p" data-group-id="0120852924-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">updated</span><span class="p" data-group-id="0120852924-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="0120852924-9">(</span><span class="p" data-group-id="0120852924-10">%</span><span class="nc" data-group-id="0120852924-10">Post</span><span class="p" data-group-id="0120852924-10">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="n">inserted</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;updated&quot;</span><span class="p" data-group-id="0120852924-10">}</span><span class="p">,</span><span class="w">
-                               </span><span class="ss">on_conflict</span><span class="p">:</span><span class="w"> </span><span class="n">on_conflict</span><span class="p" data-group-id="0120852924-9">)</span></code></pre>
+</span><span class="n">on_conflict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5645539597-6">[</span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5645539597-7">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;updated&quot;</span><span class="p" data-group-id="5645539597-7">]</span><span class="p" data-group-id="5645539597-6">]</span><span class="w">
+</span><span class="p" data-group-id="5645539597-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">updated</span><span class="p" data-group-id="5645539597-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="5645539597-9">(</span><span class="p" data-group-id="5645539597-10">%</span><span class="nc" data-group-id="5645539597-10">Post</span><span class="p" data-group-id="5645539597-10">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="n">inserted</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;updated&quot;</span><span class="p" data-group-id="5645539597-10">}</span><span class="p">,</span><span class="w">
+                               </span><span class="ss">on_conflict</span><span class="p">:</span><span class="w"> </span><span class="n">on_conflict</span><span class="p" data-group-id="5645539597-9">)</span></code></pre>
 <p>In the examples above, even though it returned <code class="inline">:ok</code>, we do not know
 if we inserted new data or if we updated only the <code class="inline">:on_conflict</code> fields.
 In case an update happened, the data in the struct most likely does
@@ -865,20 +979,20 @@ database, you have three options:</p>
 <li><p>Use <code class="inline">on_conflict: :replace_all</code>, although that will replace all
 fields in the database with the ones in the struct/changeset,
 including autogenerated fields such as <code class="inline">insert_at</code> and <code class="inline">updated_at</code>:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="4632600552-1">(</span><span class="p" data-group-id="4632600552-2">%</span><span class="nc" data-group-id="4632600552-2">Post</span><span class="p" data-group-id="4632600552-2">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this is unique&quot;</span><span class="p" data-group-id="4632600552-2">}</span><span class="p">,</span><span class="w">
-              </span><span class="ss">on_conflict</span><span class="p">:</span><span class="w"> </span><span class="ss">:replace_all</span><span class="p">,</span><span class="w"> </span><span class="ss">conflict_target</span><span class="p">:</span><span class="w"> </span><span class="ss">:title</span><span class="p" data-group-id="4632600552-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="2879919082-1">(</span><span class="p" data-group-id="2879919082-2">%</span><span class="nc" data-group-id="2879919082-2">Post</span><span class="p" data-group-id="2879919082-2">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this is unique&quot;</span><span class="p" data-group-id="2879919082-2">}</span><span class="p">,</span><span class="w">
+              </span><span class="ss">on_conflict</span><span class="p">:</span><span class="w"> </span><span class="ss">:replace_all</span><span class="p">,</span><span class="w"> </span><span class="ss">conflict_target</span><span class="p">:</span><span class="w"> </span><span class="ss">:title</span><span class="p" data-group-id="2879919082-1">)</span></code></pre>
 </li>
 <li><p>Specify <code class="inline">read_after_writes: true</code> in your schema for choosing
 fields that are read from the database after every operation.
 Or pass <code class="inline">returning: true</code> to <code class="inline">insert</code> to read all fields back:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="9865252507-1">(</span><span class="p" data-group-id="9865252507-2">%</span><span class="nc" data-group-id="9865252507-2">Post</span><span class="p" data-group-id="9865252507-2">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this is unique&quot;</span><span class="p" data-group-id="9865252507-2">}</span><span class="p">,</span><span class="w"> </span><span class="ss">returning</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
-              </span><span class="ss">on_conflict</span><span class="p">:</span><span class="w"> </span><span class="n">on_conflict</span><span class="p">,</span><span class="w"> </span><span class="ss">conflict_target</span><span class="p">:</span><span class="w"> </span><span class="ss">:title</span><span class="p" data-group-id="9865252507-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="0729303741-1">(</span><span class="p" data-group-id="0729303741-2">%</span><span class="nc" data-group-id="0729303741-2">Post</span><span class="p" data-group-id="0729303741-2">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this is unique&quot;</span><span class="p" data-group-id="0729303741-2">}</span><span class="p">,</span><span class="w"> </span><span class="ss">returning</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+              </span><span class="ss">on_conflict</span><span class="p">:</span><span class="w"> </span><span class="n">on_conflict</span><span class="p">,</span><span class="w"> </span><span class="ss">conflict_target</span><span class="p">:</span><span class="w"> </span><span class="ss">:title</span><span class="p" data-group-id="0729303741-1">)</span></code></pre>
 </li>
 <li><p>Alternatively, read the data again from the database in a separate
 query. This option requires the primary key to be generated by the
 database:</p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="8639291480-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">updated</span><span class="p" data-group-id="8639291480-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="8639291480-2">(</span><span class="p" data-group-id="8639291480-3">%</span><span class="nc" data-group-id="8639291480-3">Post</span><span class="p" data-group-id="8639291480-3">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this is unique&quot;</span><span class="p" data-group-id="8639291480-3">}</span><span class="p">,</span><span class="w"> </span><span class="ss">on_conflict</span><span class="p">:</span><span class="w"> </span><span class="n">on_conflict</span><span class="p" data-group-id="8639291480-2">)</span><span class="w">
-</span><span class="nc">Repo</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="8639291480-4">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="n">updated</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="8639291480-4">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1221788097-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">updated</span><span class="p" data-group-id="1221788097-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="1221788097-2">(</span><span class="p" data-group-id="1221788097-3">%</span><span class="nc" data-group-id="1221788097-3">Post</span><span class="p" data-group-id="1221788097-3">{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;this is unique&quot;</span><span class="p" data-group-id="1221788097-3">}</span><span class="p">,</span><span class="w"> </span><span class="ss">on_conflict</span><span class="p">:</span><span class="w"> </span><span class="n">on_conflict</span><span class="p" data-group-id="1221788097-2">)</span><span class="w">
+</span><span class="nc">Repo</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="1221788097-4">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="n">updated</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="1221788097-4">)</span></code></pre>
 </li>
 </ul>
 <p>Because of the inability to know if the struct is up to date or not,
@@ -887,7 +1001,7 @@ For instance, Ecto may even trigger constraint violations when associations
 are used with <code class="inline">on_conflict: :nothing</code>, as no ID will be available in
 the case the record already exists, and it is not possible for Ecto to
 detect such cases reliably.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:insert/2"><code class="inline">Ecto.Repo.insert/2</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:insert/2"><code class="inline">Ecto.Repo.insert/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="insert!/2">
@@ -902,7 +1016,7 @@ detect such cases reliably.</p>
           </div>
   <section class="docstring">
 <p>Same as <code class="inline">c:insert/2</code> but returns the struct or raises if the changeset is invalid.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:insert!/2"><code class="inline">Ecto.Repo.insert!/2</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:insert!/2"><code class="inline">Ecto.Repo.insert!/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="insert_all/3">
@@ -922,7 +1036,7 @@ both (<code class="inline">{&quot;users&quot;, MyApp.User}</code>) as the first 
 argument is a list of entries to be inserted, either as keyword
 lists or as maps. The keys of the entries are the field names as
 atoms and the value should be the respective value for the field
-type or, optionally, an <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> that returns a single entry
+type or, optionally, an <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> that returns a single entry
 with a single value.</p>
 <p>It returns a tuple containing the number of entries
 and any returned result as second element. If the database
@@ -954,11 +1068,12 @@ given fields. Or <code class="inline">false</code>, where nothing is returned (t
 This option is not supported by all databases.
 </li>
 <li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
-in Postgres or the database in MySQL).
+in Postgres or the database in MySQL). This overrides the prefix set
+in the query and any <code class="inline">@schema_prefix</code> set in the schema.
 </li>
 <li><code class="inline">:on_conflict</code> - It may be one of <code class="inline">:raise</code> (the default), <code class="inline">:nothing</code>,
 <code class="inline">:replace_all</code>, <code class="inline">:replace_all_except_primary_key</code>, <code class="inline">{:replace, fields}</code>,
-a keyword list of update instructions, <code class="inline">{:replace, fields}</code> or an <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Query.html"><code class="inline">Ecto.Query</code></a>
+a keyword list of update instructions or an <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a>
 query for updates. See the &quot;Upserts&quot; section for more information.
 </li>
 <li><code class="inline">:conflict_target</code> - A list of column names to verify for conflicts.
@@ -978,8 +1093,9 @@ remaining options.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert_all</span><span class="p" data-group-id="5495071608-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5495071608-2">[</span><span class="p" data-group-id="5495071608-3">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My first post&quot;</span><span class="p" data-group-id="5495071608-3">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5495071608-4">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My second post&quot;</span><span class="p" data-group-id="5495071608-4">]</span><span class="p" data-group-id="5495071608-2">]</span><span class="p" data-group-id="5495071608-1">)</span><span class="w">
-</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert_all</span><span class="p" data-group-id="5495071608-5">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5495071608-6">[</span><span class="p" data-group-id="5495071608-7">%{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My first post&quot;</span><span class="p" data-group-id="5495071608-7">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5495071608-8">%{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My second post&quot;</span><span class="p" data-group-id="5495071608-8">}</span><span class="p" data-group-id="5495071608-6">]</span><span class="p" data-group-id="5495071608-5">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert_all</span><span class="p" data-group-id="8043136476-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8043136476-2">[</span><span class="p" data-group-id="8043136476-3">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My first post&quot;</span><span class="p" data-group-id="8043136476-3">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8043136476-4">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My second post&quot;</span><span class="p" data-group-id="8043136476-4">]</span><span class="p" data-group-id="8043136476-2">]</span><span class="p" data-group-id="8043136476-1">)</span><span class="w">
+
+</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert_all</span><span class="p" data-group-id="8043136476-5">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8043136476-6">[</span><span class="p" data-group-id="8043136476-7">%{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My first post&quot;</span><span class="p" data-group-id="8043136476-7">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8043136476-8">%{</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My second post&quot;</span><span class="p" data-group-id="8043136476-8">}</span><span class="p" data-group-id="8043136476-6">]</span><span class="p" data-group-id="8043136476-5">)</span></code></pre>
 <h2 id="insert_all/3-upserts" class="section-heading">
   <a href="#insert_all/3-upserts" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Upserts
@@ -1005,7 +1121,7 @@ conflict_target
 <li>a keyword list of update instructions - such as the one given to
 <code class="inline">c:update_all/3</code>, for example: <code class="inline">[set: [title: &quot;new title&quot;]]</code>
 </li>
-<li>an <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> that will act as an <code class="inline">UPDATE</code> statement, such as the
+<li>an <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> that will act as an <code class="inline">UPDATE</code> statement, such as the
 one given to <code class="inline">c:update_all/3</code>
 </li>
 </ul>
@@ -1026,7 +1142,7 @@ the amount of entries attempted to be inserted, even if no entry
 was added. Even worse, if <code class="inline">:on_conflict</code> is query, MySQL will return
 the number of attempted entries plus the number of entries modified
 by the UPDATE query.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:insert_all/3"><code class="inline">Ecto.Repo.insert_all/3</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:insert_all/3"><code class="inline">Ecto.Repo.insert_all/3</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="insert_or_update/2">
@@ -1043,11 +1159,11 @@ by the UPDATE query.</p>
 <p>Inserts or updates a changeset depending on whether the struct is persisted
 or not.</p>
 <p>The distinction whether to insert or update will be made on the
-<a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Schema.Metadata.html"><code class="inline">Ecto.Schema.Metadata</code></a> field <code class="inline">:state</code>. The <code class="inline">:state</code> is automatically set by
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Schema.Metadata.html"><code class="inline">Ecto.Schema.Metadata</code></a> field <code class="inline">:state</code>. The <code class="inline">:state</code> is automatically set by
 Ecto when loading or building a schema.</p>
 <p>Please note that for this to work, you will have to load existing structs from
 the database. So even if the struct exists, this won&#39;t work:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">struct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4592379984-1">%</span><span class="nc" data-group-id="4592379984-1">Post</span><span class="p" data-group-id="4592379984-1">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;existing_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="4592379984-1">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">struct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9142552660-1">%</span><span class="nc" data-group-id="9142552660-1">Post</span><span class="p" data-group-id="9142552660-1">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;existing_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="9142552660-1">}</span><span class="w">
 </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert_or_update</span><span class="w"> </span><span class="n">changeset</span><span class="w">
 </span><span class="c1"># =&gt; {:error, changeset} # id already exists</span></code></pre>
 <h2 id="insert_or_update/2-options" class="section-heading">
@@ -1058,11 +1174,13 @@ the database. So even if the struct exists, this won&#39;t work:</p>
 <ul>
 <li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
 in Postgres or the database in MySQL). This overrides the prefix set
-in the struct.
+in the query and any <code class="inline">@schema_prefix</code> set any schemas. Also, the
+<code class="inline">@schema_prefix</code> for the parent record will override all default
+<code class="inline">@schema_prefix</code>s set in any child schemas for associations.
 </li>
 <li><code class="inline">:stale_error_field</code> - The field where stale errors will be added in
 the returning changeset. This option can be used to avoid raising
-<a href="https://hexdocs.pm/ecto/3.0.7/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a>. Only applies to updates.
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a>. Only applies to updates.
 </li>
 <li><code class="inline">:stale_error_message</code> - The message to add to the configured
 <code class="inline">:stale_error_field</code> when stale errors happen, defaults to &quot;is stale&quot;.
@@ -1076,18 +1194,18 @@ Only applies to updates.
 </h2>
 
 <pre><code class="nohighlight makeup elixir"><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w">
-  </span><span class="k">case</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="1830268282-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p" data-group-id="1830268282-1">)</span><span class="w"> </span><span class="k" data-group-id="1830268282-2">do</span><span class="w">
-    </span><span class="no">nil</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="1830268282-3">%</span><span class="nc" data-group-id="1830268282-3">Post</span><span class="p" data-group-id="1830268282-3">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="n">id</span><span class="p" data-group-id="1830268282-3">}</span><span class="w"> </span><span class="c1"># Post not found, we build one</span><span class="w">
+  </span><span class="k">case</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="9367483746-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p" data-group-id="9367483746-1">)</span><span class="w"> </span><span class="k" data-group-id="9367483746-2">do</span><span class="w">
+    </span><span class="no">nil</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="p" data-group-id="9367483746-3">%</span><span class="nc" data-group-id="9367483746-3">Post</span><span class="p" data-group-id="9367483746-3">{</span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="n">id</span><span class="p" data-group-id="9367483746-3">}</span><span class="w"> </span><span class="c1"># Post not found, we build one</span><span class="w">
     </span><span class="n">post</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">post</span><span class="w">          </span><span class="c1"># Post exists, let&#39;s use it</span><span class="w">
-  </span><span class="k" data-group-id="1830268282-2">end</span><span class="w">
-  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Post</span><span class="o">.</span><span class="n">changeset</span><span class="p" data-group-id="1830268282-4">(</span><span class="n">changes</span><span class="p" data-group-id="1830268282-4">)</span><span class="w">
+  </span><span class="k" data-group-id="9367483746-2">end</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Post</span><span class="o">.</span><span class="n">changeset</span><span class="p" data-group-id="9367483746-4">(</span><span class="n">changes</span><span class="p" data-group-id="9367483746-4">)</span><span class="w">
   </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert_or_update</span><span class="w">
 
-</span><span class="k">case</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="k" data-group-id="1830268282-5">do</span><span class="w">
-  </span><span class="p" data-group-id="1830268282-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">struct</span><span class="p" data-group-id="1830268282-6">}</span><span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Inserted or updated with success</span><span class="w">
-  </span><span class="p" data-group-id="1830268282-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">changeset</span><span class="p" data-group-id="1830268282-7">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Something went wrong</span><span class="w">
-</span><span class="k" data-group-id="1830268282-5">end</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:insert_or_update/2"><code class="inline">Ecto.Repo.insert_or_update/2</code></a>.</p>
+</span><span class="k">case</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="k" data-group-id="9367483746-5">do</span><span class="w">
+  </span><span class="p" data-group-id="9367483746-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">struct</span><span class="p" data-group-id="9367483746-6">}</span><span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Inserted or updated with success</span><span class="w">
+  </span><span class="p" data-group-id="9367483746-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">changeset</span><span class="p" data-group-id="9367483746-7">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Something went wrong</span><span class="w">
+</span><span class="k" data-group-id="9367483746-5">end</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:insert_or_update/2"><code class="inline">Ecto.Repo.insert_or_update/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="insert_or_update!/2">
@@ -1103,7 +1221,7 @@ Only applies to updates.
   <section class="docstring">
 <p>Same as <code class="inline">c:insert_or_update/2</code> but returns the struct or raises if the changeset
 is invalid.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:insert_or_update!/2"><code class="inline">Ecto.Repo.insert_or_update!/2</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:insert_or_update!/2"><code class="inline">Ecto.Repo.insert_or_update!/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="load/2">
@@ -1129,23 +1247,23 @@ If any of the values has invalid type, an error is raised.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="9227425962-1">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9227425962-2">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="9227425962-2">}</span><span class="p" data-group-id="9227425962-1">)</span><span class="w">
-</span><span class="p" data-group-id="9227425962-3">%</span><span class="nc" data-group-id="9227425962-3">User</span><span class="p" data-group-id="9227425962-3">{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="9227425962-3">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="8579095559-1">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8579095559-2">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="8579095559-2">}</span><span class="p" data-group-id="8579095559-1">)</span><span class="w">
+</span><span class="p" data-group-id="8579095559-3">%</span><span class="nc" data-group-id="8579095559-3">User</span><span class="p" data-group-id="8579095559-3">{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="8579095559-3">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="9227425962-4">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9227425962-5">[</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="9227425962-5">]</span><span class="p" data-group-id="9227425962-4">)</span><span class="w">
-</span><span class="p" data-group-id="9227425962-6">%</span><span class="nc" data-group-id="9227425962-6">User</span><span class="p" data-group-id="9227425962-6">{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="9227425962-6">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="8579095559-4">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8579095559-5">[</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="8579095559-5">]</span><span class="p" data-group-id="8579095559-4">)</span><span class="w">
+</span><span class="p" data-group-id="8579095559-6">%</span><span class="nc" data-group-id="8579095559-6">User</span><span class="p" data-group-id="8579095559-6">{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="8579095559-6">}</span></code></pre>
 <p><code class="inline">data</code> can also take form of <code class="inline">{fields, values}</code>:</p>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="8092665761-1">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8092665761-2">{</span><span class="p" data-group-id="8092665761-3">[</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:age</span><span class="p" data-group-id="8092665761-3">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8092665761-4">[</span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="8092665761-4">]</span><span class="p" data-group-id="8092665761-2">}</span><span class="p" data-group-id="8092665761-1">)</span><span class="w">
-</span><span class="p" data-group-id="8092665761-5">%</span><span class="nc" data-group-id="8092665761-5">User</span><span class="p" data-group-id="8092665761-5">{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="8092665761-5">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="6601331290-1">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6601331290-2">{</span><span class="p" data-group-id="6601331290-3">[</span><span class="ss">:name</span><span class="p">,</span><span class="w"> </span><span class="ss">:age</span><span class="p" data-group-id="6601331290-3">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6601331290-4">[</span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="6601331290-4">]</span><span class="p" data-group-id="6601331290-2">}</span><span class="p" data-group-id="6601331290-1">)</span><span class="w">
+</span><span class="p" data-group-id="6601331290-5">%</span><span class="nc" data-group-id="6601331290-5">User</span><span class="p" data-group-id="6601331290-5">{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="6601331290-5">}</span></code></pre>
 <p>The first argument can also be a <code class="inline">types</code> map:</p>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1609737673-1">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="ss">:integer</span><span class="p" data-group-id="1609737673-1">}</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="1609737673-2">(</span><span class="n">types</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1609737673-3">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="1609737673-3">}</span><span class="p" data-group-id="1609737673-2">)</span><span class="w">
-</span><span class="p" data-group-id="1609737673-4">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="1609737673-4">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6325095774-1">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:string</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="ss">:integer</span><span class="p" data-group-id="6325095774-1">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="6325095774-2">(</span><span class="n">types</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6325095774-3">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="6325095774-3">}</span><span class="p" data-group-id="6325095774-2">)</span><span class="w">
+</span><span class="p" data-group-id="6325095774-4">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">age</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p" data-group-id="6325095774-4">}</span></code></pre>
 <p>This function is especially useful when parsing raw query results:</p>
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ecto.Adapters.SQL</span><span class="o">.</span><span class="n">query!</span><span class="p" data-group-id="1489837963-1">(</span><span class="nc">MyRepo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SELECT * FROM users&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1489837963-2">[</span><span class="p" data-group-id="1489837963-2">]</span><span class="p" data-group-id="1489837963-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="1489837963-3">(</span><span class="n">result</span><span class="o">.</span><span class="n">rows</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="1489837963-4">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1489837963-5">{</span><span class="n">result</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span><span class="w"> </span><span class="ni">&amp;1</span><span class="p" data-group-id="1489837963-5">}</span><span class="p" data-group-id="1489837963-4">)</span><span class="p" data-group-id="1489837963-3">)</span><span class="w">
-</span><span class="p" data-group-id="1489837963-6">[</span><span class="p" data-group-id="1489837963-7">%</span><span class="nc" data-group-id="1489837963-7">User</span><span class="p" data-group-id="1489837963-7">{</span><span class="n">...</span><span class="p" data-group-id="1489837963-7">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1489837963-6">]</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:load/2"><code class="inline">Ecto.Repo.load/2</code></a>.</p>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ecto.Adapters.SQL</span><span class="o">.</span><span class="n">query!</span><span class="p" data-group-id="1632234966-1">(</span><span class="nc">MyRepo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SELECT * FROM users&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1632234966-2">[</span><span class="p" data-group-id="1632234966-2">]</span><span class="p" data-group-id="1632234966-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Enum</span><span class="o">.</span><span class="n">map</span><span class="p" data-group-id="1632234966-3">(</span><span class="n">result</span><span class="o">.</span><span class="n">rows</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">load</span><span class="p" data-group-id="1632234966-4">(</span><span class="nc">User</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1632234966-5">{</span><span class="n">result</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span><span class="w"> </span><span class="ni">&amp;1</span><span class="p" data-group-id="1632234966-5">}</span><span class="p" data-group-id="1632234966-4">)</span><span class="p" data-group-id="1632234966-3">)</span><span class="w">
+</span><span class="p" data-group-id="1632234966-6">[</span><span class="p" data-group-id="1632234966-7">%</span><span class="nc" data-group-id="1632234966-7">User</span><span class="p" data-group-id="1632234966-7">{</span><span class="n">...</span><span class="p" data-group-id="1632234966-7">}</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1632234966-6">]</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:load/2"><code class="inline">Ecto.Repo.load/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="one/2">
@@ -1166,8 +1284,28 @@ If any of the values has invalid type, an error is raised.</p>
   Options
 </h2>
 
+<ul>
+<li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
+in Postgres or the database in MySQL). This will be applied to all <code class="inline">from</code>
+and <code class="inline">join</code>s in the query that did not have a prefix previously given
+either via the <code class="inline">:prefix</code> option on <code class="inline">join</code>/<code class="inline">from</code> or via <code class="inline">@schema_prefix</code>
+in the schema. For more information see the &quot;Query Prefix&quot; section of the
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> documentation.
+</li>
+</ul>
 <p>See the &quot;Shared options&quot; section at the module documentation.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:one/2"><code class="inline">Ecto.Repo.one/2</code></a>.</p>
+<h2 id="one/2-examples" class="section-heading">
+  <a href="#one/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="nc">Repo</span><span class="o">.</span><span class="n">one</span><span class="p" data-group-id="5440955065-1">(</span><span class="nc">Post</span><span class="p" data-group-id="5440955065-1">)</span><span class="w">
+
+</span><span class="nc">Repo</span><span class="o">.</span><span class="n">one</span><span class="p" data-group-id="5440955065-2">(</span><span class="n">from</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">like_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="5440955065-2">)</span><span class="w">
+
+</span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">like_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="nc">Repo</span><span class="o">.</span><span class="n">one</span><span class="p" data-group-id="5440955065-3">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="ss">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;private&quot;</span><span class="p" data-group-id="5440955065-3">)</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:one/2"><code class="inline">Ecto.Repo.one/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="one!/2">
@@ -1181,15 +1319,24 @@ If any of the values has invalid type, an error is raised.</p>
     <h1 class="signature">one!(queryable, opts \\ [])</span>
           </div>
   <section class="docstring">
-<p>Similar to <code class="inline">c:one/2</code> but raises <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if no record was found.</p>
+<p>Similar to <code class="inline">c:one/2</code> but raises <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.NoResultsError.html"><code class="inline">Ecto.NoResultsError</code></a> if no record was found.</p>
 <p>Raises if more than one entry.</p>
 <h2 id="one!/2-options" class="section-heading">
   <a href="#one!/2-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Options
 </h2>
 
+<ul>
+<li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
+in Postgres or the database in MySQL). This will be applied to all <code class="inline">from</code>
+and <code class="inline">join</code>s in the query that did not have a prefix previously given
+either via the <code class="inline">:prefix</code> option on <code class="inline">join</code>/<code class="inline">from</code> or via <code class="inline">@schema_prefix</code>
+in the schema. For more information see the &quot;Query Prefix&quot; section of the
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> documentation.
+</li>
+</ul>
 <p>See the &quot;Shared options&quot; section at the module documentation.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:one!/2"><code class="inline">Ecto.Repo.one!/2</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:one!/2"><code class="inline">Ecto.Repo.one!/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="preload/3">
@@ -1204,7 +1351,7 @@ If any of the values has invalid type, an error is raised.</p>
           </div>
   <section class="docstring">
 <p>Preloads all associations on the given struct or structs.</p>
-<p>This is similar to <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Query.html#preload/3"><code class="inline">Ecto.Query.preload/3</code></a> except it allows
+<p>This is similar to <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html#preload/3"><code class="inline">Ecto.Query.preload/3</code></a> except it allows
 you to preload structs after they have been fetched from the
 database.</p>
 <p>In case the association was already loaded, preload won&#39;t attempt
@@ -1239,19 +1386,49 @@ option allows the prefix to be changed.
 </span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">preload</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="ss">:comments</span><span class="w">
 
 </span><span class="c1"># Use a list of atoms to preload multiple associations</span><span class="w">
-</span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">preload</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8967039868-1">[</span><span class="ss">:comments</span><span class="p">,</span><span class="w"> </span><span class="ss">:authors</span><span class="p" data-group-id="8967039868-1">]</span><span class="w">
+</span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">preload</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6967193542-1">[</span><span class="ss">:comments</span><span class="p">,</span><span class="w"> </span><span class="ss">:authors</span><span class="p" data-group-id="6967193542-1">]</span><span class="w">
 
 </span><span class="c1"># Use a keyword list to preload nested associations as well</span><span class="w">
-</span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">preload</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8967039868-2">[</span><span class="ss">comments</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8967039868-3">[</span><span class="ss">:replies</span><span class="p">,</span><span class="w"> </span><span class="ss">:likes</span><span class="p" data-group-id="8967039868-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">authors</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8967039868-4">[</span><span class="p" data-group-id="8967039868-4">]</span><span class="p" data-group-id="8967039868-2">]</span><span class="w">
+</span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">preload</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6967193542-2">[</span><span class="ss">comments</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6967193542-3">[</span><span class="ss">:replies</span><span class="p">,</span><span class="w"> </span><span class="ss">:likes</span><span class="p" data-group-id="6967193542-3">]</span><span class="p">,</span><span class="w"> </span><span class="ss">authors</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6967193542-4">[</span><span class="p" data-group-id="6967193542-4">]</span><span class="p" data-group-id="6967193542-2">]</span><span class="w">
 
 </span><span class="c1"># Use a keyword list to customize how associations are queried</span><span class="w">
-</span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">preload</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8967039868-5">[</span><span class="ss">comments</span><span class="p">:</span><span class="w"> </span><span class="n">from</span><span class="p" data-group-id="8967039868-6">(</span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Comment</span><span class="p">,</span><span class="w"> </span><span class="ss">order_by</span><span class="p">:</span><span class="w"> </span><span class="n">c</span><span class="o">.</span><span class="n">published_at</span><span class="p" data-group-id="8967039868-6">)</span><span class="p" data-group-id="8967039868-5">]</span><span class="w">
+</span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">preload</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6967193542-5">[</span><span class="ss">comments</span><span class="p">:</span><span class="w"> </span><span class="n">from</span><span class="p" data-group-id="6967193542-6">(</span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Comment</span><span class="p">,</span><span class="w"> </span><span class="ss">order_by</span><span class="p">:</span><span class="w"> </span><span class="n">c</span><span class="o">.</span><span class="n">published_at</span><span class="p" data-group-id="6967193542-6">)</span><span class="p" data-group-id="6967193542-5">]</span><span class="w">
 
 </span><span class="c1"># Use a two-element tuple for a custom query and nested association definition</span><span class="w">
 </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Comment</span><span class="p">,</span><span class="w"> </span><span class="ss">order_by</span><span class="p">:</span><span class="w"> </span><span class="n">c</span><span class="o">.</span><span class="n">published_at</span><span class="w">
-</span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">preload</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8967039868-7">[</span><span class="ss">comments</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8967039868-8">{</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8967039868-9">[</span><span class="ss">:replies</span><span class="p">,</span><span class="w"> </span><span class="ss">:likes</span><span class="p" data-group-id="8967039868-9">]</span><span class="p" data-group-id="8967039868-8">}</span><span class="p" data-group-id="8967039868-7">]</span></code></pre>
+</span><span class="n">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">preload</span><span class="w"> </span><span class="n">posts</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6967193542-7">[</span><span class="ss">comments</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6967193542-8">{</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6967193542-9">[</span><span class="ss">:replies</span><span class="p">,</span><span class="w"> </span><span class="ss">:likes</span><span class="p" data-group-id="6967193542-9">]</span><span class="p" data-group-id="6967193542-8">}</span><span class="p" data-group-id="6967193542-7">]</span></code></pre>
 <p>The query given to preload may also preload its own associations.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:preload/3"><code class="inline">Ecto.Repo.preload/3</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:preload/3"><code class="inline">Ecto.Repo.preload/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="put_dynamic_repo/1">
+    <div class="detail-header">
+    <a href="#put_dynamic_repo/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">put_dynamic_repo(dynamic)</span>
+          </div>
+  <section class="docstring">
+<p>Sets the dynamic repository to be used in further iteractions.</p>
+<p>Sometimes, you may want a single Ecto repository to talk to
+many different database instances. By default, when you call
+<code class="inline">MyApp.Repo.start_link/1</code>, it will start a repository with
+name <code class="inline">MyApp.Repo</code>. But if you want to start multiple repositories,
+you can give each of them a different name:</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyApp.Repo</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="1394299663-1">(</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:tenant_foo</span><span class="p">,</span><span class="w"> </span><span class="ss">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo.example.com&quot;</span><span class="p" data-group-id="1394299663-1">)</span><span class="w">
+</span><span class="nc">MyApp.Repo</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="1394299663-2">(</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="ss">:tenant_bar</span><span class="p">,</span><span class="w"> </span><span class="ss">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar.example.com&quot;</span><span class="p" data-group-id="1394299663-2">)</span></code></pre>
+<p>You can also start repositories without names by explicitly
+setting the name to nil:</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyApp.Repo</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="0756708266-1">(</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w"> </span><span class="ss">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;temp.example.com&quot;</span><span class="p" data-group-id="0756708266-1">)</span></code></pre>
+<p>However, once the repository is started, you can&#39;t directly interact with
+it, since all operations in <code class="inline">MyApp.Repo</code> are sent to the repository named
+<code class="inline">MyApp.Repo</code>. With <a href="#put_dynamic_repo/1"><code class="inline">put_dynamic_repo/1</code></a>, we can tell Ecto exactly which
+instance to use:</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyApp.Repo</span><span class="o">.</span><span class="n">put_dynamic_repo</span><span class="p" data-group-id="4328264522-1">(</span><span class="ss">:tenant_foo</span><span class="p" data-group-id="4328264522-1">)</span></code></pre>
+<p><strong>Note this feature is experimental and may be changed or removed in future
+releases.</strong></p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:put_dynamic_repo/1"><code class="inline">Ecto.Repo.put_dynamic_repo/1</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="query/3">
@@ -1268,7 +1445,7 @@ option allows the prefix to be changed.
           </div>
   <section class="docstring">
 <p>A convenience function for SQL-based repositories that executes the given query.</p>
-<p>See <a href="https://hexdocs.pm/ecto_sql/3.0.5/Ecto.Adapters.SQL.html#query/4"><code class="inline">Ecto.Adapters.SQL.query/4</code></a> for more information.</p>
+<p>See <a href="https://hexdocs.pm/ecto_sql/3.1.0/Ecto.Adapters.SQL.html#query/4"><code class="inline">Ecto.Adapters.SQL.query/4</code></a> for more information.</p>
   </section>
 </section>
 <section class="detail" id="query!/3">
@@ -1285,7 +1462,7 @@ option allows the prefix to be changed.
           </div>
   <section class="docstring">
 <p>A convenience function for SQL-based repositories that executes the given query.</p>
-<p>See <a href="https://hexdocs.pm/ecto_sql/3.0.5/Ecto.Adapters.SQL.html#query!/4"><code class="inline">Ecto.Adapters.SQL.query!/4</code></a> for more information.</p>
+<p>See <a href="https://hexdocs.pm/ecto_sql/3.1.0/Ecto.Adapters.SQL.html#query!/4"><code class="inline">Ecto.Adapters.SQL.query!/4</code></a> for more information.</p>
   </section>
 </section>
 <section class="detail" id="rollback/1">
@@ -1303,7 +1480,7 @@ option allows the prefix to be changed.
   <section class="docstring">
 <p>Rolls back the current transaction.</p>
 <p>The transaction will return the value given as <code class="inline">{:error, value}</code>.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:rollback/1"><code class="inline">Ecto.Repo.rollback/1</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:rollback/1"><code class="inline">Ecto.Repo.rollback/1</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="start_link/1">
@@ -1328,7 +1505,7 @@ started or <code class="inline">{:error, term}</code> in case anything else goes
 
 <p>See the configuration in the moduledoc for options shared between adapters,
 for adapter-specific configuration see the adapter&#39;s documentation.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:start_link/1"><code class="inline">Ecto.Repo.start_link/1</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:start_link/1"><code class="inline">Ecto.Repo.start_link/1</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="stop/1">
@@ -1343,7 +1520,7 @@ for adapter-specific configuration see the adapter&#39;s documentation.</p>
           </div>
   <section class="docstring">
 <p>Shuts down the repository.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:stop/1"><code class="inline">Ecto.Repo.stop/1</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:stop/1"><code class="inline">Ecto.Repo.stop/1</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="stream/2">
@@ -1361,7 +1538,7 @@ for adapter-specific configuration see the adapter&#39;s documentation.</p>
 matching the given query.</p>
 <p>SQL adapters, such as Postgres and MySQL, can only enumerate a stream
 inside a transaction.</p>
-<p>May raise <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.QueryError.html"><code class="inline">Ecto.QueryError</code></a> if query validation fails.</p>
+<p>May raise <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.QueryError.html"><code class="inline">Ecto.QueryError</code></a> if query validation fails.</p>
 <h2 id="stream/2-options" class="section-heading">
   <a href="#stream/2-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Options
@@ -1369,8 +1546,11 @@ inside a transaction.</p>
 
 <ul>
 <li><p><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
-in Postgres or the database in MySQL). This overrides the prefix set
-in the query</p>
+in Postgres or the database in MySQL). This will be applied to all <code class="inline">from</code>
+and <code class="inline">join</code>s in the query that did not have a prefix previously given
+either via the <code class="inline">:prefix</code> option on <code class="inline">join</code>/<code class="inline">from</code> or via <code class="inline">@schema_prefix</code>
+in the schema. For more information see the &quot;Query Prefix&quot; section of the
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html"><code class="inline">Ecto.Query</code></a> documentation.</p>
 </li>
 <li><p><code class="inline">:max_rows</code> - The number of rows to load from the database as we stream.
 It is supported at least by Postgres and MySQL and defaults to 500.</p>
@@ -1385,11 +1565,11 @@ It is supported at least by Postgres and MySQL and defaults to 500.</p>
 <pre><code class="nohighlight makeup elixir"><span class="c1"># Fetch all post titles</span><span class="w">
 </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w">
      </span><span class="ss">select</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">title</span><span class="w">
-</span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">stream</span><span class="p" data-group-id="8044095466-1">(</span><span class="n">query</span><span class="p" data-group-id="8044095466-1">)</span><span class="w">
-</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">transaction</span><span class="p" data-group-id="8044095466-2">(</span><span class="k" data-group-id="8044095466-3">fn</span><span class="p" data-group-id="8044095466-4">(</span><span class="p" data-group-id="8044095466-4">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
-  </span><span class="nc">Enum</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="8044095466-5">(</span><span class="n">stream</span><span class="p" data-group-id="8044095466-5">)</span><span class="w">
-</span><span class="k" data-group-id="8044095466-3">end</span><span class="p" data-group-id="8044095466-2">)</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:stream/2"><code class="inline">Ecto.Repo.stream/2</code></a>.</p>
+</span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">stream</span><span class="p" data-group-id="6317367517-1">(</span><span class="n">query</span><span class="p" data-group-id="6317367517-1">)</span><span class="w">
+</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">transaction</span><span class="p" data-group-id="6317367517-2">(</span><span class="k" data-group-id="6317367517-3">fn</span><span class="p" data-group-id="6317367517-4">(</span><span class="p" data-group-id="6317367517-4">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="nc">Enum</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="6317367517-5">(</span><span class="n">stream</span><span class="p" data-group-id="6317367517-5">)</span><span class="w">
+</span><span class="k" data-group-id="6317367517-3">end</span><span class="p" data-group-id="6317367517-2">)</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:stream/2"><code class="inline">Ecto.Repo.stream/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="to_sql/2">
@@ -1402,7 +1582,7 @@ It is supported at least by Postgres and MySQL and defaults to 500.</p>
           </div>
   <section class="docstring">
 <p>A convenience function for SQL-based repositories that translates the given query to SQL.</p>
-<p>See <a href="https://hexdocs.pm/ecto_sql/3.0.5/Ecto.Adapters.SQL.html#to_sql/3"><code class="inline">Ecto.Adapters.SQL.to_sql/3</code></a> for more information.</p>
+<p>See <a href="https://hexdocs.pm/ecto_sql/3.1.0/Ecto.Adapters.SQL.html#to_sql/3"><code class="inline">Ecto.Adapters.SQL.to_sql/3</code></a> for more information.</p>
   </section>
 </section>
 <section class="detail" id="transaction/2">
@@ -1416,7 +1596,7 @@ It is supported at least by Postgres and MySQL and defaults to 500.</p>
     <h1 class="signature">transaction(fun_or_multi, opts \\ [])</span>
           </div>
   <section class="docstring">
-<p>Runs the given function or <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Multi.html"><code class="inline">Ecto.Multi</code></a> inside a transaction.</p>
+<p>Runs the given function or <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Multi.html"><code class="inline">Ecto.Multi</code></a> inside a transaction.</p>
 <h2 id="transaction/2-use-with-function" class="section-heading">
   <a href="#transaction/2-use-with-function" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Use with function
@@ -1446,8 +1626,8 @@ success committed returning <code class="inline">{:ok, changes}</code>. In case 
 the transaction will be rolled back and
 <code class="inline">{:error, failed_operation, failed_value, changes_so_far}</code> will be
 returned.</p>
-<p>You can read more about using transactions with <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Multi.html"><code class="inline">Ecto.Multi</code></a> as well as
-see some examples in the <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Multi.html"><code class="inline">Ecto.Multi</code></a> documentation.</p>
+<p>You can read more about using transactions with <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Multi.html"><code class="inline">Ecto.Multi</code></a> as well as
+see some examples in the <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Multi.html"><code class="inline">Ecto.Multi</code></a> documentation.</p>
 <h2 id="transaction/2-options" class="section-heading">
   <a href="#transaction/2-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Options
@@ -1459,26 +1639,26 @@ see some examples in the <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Multi.html"
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="kn">import</span><span class="w"> </span><span class="nc">Ecto.Changeset</span><span class="p">,</span><span class="w"> </span><span class="ss">only</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8380211393-1">[</span><span class="ss">change</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="8380211393-1">]</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="kn">import</span><span class="w"> </span><span class="nc">Ecto.Changeset</span><span class="p">,</span><span class="w"> </span><span class="ss">only</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6364800945-1">[</span><span class="ss">change</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6364800945-1">]</span><span class="w">
 
-</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">transaction</span><span class="p" data-group-id="8380211393-2">(</span><span class="k" data-group-id="8380211393-3">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
-  </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update!</span><span class="p" data-group-id="8380211393-4">(</span><span class="n">change</span><span class="p" data-group-id="8380211393-5">(</span><span class="n">alice</span><span class="p">,</span><span class="w"> </span><span class="ss">balance</span><span class="p">:</span><span class="w"> </span><span class="n">alice</span><span class="o">.</span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="8380211393-5">)</span><span class="p" data-group-id="8380211393-4">)</span><span class="w">
-  </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update!</span><span class="p" data-group-id="8380211393-6">(</span><span class="n">change</span><span class="p" data-group-id="8380211393-7">(</span><span class="n">bob</span><span class="p">,</span><span class="w"> </span><span class="ss">balance</span><span class="p">:</span><span class="w"> </span><span class="n">bob</span><span class="o">.</span><span class="n">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="8380211393-7">)</span><span class="p" data-group-id="8380211393-6">)</span><span class="w">
-</span><span class="k" data-group-id="8380211393-3">end</span><span class="p" data-group-id="8380211393-2">)</span><span class="w">
+</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">transaction</span><span class="p" data-group-id="6364800945-2">(</span><span class="k" data-group-id="6364800945-3">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update!</span><span class="p" data-group-id="6364800945-4">(</span><span class="n">change</span><span class="p" data-group-id="6364800945-5">(</span><span class="n">alice</span><span class="p">,</span><span class="w"> </span><span class="ss">balance</span><span class="p">:</span><span class="w"> </span><span class="n">alice</span><span class="o">.</span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="6364800945-5">)</span><span class="p" data-group-id="6364800945-4">)</span><span class="w">
+  </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update!</span><span class="p" data-group-id="6364800945-6">(</span><span class="n">change</span><span class="p" data-group-id="6364800945-7">(</span><span class="n">bob</span><span class="p">,</span><span class="w"> </span><span class="ss">balance</span><span class="p">:</span><span class="w"> </span><span class="n">bob</span><span class="o">.</span><span class="n">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="6364800945-7">)</span><span class="p" data-group-id="6364800945-6">)</span><span class="w">
+</span><span class="k" data-group-id="6364800945-3">end</span><span class="p" data-group-id="6364800945-2">)</span><span class="w">
 
 </span><span class="c1"># Roll back a transaction explicitly</span><span class="w">
-</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">transaction</span><span class="p" data-group-id="8380211393-8">(</span><span class="k" data-group-id="8380211393-9">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
-  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert!</span><span class="p" data-group-id="8380211393-10">(</span><span class="p" data-group-id="8380211393-11">%</span><span class="nc" data-group-id="8380211393-11">Post</span><span class="p" data-group-id="8380211393-11">{</span><span class="p" data-group-id="8380211393-11">}</span><span class="p" data-group-id="8380211393-10">)</span><span class="w">
-  </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nc">Editor</span><span class="o">.</span><span class="n">post_allowed?</span><span class="p" data-group-id="8380211393-12">(</span><span class="n">p</span><span class="p" data-group-id="8380211393-12">)</span><span class="w"> </span><span class="k" data-group-id="8380211393-13">do</span><span class="w">
-    </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">rollback</span><span class="p" data-group-id="8380211393-14">(</span><span class="ss">:posting_not_allowed</span><span class="p" data-group-id="8380211393-14">)</span><span class="w">
-  </span><span class="k" data-group-id="8380211393-13">end</span><span class="w">
-</span><span class="k" data-group-id="8380211393-9">end</span><span class="p" data-group-id="8380211393-8">)</span><span class="w">
+</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">transaction</span><span class="p" data-group-id="6364800945-8">(</span><span class="k" data-group-id="6364800945-9">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">insert!</span><span class="p" data-group-id="6364800945-10">(</span><span class="p" data-group-id="6364800945-11">%</span><span class="nc" data-group-id="6364800945-11">Post</span><span class="p" data-group-id="6364800945-11">{</span><span class="p" data-group-id="6364800945-11">}</span><span class="p" data-group-id="6364800945-10">)</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nc">Editor</span><span class="o">.</span><span class="n">post_allowed?</span><span class="p" data-group-id="6364800945-12">(</span><span class="n">p</span><span class="p" data-group-id="6364800945-12">)</span><span class="w"> </span><span class="k" data-group-id="6364800945-13">do</span><span class="w">
+    </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">rollback</span><span class="p" data-group-id="6364800945-14">(</span><span class="ss">:posting_not_allowed</span><span class="p" data-group-id="6364800945-14">)</span><span class="w">
+  </span><span class="k" data-group-id="6364800945-13">end</span><span class="w">
+</span><span class="k" data-group-id="6364800945-9">end</span><span class="p" data-group-id="6364800945-8">)</span><span class="w">
 
 </span><span class="c1"># With Ecto.Multi</span><span class="w">
 </span><span class="nc">Ecto.Multi</span><span class="o">.</span><span class="n">new</span><span class="w">
-</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ecto.Multi</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="8380211393-15">(</span><span class="ss">:post</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8380211393-16">%</span><span class="nc" data-group-id="8380211393-16">Post</span><span class="p" data-group-id="8380211393-16">{</span><span class="p" data-group-id="8380211393-16">}</span><span class="p" data-group-id="8380211393-15">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Ecto.Multi</span><span class="o">.</span><span class="n">insert</span><span class="p" data-group-id="6364800945-15">(</span><span class="ss">:post</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6364800945-16">%</span><span class="nc" data-group-id="6364800945-16">Post</span><span class="p" data-group-id="6364800945-16">{</span><span class="p" data-group-id="6364800945-16">}</span><span class="p" data-group-id="6364800945-15">)</span><span class="w">
 </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">transaction</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:transaction/2"><code class="inline">Ecto.Repo.transaction/2</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:transaction/2"><code class="inline">Ecto.Repo.transaction/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="update/2">
@@ -1497,9 +1677,9 @@ see some examples in the <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Multi.html"
 tracking dirty changes. Only the fields present in the <code class="inline">changes</code> part
 of the changeset are sent to the database. Any other, in-memory
 changes done to the schema are ignored.</p>
-<p>If the struct has no primary key, <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.NoPrimaryKeyFieldError.html"><code class="inline">Ecto.NoPrimaryKeyFieldError</code></a>
+<p>If the struct has no primary key, <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.NoPrimaryKeyFieldError.html"><code class="inline">Ecto.NoPrimaryKeyFieldError</code></a>
 will be raised.</p>
-<p>If the struct cannot be found, <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a> will be raised.</p>
+<p>If the struct cannot be found, <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a> will be raised.</p>
 <p>It returns <code class="inline">{:ok, struct}</code> if the struct has been successfully
 updated or <code class="inline">{:error, changeset}</code> if there was a validation
 or a known constraint error.</p>
@@ -1518,11 +1698,13 @@ callbacks will always be executed, even if there are no changes
 </li>
 <li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
 in Postgres or the database in MySQL). This overrides the prefix set
-in the struct.
+in the query and any <code class="inline">@schema_prefix</code> set any schemas. Also, the
+<code class="inline">@schema_prefix</code> for the parent record will override all default
+<code class="inline">@schema_prefix</code>s set in any child schemas for associations.
 </li>
 <li><code class="inline">:stale_error_field</code> - The field where stale errors will be added in
 the returning changeset. This option can be used to avoid raising
-<a href="https://hexdocs.pm/ecto/3.0.7/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a>.
+<a href="https://hexdocs.pm/ecto/3.1.0/Ecto.StaleEntryError.html"><code class="inline">Ecto.StaleEntryError</code></a>.
 </li>
 <li><code class="inline">:stale_error_message</code> - The message to add to the configured
 <code class="inline">:stale_error_field</code> when stale errors happen, defaults to &quot;is stale&quot;.
@@ -1533,13 +1715,13 @@ the returning changeset. This option can be used to avoid raising
   Example
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="n">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get!</span><span class="p" data-group-id="3250007964-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="3250007964-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">get!</span><span class="p" data-group-id="2639686931-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="2639686931-1">)</span><span class="w">
 </span><span class="n">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Ecto.Changeset</span><span class="o">.</span><span class="n">change</span><span class="w"> </span><span class="n">post</span><span class="p">,</span><span class="w"> </span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;New title&quot;</span><span class="w">
-</span><span class="k">case</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update</span><span class="w"> </span><span class="n">post</span><span class="w"> </span><span class="k" data-group-id="3250007964-2">do</span><span class="w">
-  </span><span class="p" data-group-id="3250007964-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">struct</span><span class="p" data-group-id="3250007964-3">}</span><span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Updated with success</span><span class="w">
-  </span><span class="p" data-group-id="3250007964-4">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">changeset</span><span class="p" data-group-id="3250007964-4">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Something went wrong</span><span class="w">
-</span><span class="k" data-group-id="3250007964-2">end</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:update/2"><code class="inline">Ecto.Repo.update/2</code></a>.</p>
+</span><span class="k">case</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update</span><span class="w"> </span><span class="n">post</span><span class="w"> </span><span class="k" data-group-id="2639686931-2">do</span><span class="w">
+  </span><span class="p" data-group-id="2639686931-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">struct</span><span class="p" data-group-id="2639686931-3">}</span><span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Updated with success</span><span class="w">
+  </span><span class="p" data-group-id="2639686931-4">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">changeset</span><span class="p" data-group-id="2639686931-4">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1"># Something went wrong</span><span class="w">
+</span><span class="k" data-group-id="2639686931-2">end</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:update/2"><code class="inline">Ecto.Repo.update/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="update!/2">
@@ -1554,7 +1736,7 @@ the returning changeset. This option can be used to avoid raising
           </div>
   <section class="docstring">
 <p>Same as <code class="inline">c:update/2</code> but returns the struct or raises if the changeset is invalid.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:update!/2"><code class="inline">Ecto.Repo.update!/2</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:update!/2"><code class="inline">Ecto.Repo.update!/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="update_all/3">
@@ -1575,7 +1757,7 @@ unless a <code class="inline">select</code> is supplied in the update query. Not
 not all databases support returning data from UPDATEs.</p>
 <p>Keep in mind this <code class="inline">update_all</code> will not update autogenerated
 fields like the <code class="inline">updated_at</code> columns.</p>
-<p>See <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Query.html#update/3"><code class="inline">Ecto.Query.update/3</code></a> for update operations that can be
+<p>See <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Query.html#update/3"><code class="inline">Ecto.Query.update/3</code></a> for update operations that can be
 performed on fields.</p>
 <h2 id="update_all/3-options" class="section-heading">
   <a href="#update_all/3-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -1585,7 +1767,7 @@ performed on fields.</p>
 <ul>
 <li><code class="inline">:prefix</code> - The prefix to run the query on (such as the schema path
 in Postgres or the database in MySQL). This overrides the prefix set
-in the query.
+in the query and any <code class="inline">@schema_prefix</code> set in the schema.
 </li>
 </ul>
 <p>See the &quot;Shared options&quot; section at the module documentation for
@@ -1595,22 +1777,22 @@ remaining options.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update_all</span><span class="p" data-group-id="8468668075-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8468668075-2">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;New title&quot;</span><span class="p" data-group-id="8468668075-2">]</span><span class="p" data-group-id="8468668075-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update_all</span><span class="p" data-group-id="6076740817-1">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6076740817-2">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;New title&quot;</span><span class="p" data-group-id="6076740817-2">]</span><span class="p" data-group-id="6076740817-1">)</span><span class="w">
 
-</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update_all</span><span class="p" data-group-id="8468668075-3">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">inc</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8468668075-4">[</span><span class="ss">visits</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8468668075-4">]</span><span class="p" data-group-id="8468668075-3">)</span><span class="w">
+</span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update_all</span><span class="p" data-group-id="6076740817-3">(</span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">inc</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6076740817-4">[</span><span class="ss">visits</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="6076740817-4">]</span><span class="p" data-group-id="6076740817-3">)</span><span class="w">
 
-</span><span class="n">from</span><span class="p" data-group-id="8468668075-5">(</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="ss">select</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">visits</span><span class="p" data-group-id="8468668075-5">)</span><span class="w">
-</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update_all</span><span class="p" data-group-id="8468668075-6">(</span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8468668075-7">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;New title&quot;</span><span class="p" data-group-id="8468668075-7">]</span><span class="p" data-group-id="8468668075-6">)</span><span class="w">
+</span><span class="n">from</span><span class="p" data-group-id="6076740817-5">(</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="ss">select</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">visits</span><span class="p" data-group-id="6076740817-5">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update_all</span><span class="p" data-group-id="6076740817-6">(</span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6076740817-7">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;New title&quot;</span><span class="p" data-group-id="6076740817-7">]</span><span class="p" data-group-id="6076740817-6">)</span><span class="w">
 
-</span><span class="n">from</span><span class="p" data-group-id="8468668075-8">(</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="ss">update</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8468668075-9">[</span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8468668075-10">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;New title&quot;</span><span class="p" data-group-id="8468668075-10">]</span><span class="p" data-group-id="8468668075-9">]</span><span class="p" data-group-id="8468668075-8">)</span><span class="w">
-</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update_all</span><span class="p" data-group-id="8468668075-11">(</span><span class="p" data-group-id="8468668075-12">[</span><span class="p" data-group-id="8468668075-12">]</span><span class="p" data-group-id="8468668075-11">)</span><span class="w">
+</span><span class="n">from</span><span class="p" data-group-id="6076740817-8">(</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="ss">update</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6076740817-9">[</span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6076740817-10">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;New title&quot;</span><span class="p" data-group-id="6076740817-10">]</span><span class="p" data-group-id="6076740817-9">]</span><span class="p" data-group-id="6076740817-8">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update_all</span><span class="p" data-group-id="6076740817-11">(</span><span class="p" data-group-id="6076740817-12">[</span><span class="p" data-group-id="6076740817-12">]</span><span class="p" data-group-id="6076740817-11">)</span><span class="w">
 
-</span><span class="n">from</span><span class="p" data-group-id="8468668075-13">(</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="ss">update</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8468668075-14">[</span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8468668075-15">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="o">^</span><span class="n">new_title</span><span class="p" data-group-id="8468668075-15">]</span><span class="p" data-group-id="8468668075-14">]</span><span class="p" data-group-id="8468668075-13">)</span><span class="w">
-</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update_all</span><span class="p" data-group-id="8468668075-16">(</span><span class="p" data-group-id="8468668075-17">[</span><span class="p" data-group-id="8468668075-17">]</span><span class="p" data-group-id="8468668075-16">)</span><span class="w">
+</span><span class="n">from</span><span class="p" data-group-id="6076740817-13">(</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="ss">update</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6076740817-14">[</span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6076740817-15">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="o">^</span><span class="n">new_title</span><span class="p" data-group-id="6076740817-15">]</span><span class="p" data-group-id="6076740817-14">]</span><span class="p" data-group-id="6076740817-13">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update_all</span><span class="p" data-group-id="6076740817-16">(</span><span class="p" data-group-id="6076740817-17">[</span><span class="p" data-group-id="6076740817-17">]</span><span class="p" data-group-id="6076740817-16">)</span><span class="w">
 
-</span><span class="n">from</span><span class="p" data-group-id="8468668075-18">(</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="ss">update</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8468668075-19">[</span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8468668075-20">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="n">fragment</span><span class="p" data-group-id="8468668075-21">(</span><span class="s">&quot;upper(?)&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">^</span><span class="n">new_title</span><span class="p" data-group-id="8468668075-21">)</span><span class="p" data-group-id="8468668075-20">]</span><span class="p" data-group-id="8468668075-19">]</span><span class="p" data-group-id="8468668075-18">)</span><span class="w">
-</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update_all</span><span class="p" data-group-id="8468668075-22">(</span><span class="p" data-group-id="8468668075-23">[</span><span class="p" data-group-id="8468668075-23">]</span><span class="p" data-group-id="8468668075-22">)</span></code></pre>
-<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.0.7/Ecto.Repo.html#c:update_all/3"><code class="inline">Ecto.Repo.update_all/3</code></a>.</p>
+</span><span class="n">from</span><span class="p" data-group-id="6076740817-18">(</span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nc">Post</span><span class="p">,</span><span class="w"> </span><span class="ss">where</span><span class="p">:</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="ss">update</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6076740817-19">[</span><span class="ss">set</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6076740817-20">[</span><span class="ss">title</span><span class="p">:</span><span class="w"> </span><span class="n">fragment</span><span class="p" data-group-id="6076740817-21">(</span><span class="s">&quot;upper(?)&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">^</span><span class="n">new_title</span><span class="p" data-group-id="6076740817-21">)</span><span class="p" data-group-id="6076740817-20">]</span><span class="p" data-group-id="6076740817-19">]</span><span class="p" data-group-id="6076740817-18">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">MyRepo</span><span class="o">.</span><span class="n">update_all</span><span class="p" data-group-id="6076740817-22">(</span><span class="p" data-group-id="6076740817-23">[</span><span class="p" data-group-id="6076740817-23">]</span><span class="p" data-group-id="6076740817-22">)</span></code></pre>
+<p>Callback implementation for <a href="https://hexdocs.pm/ecto/3.1.0/Ecto.Repo.html#c:update_all/3"><code class="inline">Ecto.Repo.update_all/3</code></a>.</p>
   </section>
 </section>
           </div>

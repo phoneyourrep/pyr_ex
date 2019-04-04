@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.3">
     <title>PYRExWeb.UserSocket —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
-    <script src="dist/sidebar_items-443b51a8a7.js"></script>
+    <script src="dist/sidebar_items-b11f0e0cde.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
     
   </head>
@@ -80,7 +80,7 @@ PYRExWeb.UserSocket              </h1>
   <div class="summary-signature">
     <a href="#connect/3">connect(params, socket, connect_info)</a>
   </div>
-    <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.4.2/Phoenix.Socket.html#c:connect/3"><code class="inline">Phoenix.Socket.connect/3</code></a></p>
+    <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.4.3/Phoenix.Socket.html#c:connect/3"><code class="inline">Phoenix.Socket.connect/3</code></a></p>
 </div>
 </div>
 <div class="summary-row">
@@ -110,7 +110,7 @@ Functions          </h1>
     <h1 class="signature">connect(params, socket, connect_info)</span>
           </div>
   <section class="docstring">
-<p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.4.2/Phoenix.Socket.html#c:connect/3"><code class="inline">Phoenix.Socket.connect/3</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.4.3/Phoenix.Socket.html#c:connect/3"><code class="inline">Phoenix.Socket.connect/3</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="id/1">
@@ -124,12 +124,12 @@ Functions          </h1>
   <section class="docstring">
 <p>Identifies the socket connection.</p>
 <p>Socket IDs are topics that allow you to identify all sockets for a given user:</p>
-<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">id</span><span class="p" data-group-id="9826757364-1">(</span><span class="n">socket</span><span class="p" data-group-id="9826757364-1">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;users_socket:</span><span class="si" data-group-id="9826757364-2">#{</span><span class="n">socket</span><span class="o">.</span><span class="n">assigns</span><span class="o">.</span><span class="n">user_id</span><span class="si" data-group-id="9826757364-2">}</span><span class="s">&quot;</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">id</span><span class="p" data-group-id="0173107718-1">(</span><span class="n">socket</span><span class="p" data-group-id="0173107718-1">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;users_socket:</span><span class="si" data-group-id="0173107718-2">#{</span><span class="n">socket</span><span class="o">.</span><span class="n">assigns</span><span class="o">.</span><span class="n">user_id</span><span class="si" data-group-id="0173107718-2">}</span><span class="s">&quot;</span></code></pre>
 <p>Would allow you to broadcast a <code class="inline">&quot;disconnect&quot;</code> event and terminate
 all active sockets and channels for a given user:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">MyApp.Endpoint</span><span class="o">.</span><span class="n">broadcast</span><span class="p" data-group-id="8078343211-1">(</span><span class="s">&quot;users_socket:&quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;disconnect&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8078343211-2">%{</span><span class="p" data-group-id="8078343211-2">}</span><span class="p" data-group-id="8078343211-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">MyApp.Endpoint</span><span class="o">.</span><span class="n">broadcast</span><span class="p" data-group-id="6434290706-1">(</span><span class="s">&quot;users_socket:&quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;disconnect&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6434290706-2">%{</span><span class="p" data-group-id="6434290706-2">}</span><span class="p" data-group-id="6434290706-1">)</span></code></pre>
 <p>Returning <code class="inline">nil</code> makes this socket anonymous.</p>
-<p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.4.2/Phoenix.Socket.html#c:id/1"><code class="inline">Phoenix.Socket.id/1</code></a>.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.4.3/Phoenix.Socket.html#c:id/1"><code class="inline">Phoenix.Socket.id/1</code></a>.</p>
   </section>
 </section>
           </div>
