@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure your application as:
 #
-#     config :pyr_ex_geocoder, key: :value
+#     config :geocodex, key: :value
 #
 # and access this configuration in your application as:
 #
-#     Application.get_env(:pyr_ex_geocoder, :key)
+#     Application.get_env(:geocodex, :key)
 #
 # You can also configure a third-party app:
 #

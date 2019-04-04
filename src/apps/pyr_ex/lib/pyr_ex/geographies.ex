@@ -110,7 +110,7 @@ defmodule PYREx.Geographies do
   street address, or a Geo struct.
   """
   def intersecting_shapes(address) when is_binary(address) do
-    case PYRExGeocoder.coordinates(address) do
+    case Geocodex.coordinates(address) do
       {:ok, %{x: x, y: y}} -> intersecting_shapes({y, x})
       :error -> []
     end
@@ -127,8 +127,9 @@ defmodule PYREx.Geographies do
 
   def intersecting_shapes(geom) do
     query =
-      from shape in Shape,
+      from(shape in Shape,
         where: st_intersects(shape.geom, ^geom)
+      )
 
     Repo.all(query)
   end
@@ -253,7 +254,7 @@ defmodule PYREx.Geographies do
           }, %PYREx.Geographies.Jurisdiction{...}, ...]
   """
   def intersecting_jurisdictions(address) when is_binary(address) do
-    case PYRExGeocoder.coordinates(address) do
+    case Geocodex.coordinates(address) do
       {:ok, %{x: x, y: y}} -> intersecting_jurisdictions({y, x})
       :error -> []
     end
@@ -271,9 +272,10 @@ defmodule PYREx.Geographies do
 
   def intersecting_jurisdictions(geom) do
     query =
-      from j in Jurisdiction,
+      from(j in Jurisdiction,
         join: s in assoc(j, :shape),
         where: st_intersects(s.geom, ^geom)
+      )
 
     Repo.all(query)
   end

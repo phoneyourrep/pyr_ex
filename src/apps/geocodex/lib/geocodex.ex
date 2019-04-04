@@ -1,6 +1,6 @@
-defmodule PYRExGeocoder do
+defmodule Geocodex do
   @moduledoc """
-  Documentation for PYRExGeocoder.
+  Documentation for Geocodex.
   """
 
   use HTTPoison.Base
@@ -14,7 +14,7 @@ defmodule PYRExGeocoder do
 
   ## Examples
 
-      iex> PYRExGeocoder.coordinates("1600 Pennsylvania Ave NW, Washington, D.C., 20500")
+      iex> Geocodex.coordinates("1600 Pennsylvania Ave NW, Washington, D.C., 20500")
       {:ok, %{x: -77.03535, y: 38.898754}}
   """
   def coordinates(address) do

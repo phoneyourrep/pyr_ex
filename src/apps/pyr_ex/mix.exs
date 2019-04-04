@@ -55,7 +55,7 @@ defmodule PYREx.MixProject do
       {:phoenix_ecto, "~> 4.0"},
       {:plug_cowboy, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
-      {:pyr_ex_geocoder, in_umbrella: true},
+      {:geocodex, in_umbrella: true},
       {:yaml_elixir, "~> 2.1"}
     ]
   end

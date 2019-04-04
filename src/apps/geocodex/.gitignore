@@ -20,5 +20,5 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-pyr_ex_geocoder-*.tar
+geocodex-*.tar
 
