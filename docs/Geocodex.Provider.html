@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.19.3">
-    <title>Geocodex —  vdev</title>
+    <title>Geocodex.Provider —  vdev</title>
     <link rel="stylesheet" href="dist/html-399e30b9b028e3059575.css" />
     <script src="dist/sidebar_items-179e4cedb7.js"></script>
     <script async src="dist/html-399e30b9b028e3059575.js"></script>
@@ -60,20 +60,29 @@
 
       <h1>
         <small class="visible-xs"> vdev</small>
-Geocodex              </h1>
+Geocodex.Provider <small>behaviour</small>              </h1>
 
 
         <section id="moduledoc">
-<p>Geocoding library for Elixir that&#39;s extendable to multiple service providers.</p>
-<p>Geocodex uses the U.S. Census Bureau geocoding service by default, but you can
-configure a different provider in your <code class="inline">config.exs</code>:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">config</span><span class="w"> </span><span class="ss">:geocodex</span><span class="p">,</span><span class="w"> </span><span class="ss">provider</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Provider</span></code></pre>
-<p>You can use any custom provider module that implements the <a href="Geocodex.Provider.html"><code class="inline">Geocodex.Provider</code></a> behaviour.</p>
-<p>Built-in providers:</p>
+<p>A behaviour for geocoder service providers.</p>
+<p>You can implement the behaviour by using it in a module:</p>
+<pre><code class="nohighlight makeup elixir"><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Provider</span><span class="w"> </span><span class="k" data-group-id="5000219430-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Geocodex.Provider</span><span class="w">
+</span><span class="k" data-group-id="5000219430-1">end</span></code></pre>
+<p>The following options are available to the <code class="inline">use</code> line:</p>
 <ul>
-<li><a href="Geocodex.Provider.USCB.html"><code class="inline">Geocodex.Provider.USCB</code></a> (default)
+<li><code class="inline">:base_url</code> - The base url of the geocoding service
+</li>
+<li><code class="inline">:default_params</code> - The default params that should be added to every request.
+</li>
+<li><code class="inline">:default_headers</code> - The default headers that should be added to every request.
 </li>
 </ul>
+<p>Here&#39;s an example from <a href="Geocodex.Provider.USCB.html"><code class="inline">Geocodex.Provider.USCB</code></a>:</p>
+<pre><code class="nohighlight makeup elixir"><span class="w">  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Geocodex.Provider</span><span class="p">,</span><span class="w">
+    </span><span class="ss">base_url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://geocoding.geo.census.gov/geocoder/locations/onelineaddress&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">default_headers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6186933101-1">[</span><span class="p" data-group-id="6186933101-2">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="6186933101-2">}</span><span class="p" data-group-id="6186933101-1">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">default_params</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6186933101-3">[</span><span class="ss">benchmark</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Public_AR_Current&quot;</span><span class="p" data-group-id="6186933101-3">]</span></code></pre>
         </section>
 
         <section id="summary" class="details-list">
@@ -92,34 +101,22 @@ configure a different provider in your <code class="inline">config.exs</code>:</
   <div class="summary-signature">
     <a href="#t:address/0">address()</a>
   </div>
-    <div class="summary-synopsis"><p>An address to be geocoded</p>
-</div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#t:coordinates/0">coordinates()</a>
   </div>
-    <div class="summary-synopsis"><p>A map containing x/y coordinates</p>
-</div>
 </div>
   </div>
-  <div class="summary-functions summary">
+  <div class="summary-callbacks summary">
     <h2>
-      <a href="#functions">Functions</a>
+      <a href="#callbacks">Callbacks</a>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#coordinates/1">coordinates(address)</a>
+    <a href="#c:coordinates/1">coordinates(address)</a>
   </div>
-    <div class="summary-synopsis"><p>Geocodes an address into x/y coordinates</p>
-</div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#provider/0">provider()</a>
-  </div>
-    <div class="summary-synopsis"><p>The configured geocoding service provider. Returns the name of a module that implements
-the Geocodex.Provider behaviour</p>
+    <div class="summary-synopsis"><p>Invoked to geocode an address into x/y coordinates</p>
 </div>
 </div>
   </div>
@@ -142,11 +139,10 @@ Types          </h1>
     <h1 class="signature">address()</span>
         
       <div class="specs">
-          <pre>address() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+          <pre>address() :: <a href="Geocodex.html#t:address/0">Geocodex.address</a>()</pre>
       </div>
   </div>
   <section class="docstring">
-<p>An address to be geocoded</p>
   </section>
 </section>
 <section class="detail" id="t:coordinates/0">
@@ -158,28 +154,27 @@ Types          </h1>
     <h1 class="signature">coordinates()</span>
         
       <div class="specs">
-          <pre>coordinates() :: %{x: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), y: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()}</pre>
+          <pre>coordinates() :: <a href="Geocodex.html#t:coordinates/0">Geocodex.coordinates</a>()</pre>
       </div>
   </div>
   <section class="docstring">
-<p>A map containing x/y coordinates</p>
   </section>
 </section>
           </div>
         </section>
-        <section id="functions" class="details-list">
+        <section id="callbacks" class="details-list">
           <h1 class="section-heading">
-            <a class="hover-link" href="#functions">
+            <a class="hover-link" href="#callbacks">
               <span class="icon-link" aria-hidden="true"></span>
               <span class="sr-only">Link to this section</span>
             </a>
-Functions          </h1>
-          <div class="functions-list">
-<section class="detail" id="coordinates/1">
+Callbacks          </h1>
+          <div class="callbacks-list">
+<section class="detail" id="c:coordinates/1">
     <div class="detail-header">
-    <a href="#coordinates/1" class="detail-link" title="Link to this function">
+    <a href="#c:coordinates/1" class="detail-link" title="Link to this callback">
       <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
+      <span class="sr-only">Link to this callback</span>
     </a>
     <h1 class="signature">coordinates(address)</span>
         
@@ -188,38 +183,7 @@ Functions          </h1>
       </div>
   </div>
   <section class="docstring">
-<p>Geocodes an address into x/y coordinates.</p>
-<h2 id="coordinates/1-examples" class="section-heading">
-  <a href="#coordinates/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Examples
-</h2>
-
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Geocodex</span><span class="o">.</span><span class="n">coordinates</span><span class="p" data-group-id="1783178703-1">(</span><span class="s">&quot;1600 Pennsylvania Ave NW, Washington, D.C., 20500&quot;</span><span class="p" data-group-id="1783178703-1">)</span><span class="w">
-</span><span class="p" data-group-id="1783178703-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1783178703-3">%{</span><span class="ss">x</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mf">77.03535</span><span class="p">,</span><span class="w"> </span><span class="ss">y</span><span class="p">:</span><span class="w"> </span><span class="mf">38.898754</span><span class="p" data-group-id="1783178703-3">}</span><span class="p" data-group-id="1783178703-2">}</span></code></pre>
-  </section>
-</section>
-<section class="detail" id="provider/0">
-    <div class="detail-header">
-    <a href="#provider/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">provider()</span>
-        
-      <div class="specs">
-          <pre>provider() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
-      </div>
-  </div>
-  <section class="docstring">
-<p>The configured geocoding service provider. Returns the name of a module that implements
-the Geocodex.Provider behaviour.</p>
-<h2 id="provider/0-examples" class="section-heading">
-  <a href="#provider/0-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Examples
-</h2>
-
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Geocodex</span><span class="o">.</span><span class="n">provider</span><span class="p" data-group-id="4448505616-1">(</span><span class="p" data-group-id="4448505616-1">)</span><span class="w">
-</span><span class="nc">Geocodex.Provider.USCB</span></code></pre>
+<p>Invoked to geocode an address into x/y coordinates</p>
   </section>
 </section>
           </div>

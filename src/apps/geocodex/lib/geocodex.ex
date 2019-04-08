@@ -1,13 +1,25 @@
 defmodule Geocodex do
   @moduledoc """
-  Documentation for Geocodex.
+  Geocoding library for Elixir that's extendable to multiple service providers.
+
+  Geocodex uses the U.S. Census Bureau geocoding service by default, but you can
+  configure a different provider in your `config.exs`:
+
+      config :geocodex, provider: MyApp.Provider
+
+  You can use any custom provider module that implements the `Geocodex.Provider` behaviour.
+
+  Built-in providers:
+
+    * `Geocodex.Provider.USCB` (default)
+
   """
 
-  use HTTPoison.Base
+  @typedoc "An address to be geocoded"
+  @type address :: String.t()
 
-  @base_url "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress"
-  @headers [{"Accept", "application/json"}]
-  @params [benchmark: "Public_AR_Current"]
+  @typedoc "A map containing x/y coordinates"
+  @type coordinates :: %{x: float, y: float}
 
   @doc """
   Geocodes an address into x/y coordinates.
@@ -16,33 +28,21 @@ defmodule Geocodex do
 
       iex> Geocodex.coordinates("1600 Pennsylvania Ave NW, Washington, D.C., 20500")
       {:ok, %{x: -77.03535, y: 38.898754}}
+
   """
-  def coordinates(address) do
-    {:ok, %{body: body}} = get("", [], params: [address: address])
+  @spec coordinates(address) :: {:ok, coordinates}
+  def coordinates(address), do: provider().coordinates(address)
 
-    coordinates =
-      body
-      |> Jason.decode!()
-      |> get_in(["result", "addressMatches", Access.at(0), "coordinates"])
+  @doc """
+  The configured geocoding service provider. Returns the name of a module that implements
+  the Geocodex.Provider behaviour.
 
-    case coordinates do
-      %{"x" => x, "y" => y} -> {:ok, %{x: x, y: y}}
-      _ -> :error
-    end
-  end
+  ## Examples
 
-  @doc false
-  def process_request_url(url) do
-    @base_url <> url
-  end
+      iex> Geocodex.provider()
+      Geocodex.Provider.USCB
 
-  @doc false
-  def process_request_headers(headers) do
-    @headers ++ headers
-  end
-
-  @doc false
-  def process_request_options(options) do
-    update_in(options, [:params], fn x -> Keyword.merge(x, @params) end)
-  end
+  """
+  @spec provider :: module
+  def provider, do: Application.get_env(:geocodex, :provider, Geocodex.Provider.USCB)
 end
